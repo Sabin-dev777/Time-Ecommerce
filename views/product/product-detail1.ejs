@@ -1,0 +1,1155 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <!-- Mirrored from wp.alithemes.com/html/evara/evara-frontend/shop-product-full.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 15 Jul 2023 10:10:46 GMT -->
+  <head>
+    <meta charset="utf-8" />
+    <title>Evara - eCommerce HTML Template</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/user-assets/imgs/theme/favicon.svg"
+    />
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/user-assets/magiczoom/magiczoom.css" type="text/css">
+
+    <script src="/user-assets/magiczoom/magiczoom.js"></script>
+    <link rel="stylesheet" href="/user-assets/css/maind134.css?v=3.4" />
+    <style>
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+      .size-option.selected {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+}
+
+      /* General Styles */
+.container {
+  margin-top: 1rem;
+}
+
+.product-detail {
+  padding: 1rem;
+}
+
+.product-image-slider img {
+  max-width: 100%;
+  height: auto;
+}
+
+.thumbnail-img {
+  width: 80px;
+  height: auto;
+}
+
+.detail-info {
+  padding: 0 1rem;
+}
+
+.title-detail {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-detail-rating {
+  margin-bottom: 1rem;
+}
+
+.product-price-cover {
+  margin-bottom: 1rem;
+}
+
+.product-extra-link2 form {
+  display: flex;
+  align-items: center;
+}
+
+.product-extra-link2 .button {
+  margin-left: 1rem;
+}
+
+.modal-content {
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.modal .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.size-filter li {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.size-label {
+  font-weight: bold;
+}
+
+.size-stock {
+  color: #777;
+}
+
+    </style>
+
+    <style>
+      .share-buttons a img {
+          width: 32px;
+          height: 32px;
+          margin-right: 10px;
+          display: inline-block;
+      }
+
+      .size-filter {
+          list-style-type: none;
+          padding: 0;
+      }
+
+      .size-filter li {
+          margin-bottom: 5px;
+      }
+
+      .size-label {
+          font-weight: bold;
+          margin-right: 5px;
+      }
+
+      .size-stock {
+          color: #888;
+      }
+  </style>
+    
+    <style>
+      .modal {
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+      }
+      
+      .modal-content {
+        background-color: white;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 300px;
+        text-align: center;
+      }
+      
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      </style>
+
+    
+  </head>
+
+  <body>
+    <!-- Quick view -->
+  
+    <header class="header-area header-style-1 header-height-2">
+      <div class="header-top header-top-ptb-1 d-none d-lg-block">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-xl-3 col-lg-4">
+              <div class="header-info">
+                <ul>
+                  <li>
+                    <i class="fi-rs-smartphone"></i>
+                    <a href="#">(+01) - 2345 - 6789</a>
+                  </li>
+                  <li>
+                    <i class="fi-rs-marker"></i
+                    ><a href="page-contact.html">Our location</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-4">
+              <div class="text-center">
+                <div id="news-flash" class="d-inline-block">
+                  <ul>
+                    <li>
+                      Get great devices up to 50% off
+                      <a href="shop-grid-right.html">View details</a>
+                    </li>
+                    <li>Supper Value Deals - Save more with coupons</li>
+                    <li>
+                      Trendy 25silver jewelry, save up 35% off today
+                      <a href="shop-grid-right.html">Shop now</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4">
+              <div class="header-info header-info-right">
+                <ul>
+                  <li>
+                    <a class="language-dropdown-active" href="#">
+                      <i class="fi-rs-world"></i> English
+                      <i class="fi-rs-angle-small-down"></i
+                    ></a>
+                    <ul class="language-dropdown">
+                      <li>
+                        <a href="#"
+                          ><img
+                            src="user-assets/imgs/theme/flag-fr.png"
+                            alt=""
+                          />Français</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#"
+                          ><img
+                            src="user-assets/imgs/theme/flag-dt.png"
+                            alt=""
+                          />Deutsch</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#"
+                          ><img
+                            src="user-assets/imgs/theme/flag-ru.png"
+                            alt=""
+                          />Pусский</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <%if(user){%>
+                    <li>
+                      <i class="fi-rs-user"></i><a href="#"><%=user.firstname%></a>
+                    </li>
+                    <li><a href="/logout">Logout</a></li>
+
+                  <%}else{%>
+                    <li>
+                      <i class="fi-rs-user"></i
+                      ><a href="/login">Log In / Sign Up</a>
+                    </li>
+
+                  <%}%>
+                 
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
+        <div class="container">
+          <div class="header-wrap">
+            <div class="logo logo-width-1">
+              <a href="index.html"
+                ><img src="user-assets/imgs/theme/logo.svg" alt="logo"
+              /></a>
+            </div>
+            <div class="header-right">
+              <div class="search-style-2">
+                <form action="#">
+                  <select class="select-active">
+                    <option>All Categories</option>
+                    <option>Women's</option>
+                    <option>Men's</option>
+                    <option>Cellphones</option>
+                    <option>Computer</option>
+                    <option>Electronics</option>
+                    <option>Accessories</option>
+                    <option>Home & Garden</option>
+                    <option>Luggage</option>
+                    <option>Shoes</option>
+                    <option>Mother & Kids</option>
+                  </select>
+                  <input type="text" placeholder="Search for items..." />
+                </form>
+              </div>
+              <div class="header-action-right">
+                <div class="header-action-2">
+                  <!-- Wishlist Icon -->
+                  <div class="header-action-icon-2">
+                      <a href="/wishlist">
+                          <img class="svgInject" alt="Evara" src="/user-assets/imgs/theme/icons/icon-heart.svg">
+                          <% if (user) { %>
+                              <span class="pro-count blue"><%= wishlistQuantity %></span>
+                          <% } else { %>
+                              <span class="pro-count blue">0</span>
+                          <% } %>
+                      </a>
+                  </div>
+                  <!-- Cart Icon -->
+                  <div class="header-action-icon-2">
+                      <a class="mini-cart-icon" href="/cart">
+                          <img alt="Evara" src="/user-assets/imgs/theme/icons/icon-cart.svg">
+                          <% if (user) { %>
+                              <span class="pro-count blue"><%= cartQuantity %></span>
+                          <% } else { %>
+                              <span class="pro-count blue">0</span>
+                          <% } %>
+                      </a>
+                  </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header-bottom header-bottom-bg-color sticky-bar">
+        <div class="container">
+            <div class="header-wrap header-space-between position-relative">
+                <div class="logo logo-width-1 d-block d-lg-none">
+                    <a href="/product/landing"><img src="/user-assets/imgs/theme/logo.svg" alt="logo"></a>
+                </div>
+                <div class="header-nav d-none d-lg-flex">
+                    <div class="main-categori-wrap d-none d-lg-block">
+                        
+                       
+                    </div>
+                    <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
+                        <nav>
+                            <ul>
+                                <li><a class="active" href="">Home <i class="fi-rs-angle-down"></i></a>
+                               
+                                </li>
+                                <li>
+                                    <a class="active" href="/product">Shop <i class="fi-rs-angle-down"></i></a>
+                                </li>
+                                <li>
+                                    <a class="active" href="page-about.html">Men <i class="fi-rs-angle-down"></i></a>
+                                </li>
+                                <li><a  class="active" href="shop-grid-right.html">Women<i class="fi-rs-angle-down"></i></a>
+                                    <li><a class="active" href="/home">My account <i class="fi-rs-angle-down"></i></a>
+                                    
+                                
+                                
+                                
+                                    
+                               
+                             
+                              
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="hotline d-none d-lg-block">
+                    <p><i class="fi-rs-headset"></i><span>Hotline</span> 1900 - 888 </p>
+                </div>
+                <p class="mobile-promotion">Happy <span class="text-brand">Mother's Day</span>. Big Sale Up to 40%</p>
+                <div class="header-action-right d-block d-lg-none">
+                    <div class="header-action-2">
+                        <div class="header-action-icon-2">
+                            <a href="shop-wishlist.html">
+                                <img alt="Evara" src="/user-assets/imgs/theme/icons/icon-heart.svg">
+                                <span class="pro-count white">0</span>
+                            </a>
+                        </div>
+                        <div class="header-action-icon-2">
+                            <a class="mini-cart-icon" href="/cart">
+                                <img alt="Evara" src="/user-assets/imgs/theme/icons/icon-cart.svg">
+                                <% if (user) { %>
+                                    <span class="pro-count blue"><%= cartQuantity %></span>
+                                <% } else { %>
+                                    <span class="pro-count blue">0</span>
+                                <% } %>
+                            </a>
+                        </div>
+                        <div class="header-action-icon-2 d-block d-lg-none">
+                            <div class="burger-icon burger-icon-white">
+                                <span class="burger-icon-top"></span>
+                                <span class="burger-icon-mid"></span>
+                                <span class="burger-icon-bottom"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </header>
+    <div class="mobile-header-active mobile-header-wrapper-style">
+      <div class="mobile-header-wrapper-inner">
+        <div class="mobile-header-top">
+          <div class="mobile-header-logo">
+            <a href="index.html"
+              ><img src="/user-assets/imgs/theme/logo.svg" alt="logo"
+            /></a>
+          </div>
+          <div
+            class="mobile-menu-close close-style-wrap close-style-position-inherit"
+          >
+            <button class="close-style search-close">
+              <i class="icon-top"></i>
+              <i class="icon-bottom"></i>
+            </button>
+          </div>
+        </div>
+        <div class="mobile-header-content-area">
+          <div class="mobile-search search-style-3 mobile-header-border">
+            <form action="#">
+              <input type="text" placeholder="Search for items…" />
+              <button type="submit"><i class="fi-rs-search"></i></button>
+            </form>
+          </div>
+          <div class="mobile-menu-wrap mobile-header-border">
+            <div class="main-categori-wrap mobile-header-border">
+              <a class="categori-button-active-2" href="#">
+                <span class="fi-rs-apps"></span> Browse Categories
+              </a>
+              <div
+                class="categori-dropdown-wrap categori-dropdown-active-small"
+              >
+                <ul>
+                  <li>
+                    <a href="shop-grid-right.html"
+                      ><i class="evara-font-dress"></i>Women's Clothing</a
+                    >
+                  </li>
+                  <li>
+                    <a href="shop-grid-right.html"
+                      ><i class="evara-font-tshirt"></i>Men's Clothing</a
+                    >
+                  </li>
+                  <li>
+                    <a href="shop-grid-right.html"
+                      ><i class="evara-font-smartphone"></i> Cellphones</a
+                    >
+                  </li>
+                  <li>
+                    <a href="shop-grid-right.html"
+                      ><i class="evara-font-desktop"></i>Computer & Office</a
+                    >
+                  </li>
+                  <li>
+                    <a href="shop-grid-right.html"
+                      ><i class="evara-font-cpu"></i>Consumer Electronics</a
+                    >
+                  </li>
+                  <li>
+                    <a href="shop-grid-right.html"
+                      ><i class="evara-font-home"></i>Home & Garden</a
+                    >
+                  </li>
+                  <li>
+                    <a href="shop-grid-right.html"
+                      ><i class="evara-font-high-heels"></i>Shoes</a
+                    >
+                  </li>
+                  <li>
+                    <a href="shop-grid-right.html"
+                      ><i class="evara-font-teddy-bear"></i>Mother & Kids</a
+                    >
+                  </li>
+                  <li>
+                    <a href="shop-grid-right.html"
+                      ><i class="evara-font-kite"></i>Outdoor fun</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- mobile menu start -->
+            <nav>
+              <ul class="mobile-menu">
+                <li class="menu-item-has-children">
+                  <span class="menu-expand"></span><a href="index.html">Home</a>
+                  <ul class="dropdown">
+                    <li><a href="index.html">Home 1</a></li>
+                    <li><a href="index-2.html">Home 2</a></li>
+                    <li><a href="index-3.html">Home 3</a></li>
+                    <li><a href="index-4.html">Home 4</a></li>
+                  </ul>
+                </li>
+                <li class="menu-item-has-children">
+                  <span class="menu-expand"></span
+                  ><a href="shop-grid-right.html">shop</a>
+                  <ul class="dropdown">
+                    <li>
+                      <a href="shop-grid-right.html"
+                        >Shop Grid – Right Sidebar</a
+                      >
+                    </li>
+                    <li>
+                      <a href="shop-grid-left.html">Shop Grid – Left Sidebar</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-right.html"
+                        >Shop List – Right Sidebar</a
+                      >
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html">Shop List – Left Sidebar</a>
+                    </li>
+                    <li><a href="shop-fullwidth.html">Shop - Wide</a></li>
+                    <li class="menu-item-has-children">
+                      <span class="menu-expand"></span
+                      ><a href="#">Single Product</a>
+                      <ul class="dropdown">
+                        <li>
+                          <a href="shop-product-right.html"
+                            >Product – Right Sidebar</a
+                          >
+                        </li>
+                        <li>
+                          <a href="shop-product-left.html"
+                            >Product – Left Sidebar</a
+                          >
+                        </li>
+                        <li>
+                          <a href="shop-product-full.html"
+                            >Product – No sidebar</a
+                          >
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a href="shop-filter.html">Shop – Filter</a></li>
+                    <li><a href="shop-wishlist.html">Shop – Wishlist</a></li>
+                    <li><a href="shop-cart.html">Shop – Cart</a></li>
+                    <li><a href="shop-checkout.html">Shop – Checkout</a></li>
+                    <li><a href="shop-compare.html">Shop – Compare</a></li>
+                  </ul>
+                </li>
+                <li class="menu-item-has-children">
+                  <span class="menu-expand"></span><a href="#">Mega menu</a>
+                  <ul class="dropdown">
+                    <li class="menu-item-has-children">
+                      <span class="menu-expand"></span
+                      ><a href="#">Women's Fashion</a>
+                      <ul class="dropdown">
+                        <li><a href="shop-product-right.html">Dresses</a></li>
+                        <li>
+                          <a href="shop-product-right.html">Blouses & Shirts</a>
+                        </li>
+                        <li>
+                          <a href="shop-product-right.html"
+                            >Hoodies & Sweatshirts</a
+                          >
+                        </li>
+                        <li>
+                          <a href="shop-product-right.html">Women's Sets</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                      <span class="menu-expand"></span
+                      ><a href="#">Men's Fashion</a>
+                      <ul class="dropdown">
+                        <li><a href="shop-product-right.html">Jackets</a></li>
+                        <li>
+                          <a href="shop-product-right.html"
+                            >Casual Faux Leather</a
+                          >
+                        </li>
+                        <li>
+                          <a href="shop-product-right.html">Genuine Leather</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                      <span class="menu-expand"></span
+                      ><a href="#">Technology</a>
+                      <ul class="dropdown">
+                        <li>
+                          <a href="shop-product-right.html">Gaming Laptops</a>
+                        </li>
+                        <li>
+                          <a href="shop-product-right.html"
+                            >Ultraslim Laptops</a
+                          >
+                        </li>
+                        <li><a href="shop-product-right.html">Tablets</a></li>
+                        <li>
+                          <a href="shop-product-right.html"
+                            >Laptop Accessories</a
+                          >
+                        </li>
+                        <li>
+                          <a href="shop-product-right.html"
+                            >Tablet Accessories</a
+                          >
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li class="menu-item-has-children">
+                  <span class="menu-expand"></span
+                  ><a href="blog-category-fullwidth.html">Blog</a>
+                  <ul class="dropdown">
+                    <li>
+                      <a href="blog-category-grid.html">Blog Category Grid</a>
+                    </li>
+                    <li>
+                      <a href="blog-category-list.html">Blog Category List</a>
+                    </li>
+                    <li>
+                      <a href="blog-category-big.html">Blog Category Big</a>
+                    </li>
+                    <li>
+                      <a href="blog-category-fullwidth.html"
+                        >Blog Category Wide</a
+                      >
+                    </li>
+                    <li class="menu-item-has-children">
+                      <span class="menu-expand"></span
+                      ><a href="#">Single Product Layout</a>
+                      <ul class="dropdown">
+                        <li><a href="blog-post-left.html">Left Sidebar</a></li>
+                        <li>
+                          <a href="blog-post-right.html">Right Sidebar</a>
+                        </li>
+                        <li>
+                          <a href="blog-post-fullwidth.html">No Sidebar</a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li class="menu-item-has-children">
+                  <span class="menu-expand"></span><a href="#">Pages</a>
+                  <ul class="dropdown">
+                    <li><a href="page-about.html">About Us</a></li>
+                    <li><a href="page-contact.html">Contact</a></li>
+                    <li><a href="page-account.html">My Account</a></li>
+                    <li>
+                      <a href="page-login-register.html">login/register</a>
+                    </li>
+                    <li>
+                      <a href="page-purchase-guide.html">Purchase Guide</a>
+                    </li>
+                    <li>
+                      <a href="page-privacy-policy.html">Privacy Policy</a>
+                    </li>
+                    <li><a href="page-terms.html">Terms of Service</a></li>
+                    <li><a href="page-404.html">404 Page</a></li>
+                  </ul>
+                </li>
+                <li class="menu-item-has-children">
+                  <span class="menu-expand"></span><a href="#">Language</a>
+                  <ul class="dropdown">
+                    <li><a href="#">English</a></li>
+                    <li><a href="#">French</a></li>
+                    <li><a href="#">German</a></li>
+                    <li><a href="#">Spanish</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+            <!-- mobile menu end -->
+          </div>
+          <div class="mobile-header-info-wrap mobile-header-border">
+            <div class="single-mobile-header-info mt-30">
+              <a href="page-contact.html"> Our location </a>
+            </div>
+            <div class="single-mobile-header-info">
+              <a href="page-login-register.html">Log In / Sign Up </a>
+            </div>
+            <div class="single-mobile-header-info">
+              <a href="#">(+01) - 2345 - 6789 </a>
+            </div>
+          </div>
+          <div class="mobile-social-icon">
+            <h5 class="mb-15 text-grey-4">Follow Us</h5>
+            <a href="#"
+              ><img
+                src="/user-assets/imgs/theme/icons/icon-facebook.svg"
+                alt=""
+            /></a>
+            <a href="#"
+              ><img src="/user-assets/imgs/theme/icons/icon-twitter.svg" alt=""
+            /></a>
+            <a href="#"
+              ><img
+                src="/user-assets/imgs/theme/icons/icon-instagram.svg"
+                alt=""
+            /></a>
+            <a href="#"
+              ><img
+                src="/user-assets/imgs/theme/icons/icon-pinterest.svg"
+                alt=""
+            /></a>
+            <a href="#"
+              ><img src="/user-assets/imgs/theme/icons/icon-youtube.svg" alt=""
+            /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <main class="main">
+      <div class="page-header breadcrumb-wrap">
+        <div class="container">
+          <div class="breadcrumb">
+            <a href="index.html" rel="nofollow">Home</a>
+            <span></span> Fashion <span></span> Abstract Print Patchwork Dress
+          </div>
+        </div>
+      </div>
+      <section class="mt-50 mb-50">
+        <div class="container">
+          <div class="container mt-4">
+            <div class="row">
+              <!-- Product Image Gallery -->
+              <div class="col-md-6">
+                <div class="detail-gallery">
+                  <div class="product-image-slider">
+                    <% if (product.images && product.images.length > 0) { %>
+                      <% for (let i = product.images.length - 1; i >= 0; i--) { %>
+                        <a href="<%= '/uploads/' + product.images[i] %>" class="MagicZoom">
+                          <img src="<%= '/uploads/' + product.images[i] %>" alt="product image">
+                        </a>
+                      <% } %>
+                    <% } %>
+                  </div>
+                  <!-- THUMBNAILS -->
+                  <div class="slider-nav-thumbnails pl-15 pr-15">
+                    <% if (product.images && product.images.length > 0) { %>
+                      <% for (let i = product.images.length - 1; i >= 0; i--) { %>
+                        <div>
+                          <img class="thumbnail-img" src="<%= '/uploads/' + product.images[i] %>" alt="product thumbnail">
+                        </div>
+                      <% } %>
+                    <% } else { %>
+                      <div>No images available</div>
+                    <% } %>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Product Details -->
+              <div class="col-md-6">
+                <div class="detail-info">
+                  <h2 class="title-detail"><%= product.name %></h2>
+              
+                  <!-- Product Rating -->
+                  <div class="product-detail-rating">
+                    <div class="pro-details-brand">
+                      <span>Brands: <a href="shop-grid-right.html"><%= product.brand.brandname %></a></span>
+                    </div>
+                    <div class="product-rate-cover text-end">
+                      <div class="product-rate d-inline-block">
+                        <div class="product-rating" style="width: 90%"></div>
+                      </div>
+                      <span class="font-small ml-5 text-muted">(25 reviews)</span>
+                    </div>
+                  </div>
+              
+                  <!-- Product Price -->
+                  <div class="clearfix product-price-cover">
+                    <div class="product-price primary-color float-left">
+                      <% if (product.discountedPrice) { %>
+                        <ins>
+                          <span class="text-brand">&#8377;<%= product.discountedPrice.toFixed(2) %></span>
+                        </ins>
+                        <span class="old-price font-md ml-15">&#8377;<%= product.price %></span>
+                        <span class="save-price font-md color3 ml-15">
+                         
+                        </span>
+                      <% } else { %>
+                        <ins>
+                          <span class="text-brand">&#8377;<%= product.price %></span>
+                        </ins>
+                      <% } %>
+                    </div>
+                  </div>
+              
+                  <div class="bt-1 border-color-1 mt-15 mb-15"></div>
+              
+                  <!-- Short Description -->
+                  <div class="short-desc mb-30">
+                    <p><%= product.richDescription %></p>
+                  </div>
+              
+                  <!-- Sizes and Stock -->
+                  <div class="attr-detail attr-size">
+                    <strong class="mr-10">Size</strong>
+                    <ul class="list-filter size-filter font-small" id="size-list">
+                      <% product.sizes.forEach(size => { %>
+                        <li data-size="<%= size.size %>" data-quantity="<%= size.quantity %>">
+                          <a href="javascript:void(0);" class="size-option">
+                            <span class="size-label"><%= size.size %></span>
+                            <span class="size-stock">(<%= size.quantity %> in stock)</span>
+                          </a>
+                        </li>
+                      <% }); %>
+                    </ul>
+                  </div>
+              
+                  <!-- Add to Cart and Wishlist -->
+                  <div class="detail-extralink">
+                    <div class="product-extra-link2">
+                      <form action="/product/addto-cart" method="post" id="add-to-cart-form" style="display: flex; align-items: center;">
+                        <div class="mr-3">
+                          <label for="quantity-select" class="mr-2">Quantity:</label>
+                          <select id="quantity-select" class="qty-val" name="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                          </select>
+                        </div>
+                        <div>
+                          <input type="hidden" id="selected-size" name="size" />
+                          <input type="hidden" name="productId" value="<%= product._id %>" />
+                          <button type="submit" class="button button-add-to-cart" style="height: 40px;">Add to cart</button>
+                        </div>
+                        <% if(typeof message !== 'undefined') { %>
+                          <h3 style="color: rgb(255, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-weight: 400;"><%= message %></h3>
+                          <% } %>
+                        <div class="ml-3">
+                          <button type="button" class="button button-add-to-cart" style="height: 40px;" onclick="window.location.href='/cart';">View cart</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+              
+                  <a aria-label="Add To Wishlist" class="action-btn hover-up" href="javascript:void(0);" onclick="addToWishlist('<%= product._id %>')">
+                    <i class="fi-rs-heart"></i>
+                  </a>
+                  <div id="wishlistModal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                      <span class="close">&times;</span>
+                      <p id="wishlistMessage">Product added to your wishlist!</p>
+                    </div>
+                  </div>
+                </div>
+              
+                <!-- Product Meta -->
+                <ul class="product-meta font-xs color-grey mt-50">
+                  <li class="mb-5">SKU: <a href="#">FWM15VKT</a></li>
+                  <li class="mb-5">
+                    Tags: <a href="#" rel="tag">Cloth</a>,
+                    <a href="#" rel="tag">Women</a>,
+                    <a href="#" rel="tag">Dress</a>
+                  </li>
+                  <li>
+                    Availability: <span class="in-stock text-success ml-5">8 Items In Stock</span>
+                  </li>
+                </ul>
+              </div>
+  
+
+                <div
+                  class="banner-img banner-big wow fadeIn f-none animated mt-50"
+                >
+                  <img
+                    class="border-radius-10"
+                    src="/user-assets/imgs/banner/banner-4.png"
+                    alt=""
+                  />
+                  <div class="banner-text">
+                    <h4 class="mb-15 mt-40">Repair Services</h4>
+                    <h2 class="fw-600 mb-20">
+                      We're an Apple <br />Authorised Service Provider
+                    </h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+ <script>
+  // Function to show modal with a message
+  function showModal(message) {
+    const modal = document.getElementById('errorModal');
+    const errorMessage = document.getElementById('errorMessage');
+    errorMessage.innerText = message;
+    modal.style.display = 'block';
+
+    // Close the modal when the close button is clicked
+    document.querySelector('#errorModal .close').onclick = function () {
+      modal.style.display = 'none';
+    };
+
+    // Close the modal when clicking anywhere outside of the modal content
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    };
+
+    // Auto-close the modal after 3 seconds
+    setTimeout(() => {
+      modal.style.display = 'none';
+    }, 3000);
+  }
+
+  // Function to handle form submission
+  document.getElementById('add-to-cart-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    const form = event.target;
+    const formData = new FormData(form);
+
+    // Convert FormData to JSON
+    const data = {};
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
+
+    // Get selected size
+    const selectedSize = document.getElementById('selected-size').value;
+
+    if (!selectedSize || !data.quantity) {
+      showModal('Quantity and size are required.');
+      return;
+    }
+
+    // Send AJAX request
+    fetch('/product/addto-cart', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => {
+      if(response.status === 401){
+        const data = response.json();
+        if(data.redirectTo){
+          window.location.href = data.redirectTo;
+        }
+      }
+        else if(response.redirected){
+          window.location.href= response.url
+
+        }
+        else{
+          return response.json()
+        }
+      
+    })
+    .then(data => {
+      if (data.success) {
+        showModal('Item added to cart!');
+        // Optionally redirect to cart
+        // window.location.href = '/cart';
+      } else {
+        showModal(data.message || 'Failed to add item to cart.');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      showModal('An error occurred while adding the item to the cart.');
+    });
+  });
+
+  // Function to handle size selection
+  document.querySelectorAll('#size-list li').forEach(function(sizeItem) {
+    sizeItem.addEventListener('click', function() {
+      document.getElementById('selected-size').value = this.dataset.size;
+    });
+  });
+</script>
+
+<!-- Error Modal -->
+<div id="errorModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p id="errorMessage">Error message here.</p>
+  </div>
+</div>
+      
+       
+    </main>
+  <footer class="main">
+        
+        <section class="section-padding footer-mid">
+            <div class="container pt-15 pb-20">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="widget-about font-md mb-md-5 mb-lg-0">
+                            <div class="logo logo-width-1 wow fadeIn animated">
+                                <a href="index.html"><img src="/user-assets/imgs/theme/logo.svg" alt="logo"></a>
+                            </div>
+                            <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Contact</h5>
+                            <p class="wow fadeIn animated">
+                                <strong>Address: </strong>55 Albert Terrace Road, Sheffield, United kingdom
+                            </p>
+                            <p class="wow fadeIn animated">
+                                <strong>Phone: </strong>+447442008435
+                            </p>
+                          
+                            <h5 class="mb-10 mt-30 fw-600 text-grey-4 wow fadeIn animated">Follow Us</h5>
+                            <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0">
+                                <a href="#"><img src="/user-assets/imgs/theme/icons/icon-facebook.svg" alt=""></a>
+                                <a href="#"><img src="/user-assets/imgs/theme/icons/icon-twitter.svg" alt=""></a>
+                                <a href="#"><img src="/user-assets/imgs/theme/icons/icon-instagram.svg" alt=""></a>
+                                <a href="#"><img src="/user-assets/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
+                                <a href="#"><img src="/user-assets/imgs/theme/icons/icon-youtube.svg" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3">
+                        <h5 class="widget-title wow fadeIn animated">About</h5>
+                        <ul class="footer-list wow fadeIn animated mb-sm-5 mb-md-0">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Delivery Information</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms &amp; Conditions</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Support Center</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2  col-md-3">
+                        <h5 class="widget-title wow fadeIn animated">My Account</h5>
+                        <ul class="footer-list wow fadeIn animated">
+                            <li><a href="#">Sign In</a></li>
+                            <li><a href="#">View Cart</a></li>
+                            <li><a href="#">My Wishlist</a></li>
+                            <li><a href="#">Track My Order</a></li>
+                            <li><a href="#">Help</a></li>
+                            <li><a href="#">Order</a></li>
+                        </ul>
+                    </div>
+                   
+                </div>
+            </div>
+        </section>
+        <div class="container pb-20 wow fadeIn animated">
+            <div class="row">
+                <div class="col-12 mb-20">
+                    <div class="footer-bottom"></div>
+                </div>
+                <div class="col-lg-6">
+                    <p class="float-md-left font-sm text-muted mb-0">&copy; 2024, <strong class="text-brand">TIME</strong>  Ecommerce  </p>
+                </div>
+                <div class="col-lg-6">
+                    <p class="text-lg-end text-start font-sm text-muted mb-0">
+                        Designed by <a href="http://alithemes.com/" target="_blank">SABIN</a>. All rights reserved
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+      <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+          <div class="text-center">
+            <h5 class="mb-5">Now Loading</h5>
+            <div class="loader">
+              <div class="bar bar1"></div>
+              <div class="bar bar2"></div>
+              <div class="bar bar3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="no-size-modal" class="modal">
+      <div class="modal-content">
+        <span id="close-no-size-modal" class="close">&times;</span>
+        <p>Please select a size before adding the product to your cart.</p>
+      </div>
+    </div>
+
+    <!-- Modal Structure -->
+<div id="stock-modal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <span id="close-modal" class="close">&times;</span>
+    <p>Sorry, the selected quantity exceeds the available stock. Please adjust the quantity.</p>
+  </div>
+</div>
+
+<div id="errorModal" class="modal" style="display: none;">
+  <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <p id="errorMessage"></p>
+  </div>
+</div>
+
+
+    <!-- Vendor JS-->
+    <script src="/user-assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="/user-assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/user-assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+    <script src="/user-assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="/user-assets/js/plugins/slick.js"></script>
+    <script src="/user-assets/js/plugins/jquery.syotimer.min.js"></script>
+    <script src="/user-assets/js/plugins/wow.js"></script>
+    <script src="/user-assets/js/plugins/jquery-ui.js"></script>
+    <script src="/user-assets/js/plugins/perfect-scrollbar.js"></script>
+    <script src="/user-assets/js/plugins/magnific-popup.js"></script>
+    <script src="/user-assets/js/plugins/select2.min.js"></script>
+    <script src="/user-assets/js/plugins/waypoints.js"></script>
+    <script src="/user-assets/js/plugins/counterup.js"></script>
+    <script src="/user-assets/js/plugins/jquery.countdown.min.js"></script>
+    <script src="/user-assets/js/plugins/images-loaded.js"></script>
+    <script src="/user-assets/js/plugins/isotope.js"></script>
+    <script src="/user-assets/js/plugins/scrollup.js"></script>
+    <script src="/user-assets/js/plugins/jquery.vticker-min.js"></script>
+    <script src="/user-assets/js/plugins/jquery.theia.sticky.js"></script>
+    <script src="/user-assets/js/plugins/jquery.elevatezoom.js"></script>
+    <!-- Template  JS -->
+    <script src="/user-assets/js/maind134.js?v=3.4"></script>
+    <script src="/user-assets/js/shopd134.js?v=3.4"></script>
+  </body>
+ 
+  <!-- Mirrored from wp.alithemes.com/html/evara/evara-frontend/shop-product-full.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 15 Jul 2023 10:10:46 GMT -->
+</html>

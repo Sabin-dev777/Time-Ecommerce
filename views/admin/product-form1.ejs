@@ -1,0 +1,647 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-form-product-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:32 GMT -->
+<head>
+    <meta charset="utf-8">
+    <title>Evara Dashboard</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/admin-assets/imgs/theme/favicon.svg">
+    <!-- Template CSS -->
+    <link href="/admin-assets/css/main.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" />
+    <style>
+        #cropModal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 1000; /* High z-index to stay above footer and other content */
+  max-width: 90%;
+  max-height: 90%;
+  overflow: auto;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#closeModal {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  color: #333;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="screen-overlay"></div>
+    <aside class="navbar-aside" id="offcanvas_aside">
+        <div class="aside-top">
+            <a href="index.html" class="brand-wrap">
+                <img src="/admin-assets/imgs/theme/logo.svg" class="logo" alt="Evara Dashboard">
+            </a>
+            <div>
+                <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i> </button>
+            </div>
+        </div>
+        <nav>
+            <ul class="menu-aside">
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/home"> <i class="icon material-icons md-home"></i>
+                        <span class="text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/product-list"> <i class="icon material-icons md-shopping_bag"></i>
+                        <span class="text">Products</span>
+                    </a>
+                   
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/orders"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Orders</span>
+                    </a>
+                  
+                </li>
+              
+            
+                <li class="menu-item active">
+                    <a class="menu-link" href="/admin/product-form"> <i class="icon material-icons md-add_box"></i>
+                        <span class="text">Add product</span>
+                    </a>
+                 
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/create-coupon"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Coupons</span>
+                    </a>
+                  
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/offers"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Offers</span>
+                    </a>
+                  
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/category"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Category</span>
+                    </a>
+                  
+                </li>
+              
+              
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/users"> <i class="icon material-icons md-comment"></i>
+                        <span class="text">Customers</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/brands"> <i class="icon material-icons md-stars"></i>
+                        <span class="text">Brands</span> </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/banners"> <i class="icon material-icons md-stars"></i>
+                        <span class="text">Banners</span> </a>
+                </li>
+             
+             
+            </ul>
+            <hr>
+     
+            <br>
+            <br>
+        </nav>
+    </aside>
+    <main class="main-wrap">
+        
+        <section class="content-main">
+
+            <form id="productForm" action="/admin/add-product" method="post" enctype="multipart/form-data">
+                <div id="error-messages" style="color:red;"></div> <!-- Error messages container -->
+                <div class="row">
+                    <div class="col-6">
+                        <div class="content-header">
+                            <h2 class="content-title">Add New Product</h2>
+                            <div>
+                                <button type="button" class="btn btn-md rounded font-sm hover-up" onclick="validateAndSubmit()">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- General Info -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h6>1. General info</h6>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="mb-4">
+                                            <label class="form-label">Product Name</label>
+                                            <input type="text" id="name" name="name" placeholder="Type here" class="form-control">
+                                            <div id="error-name" class="error-message" style="color:red;"></div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="form-label">Description</label>
+                                            <textarea id="description" name="description" placeholder="Type here" class="form-control" rows="4"></textarea>
+                                            <div id="error-description" class="error-message" style="color:red;"></div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="form-label">Rich Description</label>
+                                            <textarea id="richDescription" name="richDescription" placeholder="Type here" class="form-control" rows="4"></textarea>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="brand" class="form-label">Brand:</label>
+                                            <select id="brand" name="brand" class="form-control" required>
+                                                <% brands.forEach(brand => { %>
+                                                    <option value="<%= brand._id %>"><%= brand.brandname %></option>
+                                                <% }) %>
+                                            </select>
+                                            <div id="error-brand" class="error-message" style="color:red;"></div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="gender" class="form-label">Gender:</label>
+                                            <select id="gender" name="gender" class="form-control" required>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                                <option value="Unisex">Unisex</option>
+                                            </select>
+                                            <div id="error-gender" class="error-message" style="color:red;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <!-- Pricing -->
+                                <hr class="mb-4 mt-0">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h6>2. Pricing</h6>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="mb-4">
+                                            <label class="form-label">Cost in INR</label>
+                                            <input id="price" name="price" type="text" placeholder="₹00.0" class="form-control">
+                                            <div id="error-price" class="error-message" style="color:red;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <!-- Sizes and Stock -->
+                                <hr class="mb-4 mt-0">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h6>3. Sizes & Stock</h6>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div id="size-fields">
+                                            <!-- Repeated size and quantity fields -->
+                                            <% for (let i = 0; i < 4; i++) { %>
+
+                                                <div class="size-entry mb-4">
+                                                    <label class="form-label">Size</label>
+                                                    <input type="text" id="size-<%= i %>" name="sizes[<%= i %>][size]" placeholder="Enter size" class="form-control">
+                                                    <div id="error-size-<%= i %>" class="error-message" style="color:red;"></div>
+                                                </div>
+                                                <div class="size-entry mb-4">
+                                                    <label class="form-label">Quantity</label>
+                                                    <input type="number" id="quantity-<%= i %>" min="0" name="sizes[<%= i %>][quantity]" placeholder="Enter quantity" class="form-control" oninput="calculateTotalQuantity()">
+                                                    <div id="error-quantity-<%= i %>" class="error-message" style="color:red;"></div>
+                                                </div>
+                                                
+                                                
+                                        
+                                            <% } %>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="form-label">Total Quantity</label>
+                                            <input type="number" id="totalQuantity" name="countInStock" class="form-control" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <!-- Category -->
+                                <hr class="mb-4 mt-0">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h6>4. Category</h6>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="mb-4">
+                                            <label for="category">Category:</label>
+                                            <select id="category" name="category" class="form-control">
+                                                <% categories.forEach(category => { %>
+                                                    <option value="<%= category._id %>"><%= category.name %></option>
+                                                <% }); %>
+                                            </select>
+                                            <div id="error-category" class="error-message" style="color:red;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <!-- Media -->
+                                <hr class="mb-4 mt-0">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h6>5. Media</h6>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="mb-4">
+                                            <label class="form-label">Images</label>
+                                            <input class="form-control" id="images" name="images" type="file" multiple onchange="previewImages(event)">
+                                            <div id="error-images" class="error-message" style="color:red;"></div>
+                                        </div>
+                                        <div id="image-preview" class="row"></div>
+                                        <div id="file-info"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+          <!-- Crop Modal -->
+<div id="cropModal">
+    <div class="modal-content">
+      <span id="closeModal" onclick="closeModal()">×</span>
+      <h4>Crop Image</h4>
+      <div>
+        <img id="cropImage" style="width: 100%; max-width: 500px;">
+      </div>
+      <!-- Custom width and height input fields -->
+      <div>
+        <label for="customWidth">Width:</label>
+        <input type="number" id="customWidth" placeholder="Enter width in px" min="1">
+        <label for="customHeight">Height:</label>
+        <input type="number" id="customHeight" placeholder="Enter height in px" min="1">
+        <button type="button" onclick="setCustomDimensions()">Set Dimensions</button>
+      </div>
+      <button type="button" onclick="cropCurrentImage()">Crop & Save</button>
+    </div>
+  </div>
+  
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+            
+            
+            <script>
+                function showCropModal(index) {
+  const cropModal = document.getElementById('cropModal');
+  cropModal.style.display = 'block';
+  document.getElementById('cropImage').src = URL.createObjectURL(imageFiles[index]);
+
+  // Initialize or reinitialize cropper
+  if (cropper) cropper.destroy();
+  cropper = new Cropper(document.getElementById('cropImage'), { aspectRatio: 1 });
+
+  currentFileIndex = index;
+}
+
+function closeModal() {
+  document.getElementById('cropModal').style.display = 'none';
+  if (cropper) cropper.destroy();
+}
+
+
+
+
+                let cropper;
+let currentFileIndex = 0;
+let imageFiles = [];
+
+// Handle file selection
+document.getElementById('images').addEventListener('change', (event) => {
+  imageFiles = Array.from(event.target.files);
+  showCropModal(0); // Start cropping from the first file
+});
+
+// Show modal for cropping the current image
+function showCropModal(index) {
+  currentFileIndex = index;
+  if (index >= imageFiles.length) return;
+
+  const file = imageFiles[index];
+  const reader = new FileReader();
+  reader.onload = () => {
+    document.getElementById('cropImage').src = reader.result;
+    document.getElementById('cropModal').style.display = 'block';
+
+    // Initialize cropper after image loads
+    cropper = new Cropper(document.getElementById('cropImage'), {
+      viewMode: 1,
+      autoCropArea: 1,
+    });
+  };
+  reader.readAsDataURL(file);
+}
+
+// Set custom dimensions based on user input
+function setCustomDimensions() {
+  const customWidth = parseInt(document.getElementById('customWidth').value);
+  const customHeight = parseInt(document.getElementById('customHeight').value);
+
+  if (customWidth > 0 && customHeight > 0 && cropper) {
+    cropper.setCropBoxData({
+      width: customWidth,
+      height: customHeight,
+    });
+  }
+}
+
+// Crop the current image and save it
+function cropCurrentImage() {
+  if (cropper) {
+    const originalFileType = imageFiles[currentFileIndex].type;
+    const outputType = originalFileType === 'image/avif' ? 'image/avif' : 'image/jpeg';
+
+    cropper.getCroppedCanvas().toBlob((blob) => {
+      imageFiles[currentFileIndex] = new File([blob], imageFiles[currentFileIndex].name, { type: outputType });
+
+      // Move to next image or close modal if done
+      cropper.destroy();
+      document.getElementById('cropModal').style.display = 'none';
+      currentFileIndex++;
+      if (currentFileIndex < imageFiles.length) {
+        showCropModal(currentFileIndex);
+      } else {
+        previewCroppedImages(); // Show cropped images in preview
+      }
+    }, outputType); // Set the type to 'image/avif' if needed
+  }
+}
+
+// Close the modal
+function closeModal() {
+  if (cropper) {
+    cropper.destroy();
+    document.getElementById('cropModal').style.display = 'none';
+  }
+}
+
+// Preview the cropped images
+function previewCroppedImages() {
+  const previewContainer = document.getElementById('image-preview');
+  previewContainer.innerHTML = '';
+  imageFiles.forEach((file, index) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = document.createElement('img');
+      img.src = e.target.result;
+      img.style.width = '100px';
+      img.style.margin = '5px';
+      previewContainer.appendChild(img);
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+
+
+
+      function validateAndSubmit() {
+        const formData = new FormData(document.getElementById('productForm'));
+  imageFiles.forEach((file, index) => {
+    formData.append('images[]', file);
+  });
+  // Track validity of form fields
+  let isValid = true;
+  const errorMessages = {};
+
+  // Clear previous error messages
+  document.querySelectorAll('.error-message').forEach(error => error.innerHTML = '');
+
+  // Validate Product Name
+  const name = document.getElementById('name').value.trim();
+  if (!name) {
+    errorMessages['error-name'] = 'Product Name is required';
+    isValid = false;
+  }
+
+  // Validate Product Description
+  const description = document.getElementById('description').value.trim();
+  if (!description) {
+    errorMessages['error-description'] = 'Description is required';
+    isValid = false;
+  }
+
+  // Validate Product Price (ensure it is a positive number)
+  const price = document.getElementById('price').value.trim();
+  if (!price || isNaN(price) || parseFloat(price) <= 0) {
+    errorMessages['error-price'] = 'Enter a valid positive price';
+    isValid = false;
+  }
+
+  // Validate Product Brand
+  const brand = document.getElementById('brand').value.trim();
+  if (!brand) {
+    errorMessages['error-brand'] = 'Brand is required';
+    isValid = false;
+  }
+
+  // Validate Sizes & Stock (for each size entry)
+  let totalQuantity = 0;
+  const sizeFields = document.querySelectorAll('.size-entry input[name$="[quantity]"]'); // Select all quantity fields
+
+  sizeFields.forEach((quantityField, index) => {
+    const quantity = parseInt(quantityField.value.trim(), 10);
+    
+    // Validate quantity for each size entry
+    if (isNaN(quantity) || quantity < 0) {
+      errorMessages[`error-quantity-${index}`] = 'Quantity must be a non-negative number';
+      isValid = false;
+    } else {
+      totalQuantity += quantity;  // Sum the quantities for total quantity field
+    }
+  });
+
+  // Update the total quantity field
+  if (isValid) {
+    document.getElementById('totalQuantity').value = totalQuantity;
+  }
+
+  // Validate Image Files
+  const imageInput = document.getElementById('images');
+  const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.avif)$/i; // Allow .avif files
+  
+  if (imageInput.files.length > 0) {
+    for (let i = 0; i < imageInput.files.length; i++) {
+      const file = imageInput.files[i];
+      if (!allowedExtensions.exec(file.name)) {
+        errorMessages['error-images'] = 'Only image files (.jpg, .jpeg, .png, .gif, .avif) are allowed';
+        isValid = false;
+        break; // Exit loop if an invalid file type is found
+      }
+    }
+  }
+
+  // Display all error messages
+  Object.keys(errorMessages).forEach(key => {
+    const errorElement = document.getElementById(key);
+    if (errorElement) {
+      errorElement.innerHTML = errorMessages[key];
+    }
+  });
+
+  // Submit the form if all validations pass
+  if (isValid) {
+    document.getElementById('productForm').submit();
+  }
+}
+
+              </script>
+              
+              
+       
+        <script>
+        function calculateTotalQuantity() {
+    let total = 0;
+    const quantityFields = document.querySelectorAll('.size-entry input[name$="[quantity]"]');
+
+    quantityFields.forEach(field => {
+      const value = parseInt(field.value.trim(), 10);
+      if (!isNaN(value) && value >= 0) {
+        total += value;
+      }
+    });
+
+    document.getElementById('totalQuantity').value = total;
+  }
+        </script>
+            <script>
+                let selectedFiles = [];
+            
+                function previewImages(event) {
+                    const files = Array.from(event.target.files);
+            
+                    // Append new files to the existing selection
+                    selectedFiles = [...selectedFiles, ...files];
+            
+                    // Update previews and file info
+                    updatePreviews();
+                }
+            
+                function updatePreviews() {
+                    const previewContainer = document.getElementById('image-preview');
+                    const fileInfoContainer = document.getElementById('file-info');
+                    previewContainer.innerHTML = ''; // Clear existing previews
+                    fileInfoContainer.innerHTML = ''; // Clear existing file info
+            
+                    const fileCount = document.createElement('p');
+                    fileCount.textContent = `Number of files chosen: ${selectedFiles.length}`;
+                    fileInfoContainer.appendChild(fileCount);
+            
+                    selectedFiles.forEach((file, index) => {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const container = document.createElement('div');
+                            container.style.display = 'inline-block';
+                            container.style.position = 'relative';
+                            container.style.margin = '10px';
+            
+                            const imgElement = document.createElement('img');
+                            imgElement.src = e.target.result;
+                            imgElement.style.maxWidth = '150px';
+                            imgElement.style.display = 'block';
+                            container.appendChild(imgElement);
+            
+                            const removeButton = document.createElement('button');
+                            removeButton.textContent = 'Remove';
+                            removeButton.type = 'button'; // Prevent form submission
+                            removeButton.style.position = 'absolute';
+                            removeButton.style.top = '0';
+                            removeButton.style.right = '0';
+                            removeButton.onclick = () => removeFile(index, container);
+                            container.appendChild(removeButton);
+            
+                            previewContainer.appendChild(container);
+                        }
+                        reader.readAsDataURL(file);
+                    });
+                }
+            
+                function removeFile(index, container) {
+                    // Remove the file from selectedFiles
+                    selectedFiles.splice(index, 1);
+            
+                    // Remove the container from the DOM
+                    container.remove();
+            
+                    // Update the file input element (create a new DataTransfer object)
+                    const fileInput = document.querySelector('input[name="images"]');
+                    const dataTransfer = new DataTransfer();
+                    selectedFiles.forEach(file => dataTransfer.items.add(file));
+                    fileInput.files = dataTransfer.files;
+            
+                    // Update the file info display
+                    updateFileInfo();
+                }
+            
+                function updateFileInfo() {
+                    const fileInfoContainer = document.getElementById('file-info');
+                    fileInfoContainer.innerHTML = '';
+            
+                    const fileCount = document.createElement('p');
+                    fileCount.textContent = `Number of files chosen: ${selectedFiles.length}`;
+                    fileInfoContainer.appendChild(fileCount);
+            
+                    selectedFiles.forEach((file, index) => {
+                        const fileUrl = document.createElement('p');
+                        fileUrl.textContent = `File ${index + 1}: ${file.name}`;
+                        fileInfoContainer.appendChild(fileUrl);
+                    });
+                }
+            </script>
+        </section> <!-- content-main end// -->
+        <footer class="main-footer font-xs">
+            <div class="row pb-30 pt-15">
+                <div class="col-sm-6">
+                    <script>
+                    document.write(new Date().getFullYear())
+                    </script> ©, TIME - Ecommerce .
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-sm-end">
+                        All rights reserved
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+
+    <script src="/admin-assets/js/vendors/jquery-3.6.0.min.js"></script>
+    <script src="/admin-assets/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="/admin-assets/js/vendors/select2.min.js"></script>
+    <script src="/admin-assets/js/vendors/perfect-scrollbar.js"></script>
+    <script src="/admin-assets/js/vendors/jquery.fullscreen.min.js"></script>
+    <!-- Main Script -->
+    <script src="/admin-assets/js/main.js" type="text/javascript"></script>
+</body>
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-form-product-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:32 GMT -->
+</html>

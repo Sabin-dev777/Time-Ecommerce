@@ -1,0 +1,337 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-form-product-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:32 GMT -->
+<head>
+    <meta charset="utf-8">
+    <title>Evara Dashboard</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/admin-assets/imgs/theme/favicon.svg">
+    <!-- Template CSS -->
+    <link href="/admin-assets/css/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="screen-overlay"></div>
+    <aside class="navbar-aside" id="offcanvas_aside">
+        <div class="aside-top">
+            <a href="index.html" class="brand-wrap">
+                <img src="/admin-assets/imgs/theme/logo.svg" class="logo" alt="Evara Dashboard">
+            </a>
+            <div>
+                <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i> </button>
+            </div>
+        </div>
+        <nav>
+            <ul class="menu-aside">
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/home"> <i class="icon material-icons md-home"></i>
+                        <span class="text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item active">
+                    <a class="menu-link" href="/admin/product-list"> <i class="icon material-icons md-shopping_bag"></i>
+                        <span class="text">Products</span>
+                    </a>
+                   
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/orders"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Orders</span>
+                    </a>
+                  
+                </li>
+              
+            
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/product-form"> <i class="icon material-icons md-add_box"></i>
+                        <span class="text">Add product</span>
+                    </a>
+                 
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/create-coupon"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Coupons</span>
+                    </a>
+                  
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/offers"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Offers</span>
+                    </a>
+                  
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/category"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Category</span>
+                    </a>
+                  
+                </li>
+              
+              
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/users"> <i class="icon material-icons md-comment"></i>
+                        <span class="text">Customers</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/brands"> <i class="icon material-icons md-stars"></i>
+                        <span class="text">Brands</span> </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/banners"> <i class="icon material-icons md-stars"></i>
+                        <span class="text">Banners</span> </a>
+                </li>
+             
+             
+            </ul>
+            <hr>
+            <ul class="menu-aside">
+                <li class="menu-item has-submenu">
+                    <a class="menu-link" href="#"> <i class="icon material-icons md-settings"></i>
+                        <span class="text">Settings</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="page-settings-1.html">Setting sample 1</a>
+                        <a href="page-settings-2.html">Setting sample 2</a>
+                    </div>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="page-blank.html"> <i class="icon material-icons md-local_offer"></i>
+                        <span class="text"> Starter page </span>
+                    </a>
+                </li>
+            </ul>
+            <br>
+            <br>
+        </nav>
+    </aside>
+    <main class="main-wrap">
+       
+        <section class="content-main">
+            <form method="post" action="/admin/edit-product?id=<%= products._id %>" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="content-header">
+                            <h2 class="content-title">Edit Product</h2>
+                            <div>
+                                <button type="submit" class="btn btn-md rounded font-sm hover-up">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <% if (typeof message !== 'undefined') { %>
+                    <h3 style="color: rgb(255, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-weight: 400;">
+                        <%= message %>
+                    </h3>
+                <% } %>
+            
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <!-- General Info -->
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h6>1. General info</h6>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="mb-4">
+                                            <label class="form-label">Product Name</label>
+                                            <input type="text" name="name" value="<%= products.name %>" class="form-control">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="form-label">Description</label>
+                                            <textarea name="description" class="form-control" rows="4"><%= products.description %></textarea>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="form-label">Rich Description</label>
+                                            <textarea name="richDescription" class="form-control" rows="4"><%= products.richDescription %></textarea>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="brand" class="form-label">Brand:</label>
+                                            <select name="brand" class="form-control" required>
+                                                <% brands.forEach(brand => { %>
+                                                    <option value="<%= brand._id %>" <%= brand._id.equals(products.brand._id) ? 'selected' : '' %>><%= brand.name %></option>
+                                                <% }) %>
+                                            </select>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="gender" class="form-label">Gender:</label>
+                                            <select name="gender" class="form-control" required>
+                                                <option value="Male" <%= products.gender === 'Male' ? 'selected' : '' %>>Male</option>
+                                                <option value="Female" <%= products.gender === 'Female' ? 'selected' : '' %>>Female</option>
+                                                <option value="Unisex" <%= products.gender === 'Unisex' ? 'selected' : '' %>>Unisex</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="mb-4 mt-0">
+                                
+                                <!-- Pricing -->
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h6>2. Pricing</h6>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="mb-4">
+                                            <label class="form-label">Cost in INR</label>
+                                            <input name="price" type="text" value="<%= products.price %>" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="mb-4 mt-0">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h6>6. Badge</h6>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="mb-4">
+                                            <label class="form-label">Badge</label>
+                                            <input name="badgeText" type="text" placeholder="<%=products.badgeText%>" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <!-- In Stock -->
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h6>3. In Stock</h6>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="mb-4">
+                                            <label class="form-label">Count</label>
+                                            <input name="countInStock" type="text" value="<%= products.countInStock %>" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="mb-4 mt-0">
+                
+                                <!-- Category -->
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h6>4. Category</h6>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="mb-4">
+                                            <label for="category">Category:</label>
+                                            <select name="category" id="category" class="form-control">
+                                                <option value="<%= products.category._id %>"><%= products.category.name %></option>
+                                                <% categories.forEach(category => { %>
+                                                    <% if (category._id.toString() !== products.category._id.toString()) { %>
+                                                        <option value="<%= category._id %>"><%= category.name %></option>
+                                                    <% } %>
+                                                <% }); %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="mb-4 mt-0">
+                
+                                <!-- Sizes -->
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h6>5. Sizes</h6>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div id="size-fields">
+                                            <% products.sizes.forEach((size, index) => { %>
+                                                <div class="size-entry mb-4">
+                                                    <label class="form-label">Size</label>
+                                                    <input type="text" name="sizes[<%= index %>][size]" value="<%= size.size %>" placeholder="Enter size" class="form-control">
+                                                </div>
+                                                <div class="size-entry mb-4">
+                                                    <label class="form-label">Quantity</label>
+                                                    <input type="number" min="0" name="sizes[<%= index %>][quantity]" value="<%= size.quantity %>" placeholder="Enter quantity" class="form-control">
+                                                </div>
+                                            <% }); %>
+                                        </div>
+                                        <button type="button" class="btn btn-secondary" onclick="addSizeField()">Add Another Size</button>
+                                    </div>
+                                </div>
+                                <hr class="mb-4 mt-0">
+                
+                                <!-- Media -->
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h6>6. Media</h6>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="mb-4">
+                                            <label class="form-label">Images</label>
+                                            <input class="form-control" name="images" type="file" id="imageInput" multiple>
+                                            <div class="mt-2" id="image-preview">
+                                                <% products.images.forEach(function(image) { %>
+                                                    <div class="image-container" style="display: inline-block; margin-right: 5px; position: relative;">
+                                                        <img src="<%= '/uploads/' + image %>" alt="Image Preview" style="width: 100px; height: 100px;">
+                                                        <button type="button" class="btn btn-danger btn-sm" onclick="deleteImage('<%= image %>')">Delete</button>
+                                                    </div>
+                                                <% }); %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- .row end// -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+           
+            
+           
+<script>
+    function deleteImage(imageName) {
+        fetch(`/admin/delete-image?image=${imageName}`, {
+            method: 'DELETE'
+        }).then(response => response.json())
+          .then(result => {
+              if (result.success) {
+                  document.querySelector(`img[src='/uploads/${imageName}']`).parentElement.remove();
+                  const deletedImagesInput = document.getElementById('deletedImages');
+                  const currentDeletedImages = deletedImagesInput.value ? deletedImagesInput.value.split(',') : [];
+                  deletedImagesInput.value = [...currentDeletedImages, imageName].join(',');
+              } else {
+                  alert('Failed to delete image');
+              }
+          }).catch(error => console.error('Error-', error));
+    }
+    </script>
+          
+        </section> <!-- content-main end// -->
+        <footer class="main-footer font-xs">
+            <div class="row pb-30 pt-15">
+                <div class="col-sm-6">
+                    <script>
+                    document.write(new Date().getFullYear())
+                    </script> ©, TIME - Ecommerce.
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-sm-end">
+                        All rights reserved
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <script src="/admin-assets/js/vendors/jquery-3.6.0.min.js"></script>
+    <script src="/admin-assets/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="/admin-assets/js/vendors/select2.min.js"></script>
+    <script src="/admin-assets/js/vendors/perfect-scrollbar.js"></script>
+    <script src="/admin-assets/js/vendors/jquery.fullscreen.min.js"></script>
+    <!-- Main Script -->
+    <script src="/admin-assets/js/main.js" type="text/javascript"></script>
+</body>
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-form-product-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:32 GMT -->
+</html>

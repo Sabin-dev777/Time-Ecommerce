@@ -1,0 +1,326 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-form-product-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:32 GMT -->
+<head>
+    <meta charset="utf-8">
+    <title>Evara Dashboard</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <!-- Favicon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/admin-assets/imgs/theme/favicon.svg">
+    <!-- Template CSS -->
+    <link href="/admin-assets/css/main.css" rel="stylesheet" type="text/css" />
+
+  
+</head>
+.logo {
+    background-color: black;
+}
+
+<body>
+    <div class="screen-overlay"></div>
+    <aside class="navbar-aside" id="offcanvas_aside">
+        <div class="aside-top">
+            <a href="index.html" class="brand-wrap">
+                <img src="/admin-assets/imgs/theme/logo.svg" class="logo" alt="Evara Dashboard">
+            </a>
+            <div>
+                <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i> </button>
+            </div>
+        </div>
+        <nav>
+            <ul class="menu-aside">
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/home"> <i class="icon material-icons md-home"></i>
+                        <span class="text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/product-list"> <i class="icon material-icons md-shopping_bag"></i>
+                        <span class="text">Products</span>
+                    </a>
+                   
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/orders"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Orders</span>
+                    </a>
+                  
+                </li>
+              
+            
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/product-form"> <i class="icon material-icons md-add_box"></i>
+                        <span class="text">Add product</span>
+                    </a>
+                 
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/create-coupon"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Coupons</span>
+                    </a>
+                  
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/offers"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Offers</span>
+                    </a>
+                  
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/category"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Category</span>
+                    </a>
+                  
+                </li>
+              
+              
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/users"> <i class="icon material-icons md-comment"></i>
+                        <span class="text">Customers</span>
+                    </a>
+                </li>
+                <li class="menu-item active">
+                    <a class="menu-link" href="/admin/brands"> <i class="icon material-icons md-stars"></i>
+                        <span class="text">Brands</span> </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/banners"> <i class="icon material-icons md-stars"></i>
+                        <span class="text">Banners</span> </a>
+                </li>
+             
+             
+            </ul>
+            <hr>
+         
+            <br>
+            <br>
+        </nav>
+    </aside>
+    <main class="main-wrap">
+      
+
+        <section class="content-main">
+            <form method="post" action="/admin/create-brand" id="createBrandForm">
+                <div class="row">
+                  <div class="col-6">
+                    <div class="content-header">
+                      <h2 class="content-title">Create Brand</h2>
+                      <div>
+                        <button type="button" class="btn btn-md rounded font-sm hover-up" onclick="validateAndSubmit()">Create</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+                <div id="error-messages" style="color: rgb(255, 0, 0); font-size: small; font-style: normal; font-weight: 400;"></div>
+              
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="card mb-4">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-3">
+                            <h6>1. General Info</h6>
+                          </div>
+                          <div class="col-md-9">
+                            <div class="mb-4">
+                              <label class="form-label">Brand Name</label>
+                              <input type="text" name="brandname" id="brandname" placeholder="Type Brand Name here" class="form-control" required>
+                              <div id="brandname-error" class="error-message" style="color: red;"></div>
+                            </div>
+                            <div class="mb-4">
+                              <label class="form-label">Description</label>
+                              <textarea name="description" id="description" placeholder="Type Description here" class="form-control"></textarea>
+                              <div id="description-error" class="error-message" style="color: red;"></div>
+                            </div>
+                            <div class="mb-4">
+                              <label class="form-label">Logo URL</label>
+                              <input type="text" name="logo" id="logo" placeholder="Type Logo URL here" class="form-control">
+                              <div id="logo-error" class="error-message" style="color: red;"></div>
+                            </div>
+                            <div class="mb-4">
+                              <label class="form-label">Status</label>
+                              <div class="form-check">
+                                <input type="checkbox" name="isActive" id="isActive" class="form-check-input" checked>
+                                <label class="form-check-label">Active</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <hr class="mb-4 mt-0">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              
+        
+            <!-- Display list of brands -->
+            <div class="container">
+                <h2>Brand List</h2>
+                <% if (brands.length > 0) { %>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Logo</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           
+                            <% brands.forEach(function(brand) { %>
+                                <tr>
+                                    <td><%= brand.brandname %></td>
+                                    <td><%= brand.description %></td>
+                                    <td> 
+                                        <% if (brand.logo) { %>
+                                            <img  src="<%= brand.logo %>" alt="<%= brand.brandname %> Logo" style="width: 100px; height: auto;background-color: black;">
+                                            
+                                        <% } else { %>
+                                            No Logo
+                                        <% } %>
+                                    </td>
+                                    <td><%= brand.isActive ? 'Active' : 'Inactive' %></td>
+                                    <td>
+                                        <a href="/admin/edit-brand/<%= brand._id %>">Edit</a>
+                                        <a href="/admin/delete-brand/<%= brand._id %>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                                    </td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                <% } else { %>
+                    <p>No brands available</p>
+                <% } %>
+            </div>
+
+                    <!-- Display pagination links -->
+<div class="pagination-area mt-30 mb-50">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-start">
+        <% if (currentPage > 1) { %>
+          <li class="page-item">
+            <a class="page-link" href="?page=<%= currentPage - 1 %>">&laquo;</a>
+          </li>
+        <% } %>
+  
+        <% for (let i = 1; i <= totalPages; i++) { %>
+          <li class="page-item <%= i === currentPage ? 'active' : '' %>">
+            <a class="page-link" href="?page=<%= i %>"><%= i %></a>
+          </li>
+        <% } %>
+  
+        <% if (currentPage < totalPages) { %>
+          <li class="page-item">
+            <a class="page-link" href="?page=<%= currentPage + 1 %>">&raquo;</a>
+          </li>
+        <% } %>
+      </ul>
+    </nav>
+  </div>
+        </section>
+
+  
+        
+
+     
+        
+    
+        <footer class="main-footer font-xs">
+            <div class="row pb-30 pt-15">
+                <div class="col-sm-6">
+                    <script>
+                    document.write(new Date().getFullYear())
+                    </script> ©, TIME - Ecommerce.
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-sm-end">
+                        All rights reserved
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <script>
+        // Validation function
+        function validateAndSubmit(formId) {
+           
+          const form = document.getElementById(formId);
+      
+          // Get form values
+          const brandname = document.getElementById('brandname').value.trim();
+          const description = document.getElementById('description').value.trim();
+          const logo = document.getElementById('logo').value.trim();
+          const isActive = document.getElementById('isActive').checked;
+      
+          let errorMessages = [];
+          let isValid = true;
+      
+          // Clear previous error messages
+          document.querySelectorAll('.error-message').forEach(function (element) {
+            element.innerHTML = '';
+          });
+      
+          // Validation checks
+          if (!brandname) {
+            document.getElementById('brandname-error').innerHTML = 'Brand name is required.';
+            isValid = false;
+          }
+      
+          if (!logo) {
+            document.getElementById('logo-error').innerHTML = 'Logo URL is required.';
+            isValid = false;
+          }
+      
+          // If there are error messages, prevent form submission and show alerts
+          if (!isValid) {
+            return false;  // Prevent form submission
+          }
+      
+          // If validation passes, submit the form
+          form.submit();
+        }
+      
+        // Attach the validation and submit process to the form
+        document.getElementById('createBrandForm').addEventListener('submit', function (e) {
+          e.preventDefault();  // Prevent the default form submission
+          validateAndSubmit('createBrandForm');
+        });
+      </script>
+       
+    <script src="/admin-assets/js/vendors/jquery-3.6.0.min.js"></script>
+    <script src="/admin-assets/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="/admin-assets/js/vendors/select2.min.js"></script>
+    <script src="/admin-assets/js/vendors/perfect-scrollbar.js"></script>
+    <script src="/admin-assets/js/vendors/jquery.fullscreen.min.js"></script>
+    <!-- Main Script -->
+    <script src="/admin-assets/js/main.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $('[data-provide="datepicker"]').datepicker({
+      format: 'yyyy-mm-dd'  // You can adjust the date format as needed
+    });
+  });
+</script>
+</body>
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-form-product-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:32 GMT -->
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-form-product-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:32 GMT -->
+<head>
+    <meta charset="utf-8">
+    <title>Evara Dashboard</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <!-- Favicon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/admin-assets/imgs/theme/favicon.svg">
+    <!-- Template CSS -->
+    <link href="/admin-assets/css/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="screen-overlay"></div>
+    <aside class="navbar-aside" id="offcanvas_aside">
+        <div class="aside-top">
+            <a href="index.html" class="brand-wrap">
+                <img src="/admin-assets/imgs/theme/logo.svg" class="logo" alt="Evara Dashboard">
+            </a>
+            <div>
+                <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i> </button>
+            </div>
+        </div>
+        <nav>
+            <ul class="menu-aside">
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/home"> <i class="icon material-icons md-home"></i>
+                        <span class="text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/product-list"> <i class="icon material-icons md-shopping_bag"></i>
+                        <span class="text">Products</span>
+                    </a>
+                   
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/orders"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Orders</span>
+                    </a>
+                  
+                </li>
+              
+            
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/product-form"> <i class="icon material-icons md-add_box"></i>
+                        <span class="text">Add product</span>
+                    </a>
+                 
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/create-coupon"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Coupons</span>
+                    </a>
+                  
+                </li>
+                <li class="menu-item active">
+                    <a class="menu-link" href="/admin/offers"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Offers</span>
+                    </a>
+                  
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/category"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Category</span>
+                    </a>
+                  
+                </li>
+              
+              
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/users"> <i class="icon material-icons md-comment"></i>
+                        <span class="text">Customers</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/brands"> <i class="icon material-icons md-stars"></i>
+                        <span class="text">Brands</span> </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/banners"> <i class="icon material-icons md-stars"></i>
+                        <span class="text">Banners</span> </a>
+                </li>
+             
+             
+            </ul>
+            <hr>
+            <ul class="menu-aside">
+                <li class="menu-item has-submenu">
+                    <a class="menu-link" href="#"> <i class="icon material-icons md-settings"></i>
+                        <span class="text">Settings</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="page-settings-1.html">Setting sample 1</a>
+                        <a href="page-settings-2.html">Setting sample 2</a>
+                    </div>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="page-blank.html"> <i class="icon material-icons md-local_offer"></i>
+                        <span class="text"> Starter page </span>
+                    </a>
+                </li>
+            </ul>
+            <br>
+            <br>
+        </nav>
+    </aside>
+    <main class="main-wrap">
+        <header class="main-header navbar">
+            <div class="col-search">
+                <form class="searchform">
+                    <div class="input-group">
+                        <input list="search_terms" type="text" class="form-control" placeholder="Search term">
+                        <button class="btn btn-light bg" type="button"> <i class="material-icons md-search"></i></button>
+                    </div>
+                    <datalist id="search_terms">
+                        <option value="Products">
+                        <option value="New orders">
+                        <option value="Apple iphone">
+                        <option value="Ahmed Hassan">
+                    </datalist>
+                </form>
+            </div>
+            <div class="col-nav">
+                <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="material-icons md-apps"></i> </button>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link btn-icon" href="#">
+                            <i class="material-icons md-notifications animation-shake"></i>
+                            <span class="badge rounded-pill">3</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-icon darkmode" href="#"> <i class="material-icons md-nights_stay"></i> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="requestfullscreen nav-link btn-icon"><i class="material-icons md-cast"></i></a>
+                    </li>
+                    <li class="dropdown nav-item">
+                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownLanguage" aria-expanded="false"><i class="material-icons md-public"></i></a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">
+                            <a class="dropdown-item text-brand" href="#"><img src="/admin-assets/imgs/theme/flag-us.png" alt="English">English</a>
+                            <a class="dropdown-item" href="#"><img src="/admin-assets/imgs/theme/flag-fr.png" alt="Français">Français</a>
+                            <a class="dropdown-item" href="#"><img src="/admin-assets/imgs/theme/flag-jp.png" alt="Français">日本語</a>
+                            <a class="dropdown-item" href="#"><img src="/admin-assets/imgs/theme/flag-cn.png" alt="Français">中国人</a>
+                        </div>
+                    </li>
+                    <li class="dropdown nav-item">
+                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount" aria-expanded="false"> <img class="img-xs rounded-circle" src="/admin-assets/imgs/people/avatar2.jpg" alt="User"></a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
+                            <a class="dropdown-item" href="#"><i class="material-icons md-perm_identity"></i>Edit Profile</a>
+                            <a class="dropdown-item" href="#"><i class="material-icons md-settings"></i>Account Settings</a>
+                            <a class="dropdown-item" href="#"><i class="material-icons md-account_balance_wallet"></i>Wallet</a>
+                            <a class="dropdown-item" href="#"><i class="material-icons md-receipt"></i>Billing</a>
+                            <a class="dropdown-item" href="#"><i class="material-icons md-help_outline"></i>Help center</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-danger" href="#"><i class="material-icons md-exit_to_app"></i>Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <section class="content-main">
+            <form id="offer-form" method="post" action="/admin/edit-offer/<%= offer._id %>" onsubmit="validateAndSubmit(event)" novalidate>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="content-header">
+                            <h2 class="content-title">Edit Offer</h2>
+                            <div>
+                                <button type="submit" class="btn btn-md rounded font-sm hover-up">Save Changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <% if (typeof message !== 'undefined') { %>
+                    <h3 style="color: rgb(255, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-weight: 400;">
+                        <%= message %>
+                    </h3>
+                <% } %>
+        
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <!-- Hidden input for offer ID -->
+                                <input type="hidden" name="offerId" value="<%= offer._id %>">
+                                <p>Current Offer ID: <%= offer._id %></p>
+        
+                                <!-- Form fields for editing offer properties -->
+                                <div class="mb-3">
+                                    <label for="title" class="form-label">Offer Title:</label>
+                                    <input type="text" class="form-control" id="title" name="title" value="<%= offer.title %>" required>
+                                    <div id="title-error" class="error-message" style="color: red; display: none;">Title is required</div>
+                                </div>
+        
+                                <div class="mb-3">
+                                    <label for="description" class="form-label">Description:</label>
+                                    <textarea class="form-control" id="description" name="description" rows="4" required><%= offer.description %></textarea>
+                                    <div id="description-error" class="error-message" style="color: red; display: none;">Description is required</div>
+                                </div>
+        
+                                <div class="mb-3">
+                                    <label for="type" class="form-label">Offer Type:</label>
+                                    <select class="form-select" id="type" name="type" required>
+                                        <option value="percentage" <%= offer.type === 'percentage' ? 'selected' : '' %>>Percentage</option>
+                                        <option value="fixed" <%= offer.type === 'fixed' ? 'selected' : '' %>>Fixed Amount</option>
+                                        <option value="bogo" <%= offer.type === 'bogo' ? 'selected' : '' %>>Buy-One-Get-One (BOGO)</option>
+                                    </select>
+                                    <div id="type-error" class="error-message" style="color: red; display: none;">Offer Type is required</div>
+                                </div>
+        
+                                <div class="mb-3">
+                                    <label for="value" class="form-label">Value:</label>
+                                    <input type="number" class="form-control" id="value" name="value" value="<%= offer.value %>" required>
+                                    <div id="value-error" class="error-message" style="color: red; display: none;">Valid Value is required</div>
+                                </div>
+        
+                                <div class="mb-3">
+                                    <label for="category" class="form-label">Category (Optional):</label>
+                                    <select class="form-select" id="category" name="category">
+                                        <option value="" <%= !offer.category ? 'selected' : '' %>>None</option>
+                                        <% categories.forEach(function(category) { %>
+                                            <option value="<%= category._id %>" <%= offer.category && offer.category.equals(category._id) ? 'selected' : '' %>><%= category.name %></option>
+                                        <% }) %>
+                                    </select>
+                                </div>
+        
+                                <div class="mb-3">
+                                    <label for="product" class="form-label">Product (Optional):</label>
+                                    <select class="form-select" id="product" name="product">
+                                        <option value="" <%= !offer.product ? 'selected' : '' %>>None</option>
+                                        <% products.forEach(function(product) { %>
+                                            <option value="<%= product._id %>" <%= offer.product && offer.product.equals(product._id) ? 'selected' : '' %>><%= product.name %></option>
+                                        <% }) %>
+                                    </select>
+                                </div>
+        
+                                <div class="mb-3">
+                                    <label for="startDate" class="form-label">Start Date:</label>
+                                    <input type="date" class="form-control" id="startDate" name="startDate" value="<%= offer.startDate.toISOString().split('T')[0] %>" required>
+                                    <div id="startDate-error" class="error-message" style="color: red; display: none;">Start Date is required</div>
+                                </div>
+        
+                                <div class="mb-3">
+                                    <label for="endDate" class="form-label">End Date:</label>
+                                    <input type="date" class="form-control" id="endDate" name="endDate" value="<%= offer.endDate.toISOString().split('T')[0] %>" required>
+                                    <div id="endDate-error" class="error-message" style="color: red; display: none;">End Date is required</div>
+                                </div>
+        
+                                <div class="mb-3">
+                                    <label for="isActive" class="form-label">Status:</label>
+                                    <select class="form-select" id="isActive" name="isActive" required>
+                                        <option value="true" <%= offer.isActive ? 'selected' : '' %>>Active</option>
+                                        <option value="false" <%= !offer.isActive ? 'selected' : '' %>>Inactive</option>
+                                    </select>
+                                    <div id="isActive-error" class="error-message" style="color: red; display: none;">Status is required</div>
+                                </div>
+        
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                                <hr class="mb-4 mt-0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+        
+        <script>
+            function validateAndSubmit(event) {
+                event.preventDefault(); // Prevent form submission initially
+                let isValid = true;
+        
+                // Clear previous error messages
+                document.querySelectorAll('.error-message').forEach(function (element) {
+                    element.style.display = 'none';
+                });
+        
+                // Get all form fields by ID
+                const title = document.getElementById('title');
+                const description = document.getElementById('description');
+                const type = document.getElementById('type');
+                const value = document.getElementById('value');
+                const startDate = document.getElementById('startDate');
+                const endDate = document.getElementById('endDate');
+                const isActive = document.getElementById('isActive');
+        
+                // Validate Title
+                if (title.value.trim() === "") {
+                    displayError('title-error', "Title is required");
+                    isValid = false;
+                }
+        
+                // Validate Description
+                if (description.value.trim() === "") {
+                    displayError('description-error', "Description is required");
+                    isValid = false;
+                }
+        
+                // Validate Offer Type
+                if (type.value.trim() === "") {
+                    displayError('type-error', "Offer Type is required");
+                    isValid = false;
+                }
+        
+                // Validate Value
+                if (value.value.trim() === "" || isNaN(value.value) || parseFloat(value.value) <= 0) {
+                    displayError('value-error', "Valid Value is required");
+                    isValid = false;
+                }
+        
+                // Validate Start Date
+                if (startDate.value.trim() === "") {
+                    displayError('startDate-error', "Start Date is required");
+                    isValid = false;
+                }
+        
+                // Validate End Date
+                if (endDate.value.trim() === "") {
+                    displayError('endDate-error', "End Date is required");
+                    isValid = false;
+                }
+        
+                // Validate Status
+                if (isActive.value.trim() === "") {
+                    displayError('isActive-error', "Status is required");
+                    isValid = false;
+                }
+        
+                // If validation passes, submit the form
+                if (isValid) {
+                    document.getElementById('offer-form').submit();
+                }
+            }
+        
+            // Helper function to display error message
+            function displayError(errorId, message) {
+                const errorDiv = document.getElementById(errorId);
+                if (errorDiv) {
+                    errorDiv.style.display = 'block';
+                    errorDiv.innerText = message;
+                }
+            }
+        </script>
+        
+    
+    <script src="/admin-assets/js/vendors/jquery-3.6.0.min.js"></script>
+    <script src="/admin-assets/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="/admin-assets/js/vendors/select2.min.js"></script>
+    <script src="/admin-assets/js/vendors/perfect-scrollbar.js"></script>
+    <script src="/admin-assets/js/vendors/jquery.fullscreen.min.js"></script>
+    <!-- Main Script -->
+    <script src="/admin-assets/js/main.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $('[data-provide="datepicker"]').datepicker({
+      format: 'yyyy-mm-dd'  // You can adjust the date format as needed
+    });
+  });
+</script>
+</body>
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-form-product-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:32 GMT -->
+</html>

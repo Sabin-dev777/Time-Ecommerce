@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Report</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Your existing CSS */
+    </style>
+</head>
+<body>
+
+<div class="report-container">
+    <h1 class="text-center">Sales Report</h1>
+    
+    <!-- Export Buttons -->
+    <div class="mb-4 text-right">
+        <button class="btn btn-success" onclick="exportToExcel()">Export to Excel</button>
+        <button class="btn btn-danger" onclick="exportToPDF()">Export to PDF</button>
+    </div>
+
+    <!-- Sales Report Table -->
+    <table class="table table-bordered table-striped" id="salesReportTable">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Date Ordered</th>
+                <th>Status</th>
+                <th>Product</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Product Total</th>
+                <th>Order Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (orders && orders.length > 0) { %>
+                <% orders.forEach(order => { %>
+                    <% order.cartItems.forEach(cartItem => { %>
+                        <% cartItem.items.forEach(item => { %>
+                            <% const lineTotal = (item.product.discountedPrice || item.product.price) * item.quantity; %>
+                            <tr>
+                                <td><%= order.orderId %></td>
+                                <td><%= order.dateOrdered.toLocaleDateString() %></td>
+                                <td><%= order.orderStatus %></td>
+                                <td><%= item.product.name %></td>
+                                <td>₹<%= item.product.discountedPrice || item.product.price %></td>
+                                <td><%= item.quantity %></td>
+                                <td>₹<%= lineTotal.toFixed(2) %></td>
+                                <td>₹<%= order.totalprice.toFixed(2) %></td>
+                            </tr>
+                        <% }) %>
+                    <% }) %>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="8" class="text-center">No orders found for the specified criteria.</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+
+<script>
+    // Export to Excel function
+    function exportToExcel() {
+        let table = document.getElementById("salesReportTable");
+        let workbook = XLSX.utils.table_to_book(table, {sheet: "Sales Report"});
+        XLSX.writeFile(workbook, "Sales_Report.xlsx");
+    }
+
+    // Export to PDF function
+    function exportToPDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        doc.text("Sales Report", 14, 10);
+        const startY = 20;
+
+        // Get table headers and rows from the DOM
+        const columns = Array.from(document.querySelectorAll("#salesReportTable thead th")).map(th => th.innerText);
+        const rows = Array.from(document.querySelectorAll("#salesReportTable tbody tr")).map(tr => {
+            return Array.from(tr.querySelectorAll("td")).map(td => td.innerText);
+        });
+
+        doc.autoTable({
+            head: [columns],
+            body: rows,
+            startY: startY,
+            theme: 'grid',
+        });
+
+        doc.save("Sales_Report.pdf");
+    }
+</script>
+
+</body>
+</html>

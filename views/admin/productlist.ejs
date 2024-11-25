@@ -1,0 +1,232 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-products-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:00 GMT -->
+<head>
+    <meta charset="utf-8">
+    <title>Evara Dashboard</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/admin-assets/imgs/theme/favicon.svg">
+    <!-- Template CSS -->
+    <link href="/admin-assets/css/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="screen-overlay"></div>
+    <aside class="navbar-aside" id="offcanvas_aside">
+        <div class="aside-top">
+            <a href="index.html" class="brand-wrap">
+                <img src="/admin-assets/imgs/theme/logo.svg" class="logo" alt="Evara Dashboard">
+            </a>
+            <div>
+                <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i> </button>
+            </div>
+        </div>
+        <nav>
+            <ul class="menu-aside">
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/home"> <i class="icon material-icons md-home"></i>
+                        <span class="text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item active">
+                    <a class="menu-link" href="/admin/product-list"> <i class="icon material-icons md-shopping_bag"></i>
+                        <span class="text">Products</span>
+                    </a>
+                   
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/orders"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Orders</span>
+                    </a>
+                  
+                </li>
+              
+            
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/product-form"> <i class="icon material-icons md-add_box"></i>
+                        <span class="text">Add product</span>
+                    </a>
+                 
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/create-coupon"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Coupons</span>
+                    </a>
+                  
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/offers"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Offers</span>
+                    </a>
+                  
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/category"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Category</span>
+                    </a>
+                  
+                </li>
+              
+              
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/users"> <i class="icon material-icons md-comment"></i>
+                        <span class="text">Customers</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/brands"> <i class="icon material-icons md-stars"></i>
+                        <span class="text">Brands</span> </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/banners"> <i class="icon material-icons md-stars"></i>
+                        <span class="text">Banners</span> </a>
+                </li>
+             
+             
+            </ul>
+            <hr>
+        
+            <br>
+            <br>
+        </nav>
+    </aside>
+    <main class="main-wrap">
+       
+        <section class="content-main">
+            <div class="content-header">
+                <div>
+                    <h2 class="content-title card-title">Products List</h2>
+                    <p>Overview of all products with their details.</p>
+                </div>
+                <div>
+                   
+                    <a href="/admin/product-form" class="btn btn-primary btn-sm rounded">Add product</a>
+                </div>
+            </div>
+            <div class="col-md-9" style="display: contents;">
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Category</th>
+                                <th>Description</th>
+                                <th>Rich Description</th>
+                                <th>Brand</th>
+                                <th>Price</th>
+                                <th>Gender</th> <!-- Updated Header -->
+                                <th>Total Quantity</th> <!-- Updated Header -->
+                                <th>Is Deleted</th>
+                                <th>Action</th>
+                                <th class="text-end">Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% if (products.length > 0) { %>
+                                <% products.forEach(product => { %>
+                                    <tr>
+                                        <td><%= product.name %></td>
+                                        <td>
+                                            <img src="<%= '/uploads/' + product.images[product.images.length-1] %>" 
+                                                 alt="Product Image" 
+                                                 style="width: 50px; height: 50px; object-fit: cover;">
+                                        </td>
+                                        <td><%= product.category.name %></td>
+                                        <td><%= product.description %></td>
+                                        <td><%= product.richDescription %></td>
+                                        <td><%= product.brand.brandname %></td>
+                                        <td>$<%= product.price.toFixed(2) %></td>
+                                        <td><%= product.gender %></td> <!-- Display Gender -->
+                                        <td>
+                                            <% let totalQuantity = product.sizes.reduce((total, size) => total + size.quantity, 0); %>
+                                            <%= totalQuantity %>
+                                        </td>
+                                        <td><%= product.isDeleted ? 'Yes' : 'No' %></td>
+                                        <td><a href="/admin/edit-product?id=<%= product._id %>" class="btn btn-sm btn-warning">Edit</a></td>
+                                        <td class="text-end">
+                                            <% if (product.isDeleted) { %>
+                                                <a href="/admin/undo-delete-product?id=<%= product._id %>" class="btn btn-sm btn-success">LIST</a>
+                                            <% } else { %>
+                                                <a href="/admin/delete-product?id=<%= product._id %>" class="btn btn-sm btn-danger">UNLIST</a>
+                                            <% } %>
+                                        </td>
+                                    </tr>
+                                <% }) %>
+                            <% } else { %>
+                                <tr>
+                                    <td colspan="12" class="text-center">No products found.</td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+                
+                </div>
+                
+               
+            </div> <!-- .col// -->
+        
+            <div class="pagination-area mt-30 mb-50">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination justify-content-start">
+                    <% if (currentPage > 1) { %>
+                      <li class="page-item">
+                        <a class="page-link" href="?page=<%= currentPage - 1 %>">Previous</a>
+                      </li>
+                    <% } %>
+              
+                    <% for (let i = 1; i <= totalPages; i++) { %>
+                      <li class="page-item <%= i === currentPage ? 'active' : '' %>">
+                        <a class="page-link" href="?page=<%= i %>"><%= i %></a>
+                      </li>
+                    <% } %>
+              
+                    <% if (currentPage < totalPages) { %>
+                      <li class="page-item">
+                        <a class="page-link" href="?page=<%= currentPage + 1 %>">Next</a>
+                      </li>
+                    <% } %>
+                  </ul>
+                </nav>
+              </div>
+        </section> <!-- content-main end// -->
+        
+       
+        <footer class="main-footer font-xs">
+            <div class="row pb-30 pt-15">
+                <div class="col-sm-6">
+                    <script>
+                    document.write(new Date().getFullYear())
+                    </script> ©, Evara - HTML Ecommerce Template .
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-sm-end">
+                        All rights reserved
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <script src="/admin-assets/js/vendors/jquery-3.6.0.min.js"></script>
+    <script src="/admin-assets/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="/admin-assets/js/vendors/select2.min.js"></script>
+    <script src="/admin-assets/js/vendors/perfect-scrollbar.js"></script>
+    <script src="/admin-assets/js/vendors/jquery.fullscreen.min.js"></script>
+    <!-- Main Script -->
+    <script src="/admin-assets/js/main.js" type="text/javascript"></script>
+</body>
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-products-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:12 GMT -->
+</html>

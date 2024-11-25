@@ -1,0 +1,321 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-form-product-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:32 GMT -->
+<head>
+    <meta charset="utf-8">
+    <title>Evara Dashboard</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <!-- Favicon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/admin-assets/imgs/theme/favicon.svg">
+    <!-- Template CSS -->
+    <link href="/admin-assets/css/main.css" rel="stylesheet" type="text/css" />
+ 
+</head>
+
+<body>
+    <div class="screen-overlay"></div>
+    <aside class="navbar-aside" id="offcanvas_aside">
+        <div class="aside-top">
+            <a href="index.html" class="brand-wrap">
+                <img src="/admin-assets/imgs/theme/logo.svg" class="logo" alt="Evara Dashboard">
+            </a>
+            <div>
+                <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i> </button>
+            </div>
+        </div>
+        <nav>
+            <ul class="menu-aside">
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/home"> <i class="icon material-icons md-home"></i>
+                        <span class="text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/product-list"> <i class="icon material-icons md-shopping_bag"></i>
+                        <span class="text">Products</span>
+                    </a>
+                   
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/orders"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Orders</span>
+                    </a>
+                  
+                </li>
+              
+            
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/product-form"> <i class="icon material-icons md-add_box"></i>
+                        <span class="text">Add product</span>
+                    </a>
+                 
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/create-coupon"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Coupons</span>
+                    </a>
+                  
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/offers"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Offers</span>
+                    </a>
+                  
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/category"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Category</span>
+                    </a>
+                  
+                </li>
+              
+              
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/users"> <i class="icon material-icons md-comment"></i>
+                        <span class="text">Customers</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/brands"> <i class="icon material-icons md-stars"></i>
+                        <span class="text">Brands</span> </a>
+                </li>
+                <li class="menu-item active">
+                    <a class="menu-link" href="/admin/banners"> <i class="icon material-icons md-stars"></i>
+                        <span class="text">Banners</span> </a>
+                </li>
+             
+             
+            </ul>
+            <hr>
+          
+            <br>
+            <br>
+        </nav>
+    </aside>
+    <main class="main-wrap">
+       
+
+        <section class="content-main">
+
+            <form method="post" action="/admin/create-banner" enctype="multipart/form-data" id="createBannerForm">
+                <div class="row">
+                  <div class="col-6">
+                    <div class="content-header">
+                      <h2 class="content-title">Create Banner</h2>
+                      <div>
+                        <button type="button" class="btn btn-md rounded font-sm hover-up"  onclick="validateAndSubmit()">Create</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+                <% if (typeof message !== 'undefined') { %>
+                  <h3 style="color: rgb(255, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: small;">
+                    <%= message %>
+                  </h3>
+                <% } %>
+              
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="card mb-4">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-3">
+                            <h6>1. General Info</h6>
+                          </div>
+                          <div class="col-md-9">
+                            <div class="mb-4">
+                              <label class="form-label">Banner Title</label>
+                              <input type="text" name="title" id="title" placeholder="Type Banner Title here" class="form-control" required>
+                              <small id="error-title" class="text-danger"></small>
+                            </div>
+                            <div class="mb-4">
+                              <label class="form-label">Banner Image</label>
+                              <input type="file" name="images" id="images" class="form-control" required>
+                              <small id="error-images" class="text-danger"></small>
+                            </div>
+                            <div class="mb-4">
+                              <label class="form-label">Link</label>
+                              <input type="text" name="link" id="link" placeholder="Type Link here" class="form-control" required>
+                              <small id="error-link" class="text-danger"></small>
+                            </div>
+                            <div class="mb-4">
+                              <label class="form-label">Associated Offer (Optional)</label>
+                              <select name="offer" id="offer" class="form-control">
+                                <option value="">None</option>
+                                <% offers.forEach(offer => { %>
+                                  <option value="<%= offer._id %>"><%= offer.title %></option>
+                                <% }); %>
+                              </select>
+                            </div>
+                            <div class="mb-4">
+                              <label class="form-label">Status</label>
+                              <div class="form-check">
+                                <input type="checkbox" name="isActive" id="isActive" class="form-check-input" checked>
+                                <label class="form-check-label">Active</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <hr class="mb-4 mt-0">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              
+        
+      
+            <div class="container">
+                <h2>Banner List</h2>
+                <% if (banners.length > 0) { %>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Image</th>
+                                <th>Link</th>
+                                <th>Offer</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% banners.forEach(function(banner) { %>
+                                <tr>
+                                    <td><%= banner.title %></td>
+                                    <td><img src="<%= banner.images %>" alt="<%= banner.title %>" style="width: 100px;"></td>
+                                    <td><a href="<%= banner.link %>" target="_blank">Link</a></td>
+                                    <td>
+                                        <% if (banner.offer) { %>
+                                            <%= banner.offer.title %> - <%= banner.offer.description %>
+                                        <% } else { %>
+                                            No Offer
+                                        <% } %>
+                                    </td>
+                                    <td><%= banner.isActive ? 'Active' : 'Inactive' %></td>
+                                    <td>
+                                        <a href="/admin/update-banner/<%= banner._id %>">Edit</a>
+                                        <a href="/admin/delete-banner/<%= banner._id %>" onclick="return confirm('Are you sure?')">Delete</a>
+                                    </td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                          <% for (let i = 1; i <= totalPages; i++) { %>
+                            <li class="page-item <%= i === currentPage ? 'active' : '' %>">
+                              <a class="page-link" href="?page=<%= i %>"><%= i %></a>
+                            </li>
+                          <% } %>
+                        </ul>
+                      </nav>
+
+                <% } else { %>
+                    <p>No banners available</p>
+                <% } %>
+            </div>
+        </section>
+        
+    
+        <footer class="main-footer font-xs">
+            <div class="row pb-30 pt-15">
+                <div class="col-sm-6">
+                    <script>
+                    document.write(new Date().getFullYear())
+                    </script> ©, TIME - Ecommerce.
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-sm-end">
+                        All rights reserved
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+<script>
+    function validateAndSubmit() {
+  const form = document.getElementById('createBannerForm');
+  let isValid = true;
+  const errorMessages = {};
+
+  // Clear previous error messages
+  document.querySelectorAll('.text-danger').forEach(error => error.innerHTML = '');
+
+  // Get form values
+  const title = document.getElementById('title').value.trim();
+  const images = document.getElementById('images').files[0];
+  const link = document.getElementById('link').value.trim();
+
+  // Validate Title
+  if (!title) {
+    errorMessages['error-title'] = 'Title is required.';
+    isValid = false;
+  }
+
+  // Validate Image File
+  if (!images) {
+    errorMessages['error-images'] = 'Image file is required.';
+    isValid = false;
+  } else {
+    const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.avif)$/i;
+    if (!allowedExtensions.exec(images.name)) {
+      errorMessages['error-images'] = 'Invalid image format. Allowed: .jpg, .jpeg, .png, .gif, .avif';
+      isValid = false;
+    }
+  }
+
+  // Validate Link
+  if (!link) {
+    errorMessages['error-link'] = 'Link is required.';
+    isValid = false;
+  }
+
+  // Display error messages
+  Object.keys(errorMessages).forEach(key => {
+    document.getElementById(key).innerText = errorMessages[key];
+  });
+
+  // Submit form if valid
+  if (isValid) {
+    form.submit(); // Programmatically submit the form
+  }
+}
+
+  </script>
+    <script src="/admin-assets/js/vendors/jquery-3.6.0.min.js"></script>
+    <script src="/admin-assets/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="/admin-assets/js/vendors/select2.min.js"></script>
+    <script src="/admin-assets/js/vendors/perfect-scrollbar.js"></script>
+    <script src="/admin-assets/js/vendors/jquery.fullscreen.min.js"></script>
+    <!-- Main Script -->
+    <script src="/admin-assets/js/main.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $('[data-provide="datepicker"]').datepicker({
+      format: 'yyyy-mm-dd'  // You can adjust the date format as needed
+    });
+  });
+</script>
+</body>
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-form-product-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:32 GMT -->
+</html>

@@ -1,0 +1,597 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-frontend/shop-fullwidth.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 15 Jul 2023 10:10:46 GMT -->
+<head>
+    <meta charset="utf-8">
+    <title>Evara - eCommerce HTML Template</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/user-assets/imgs/theme/favicon.svg">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/user-assets/css/maind134.css?v=3.4">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <style>
+
+        
+        /* Container styling for filter-group */
+.filter-group {
+    margin-bottom: 20px;
+}
+
+/* Styling for the label */
+.filter-group label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Styling for the select element */
+.filter-group select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover and focus state for select */
+.filter-group select:hover,
+.filter-group select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    background-color: #fff;
+}
+
+/* Styling for selected option */
+.filter-group select option {
+    padding: 10px;
+}
+    </style>
+</head>
+
+<body>
+    
+    <header class="header-area header-style-1 header-height-2">
+        <div class="header-top header-top-ptb-1 d-none d-lg-block">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-3 col-lg-4">
+                        <div class="header-info">
+                            <ul>
+                                <li><i class="fi-rs-smartphone"></i> <a href="#">(+01) - 2345 - 6789</a></li>
+                                <li><i class="fi-rs-marker"></i><a href="page-contact.html">Our location</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-4">
+                        <div class="text-center">
+                            <div id="news-flash" class="d-inline-block">
+                                <p>Latest offers and discounts up to 50% off!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4">
+                        <div class="header-info header-info-right">
+                            <ul>
+                                <li>
+                                    <a class="language-dropdown-active" href="#"> 
+                                        <i class="fi-rs-world"></i> English 
+                                        <i class="fi-rs-angle-small-down"></i>
+                                    </a>
+                                    <ul class="language-dropdown">
+                                        <li><a href="#"><img src="/user-assets/imgs/theme/flag-fr.png" alt="">Français</a></li>
+                                        <li><a href="#"><img src="/user-assets/imgs/theme/flag-dt.png" alt="">Deutsch</a></li>
+                                        <li><a href="#"><img src="/user-assets/imgs/theme/flag-ru.png" alt="">Pусский</a></li>
+                                    </ul>
+                                </li>
+                                <% if(user) { %>
+                                    <li>
+                                        <i class="fi-rs-user"></i>
+                                        <a href="/home">Welcome, <%= user.firstname %>!</a>
+                                    </li>
+                                    <li><a href="/logout">Logout</a></li>
+                                <% } else { %>
+                                    <li><i class="fi-rs-user"></i><a href="/login">Log In / Sign Up</a></li>
+                                <% } %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
+            <div class="container">
+                <div class="header-wrap">
+                    <div class="logo logo-width-1">
+                        <a href="/product/landing"><img src="/user-assets/imgs/theme/logo.svg" alt="logo"></a>
+                    </div>
+                    <div class="header-right">
+                        <div class="search-style-2">
+                            <form id="searchForm" action="/product" method="GET">
+                                <input type="text" name="q" id="searchInput" value="<%= searchTerm %>" placeholder="Search for products..." required>
+                                <button type="submit">Search</button>
+                            </form>
+                        </div>
+                        <div class="header-action-right">
+                            <div class="header-action-2">
+                                <!-- Wishlist Icon -->
+                                <div class="header-action-icon-2">
+                                    <a href="/wishlist">
+                                        <img class="svgInject" alt="Evara" src="/user-assets/imgs/theme/icons/icon-heart.svg">
+                                        <% if (user) { %>
+                                            <span class="pro-count blue"><%= wishlistQuantity %></span>
+                                        <% } else { %>
+                                            <span class="pro-count blue">0</span>
+                                        <% } %>
+                                    </a>
+                                </div>
+                                <!-- Cart Icon -->
+                                <div class="header-action-icon-2">
+                                    <a class="mini-cart-icon" href="/cart">
+                                        <img alt="Evara" src="/user-assets/imgs/theme/icons/icon-cart.svg">
+                                        <% if (user) { %>
+                                            <span class="pro-count blue"><%= cartQuantity %></span>
+                                        <% } else { %>
+                                            <span class="pro-count blue">0</span>
+                                        <% } %>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-bottom header-bottom-bg-color sticky-bar">
+            <div class="container">
+                <div class="header-wrap header-space-between position-relative">
+                    <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
+                        <nav>
+                            <ul>
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/product">Shop</a></li>
+                                <li><a href="/product?gender=Male">Men</a></li>
+                                <li><a href="/product?gender=Female">Women</a></li>
+                                <li><a href="/home">My Account</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="hotline d-none d-lg-block">
+                        <p><i class="fi-rs-headset"></i><span>Hotline</span> 1900 - 888 </p>
+                    </div>
+                    <p class="mobile-promotion d-lg-none">Happy <span class="text-brand">Mother's Day</span>. Big Sale Up to 40%</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Updated Product Filter & Grid Section -->
+    <main class="main">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="/" rel="nofollow">Home</a>
+                    <span></span> Shop
+                </div>
+            </div>
+        </div>
+        <section class="mt-50 mb-50">
+            <div class="container">
+                <div class="row">
+                    <!-- Filter Form Column -->
+                    <div class="col-lg-3 col-md-4 mb-30">
+                        <div class="shop-product-filter p-3 shadow-sm rounded">
+                            <h5 class="mb-4">Filter Products</h5>
+                            <form id="filterForm" method="get" action="/product">
+                                <input type="hidden" name="q" value="<%= searchTerm %>">
+                                <input type="hidden" name="sort" value="<%= sortBy %>">
+                                <input type="hidden" name="page" value="1">
+                                <div class="filter-group">
+                                    <label for="genderSelect">Gender:</label>
+                                    <select id="genderSelect" name="gender" class="form-control">
+                                        <option value="">All Genders</option>
+                                        <option value="Male" <%= gender === 'Male' ? 'selected' : '' %>>Men</option>
+                                        <option value="Female" <%= gender === 'Female' ? 'selected' : '' %>>Women</option>
+                                    </select>
+                                </div>
+                                <div class="filter-group">
+                                    <label for="categorySelect">Category:</label>
+                                    <select id="categorySelect" name="category" class="form-control">
+                                        <option value="">All Categories</option>
+                                        <% categories.forEach(cat => { %>
+                                            <option value="<%= cat.name %>" <%= category === cat.name ? 'selected' : '' %>><%= cat.name %></option>
+                                        <% }) %>
+                                    </select>
+                                </div>
+                                <div class="filter-group">
+                                    <label for="brandSelect">Brand:</label>
+                                    <select id="brandSelect" name="brandId" class="form-control">
+                                        <option value="">All Brands</option>
+                                        <% brands.forEach(brand => { %>
+                                            <option value="<%= brand.brandname %>" <%= brandId === brand.brandname ? 'selected' : '' %>><%= brand.brandname %></option>
+                                        <% }) %>
+                                    </select>
+                                </div>
+                                <div class="filter-group mt-3">
+                                    <label for="priceMin">Price Min:</label>
+                                    <input type="number" id="priceMin" name="priceMin" class="form-control" value="<%= priceMin %>" step="1000" min="0">
+                                    <label for="priceMax" class="mt-2">Price Max:</label>
+                                    <input type="number" id="priceMax" name="priceMax" class="form-control" value="<%= priceMax %>" step="1000" min="0">
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-4 w-100">Apply Filters</button>
+                            </form>
+                            <!-- Clear Filters Button -->
+                            <form method="get" action="/product">
+                                <button type="submit" class="btn btn-secondary mt-3 w-100">Clear Filters</button>
+                            </form>
+                        </div>
+                    </div>
+        
+                    <!-- Product Grid Column -->
+                    <div class="col-lg-9 col-md-8">
+                        <div class="shop-product-fillter">
+                            <div class="totall-product">
+                                <p>We found <strong class="text-brand"><%= products.length %></strong> items for you!</p>
+                            </div>
+                            <div class="sort-by-product-area">
+                                <form id="sortForm" method="get" action="/product">
+                                    <input type="hidden" name="q" value="<%= searchTerm %>">
+                                    <input type="hidden" name="category" value="<%= category %>">
+                                    <input type="hidden" name="brandId" value="<%= brandId %>">
+                                    <input type="hidden" name="priceMin" value="<%= priceMin %>">
+                                    <input type="hidden" name="priceMax" value="<%= priceMax %>">
+                                    <input type="hidden" name="gender" value="<%= gender %>">
+                                    <select name="sort" class="form-control" onchange="document.getElementById('sortForm').submit()">
+                                        <option value="featured" <%= sortBy === 'featured' ? 'selected' : '' %>>Featured</option>
+                                        <option value="price-asc" <%= sortBy === 'price-asc' ? 'selected' : '' %>>Price: Low to High</option>
+                                        <option value="price-desc" <%= sortBy === 'price-desc' ? 'selected' : '' %>>Price: High to Low</option>
+                                        <option value="a-z" <%= sortBy === 'a-z' ? 'selected' : '' %>>Name: A-Z</option>
+                                        <option value="z-a" <%= sortBy === 'z-a' ? 'selected' : '' %>>Name: Z-A</option>
+                                    </select>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row product-grid-3">
+                            <% if (products.length > 0) { %>
+                                <% products.forEach(product => { %>
+                                    <div class="col-lg-4 col-md-6 col-sm-6 mb-30">
+                                        <div class="product-cart-wrap shadow-sm rounded text-center">
+                                            <div class="product-img-action-wrap d-flex align-items-center justify-content-center" style="height: 200px;">
+                                                <div class="product-img">
+                                                    <a href="/product/select-product?id=<%= product._id %>">
+                                                        <img 
+                                                            class="default-img" 
+                                                            src="<%= '/uploads/' + product.images[product.images.length - 1] %>" 
+                                                            alt="Product Image" 
+                                                            style="max-width: 100%; max-height: 100%; object-fit: contain;" 
+                                                        />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-content-wrap text-center p-3">
+                                                <h5 class="text-uppercase text-dark"><%= product.brand.brandname %></h5>
+                                                <h4><a href="/product/select-product?id=<%= product._id %>" class="text-dark"><%= product.name %></a></h4>
+                                                <p class="text-muted"><%= product.category.name %></p>
+                                                <p class="text-secondary" style="font-size: 14px;"><%= product.description.substring(0, 100) %>...</p>
+                                                <div class="product-price">
+                                                    <% if (product.discountedPrice) { %>
+                                                        <span class="text-muted text-decoration-line-through">&#8377;<%= product.price %></span>
+                                                        <span class="text-danger">&#8377;<%= product.discountedPrice.toFixed(2) %></span>
+                                                    <% } else { %>
+                                                        <span class="text-primary">&#8377;<%= product.price %></span>
+                                                    <% } %>
+                                                </div>
+                                                <!-- Dummy Star Rating -->
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                <% }) %>
+                            <% } else { %>
+                                <div class="col-12">
+                                    <p class="text-center text-muted">No products found.</p>
+                                </div>
+                            <% } %>
+                        </div>
+                        <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
+                            <nav>
+                                <ul class="pagination justify-content-center">
+                                    <% for(let i = 1; i <= totalPages; i++) { %>
+                                        <li class="page-item <%= currentPage === i ? 'active' : '' %>">
+                                            <a class="page-link" href="?page=<%= i %>&sort=<%= sortBy %>&category=<%= category %>&priceMin=<%= priceMin %>&priceMax=<%= priceMax %>&q=<%= searchTerm %>&brandId=<%= brandId %>&gender=<%= gender %>"><%= i %></a>
+                                        </li>
+                                    <% } %>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        
+        <!-- Offered Products Section -->
+        
+        <section class="mt-50 mb-50">
+            <div class="container">
+                <div class="section-title text-center mb-4">
+                    <h3 style="font-weight: bold; text-transform: uppercase; color: #ffc107; background-color: #000; padding: 10px; border-radius: 5px;">Special Offers</h3>
+                </div>
+                <div class="row product-grid-3">
+                    <% offeredProducts.forEach(product => { %>
+                        <div class="col-lg-4 col-md-6 col-sm-6 mb-30">
+                            <div class="product-cart-wrap shadow-sm rounded" style="background-color: #000; color: #ffc107;">
+                                <div class="product-img-action-wrap d-flex align-items-center justify-content-center" style="height: 250px; overflow: hidden;">
+                                    <div class="product-img">
+                                        <a href="/product/select-product?id=<%= product._id %>">
+                                            <img 
+                                                class="default-img" 
+                                                src="<%= '/uploads/' + product.images[product.images.length - 1] %>" 
+                                                alt="Product Image" 
+                                                style="width: auto; height: 100%; object-fit: contain;" 
+                                            />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-content-wrap text-center p-3">
+                                    <h5 class="text-uppercase text-warning"><%= product.category.name %></h5>
+                                    <h4><a href="/product/select-product?id=<%= product._id %>" class="text-warning"><%= product.name %></a></h4>
+                                    <p class="text-light"><%= product.description.substring(0, 100) %>...</p>
+                                    <div class="product-price">
+                                        <% if (product.discountedPrice) { %>
+                                            <span style="color: white; text-decoration: line-through;">&#8377;<%= product.price %></span>
+                                            <span class="text-danger">&#8377;<%= product.discountedPrice.toFixed(2) %></span>
+                                        <% } else { %>
+                                            <span class="text-primary">&#8377;<%= product.price %></span>
+                                        <% } %>
+                                    </div>
+                                    <div class="mt-2">
+                                        <p class="badge badge-danger">Special Offer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        </section>
+        
+        
+    </main>
+    
+    <footer class="main">
+        <section class="newsletter p-30 text-white wow fadeIn animated">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7 mb-md-3 mb-lg-0">
+                        <div class="row align-items-center">
+                            <div class="col flex-horizontal-center">
+                                <img class="icon-email" src="/user-assets/imgs/theme/icons/icon-email.svg" alt="">
+                                <h4 class="font-size-20 mb-0 ml-3">Sign up to Newsletter</h4>
+                            </div>
+                            <div class="col my-4 my-md-0 des">
+                                <h5 class="font-size-15 ml-4 mb-0">...and receive <strong>$25 coupon for first shopping.</strong></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <!-- Subscribe Form -->
+                        <form class="form-subcriber d-flex wow fadeIn animated">
+                            <input type="email" class="form-control bg-white font-small" placeholder="Enter your email">
+                            <button class="btn bg-dark text-white" type="submit">Subscribe</button>
+                        </form>
+                        <!-- End Subscribe Form -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section-padding footer-mid">
+            <div class="container pt-15 pb-20">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="widget-about font-md mb-md-5 mb-lg-0">
+                            <div class="logo logo-width-1 wow fadeIn animated">
+                                <a href="index.html"><img src="/user-assets/imgs/theme/logo.svg" alt="logo"></a>
+                            </div>
+                            <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Contact</h5>
+                            <p class="wow fadeIn animated">
+                                <strong>Address: </strong>562 Wellington Road, Street 32, San Francisco
+                            </p>
+                            <p class="wow fadeIn animated">
+                                <strong>Phone: </strong>+01 2222 365 /(+91) 01 2345 6789
+                            </p>
+                            <p class="wow fadeIn animated">
+                                <strong>Hours: </strong>10:00 - 18:00, Mon - Sat
+                            </p>
+                            <h5 class="mb-10 mt-30 fw-600 text-grey-4 wow fadeIn animated">Follow Us</h5>
+                            <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0">
+                                <a href="#"><img src="/user-assets/imgs/theme/icons/icon-facebook.svg" alt=""></a>
+                                <a href="#"><img src="/user-assets/imgs/theme/icons/icon-twitter.svg" alt=""></a>
+                                <a href="#"><img src="/user-assets/imgs/theme/icons/icon-instagram.svg" alt=""></a>
+                                <a href="#"><img src="/user-assets/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
+                                <a href="#"><img src="/user-assets/imgs/theme/icons/icon-youtube.svg" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3">
+                        <h5 class="widget-title wow fadeIn animated">About</h5>
+                        <ul class="footer-list wow fadeIn animated mb-sm-5 mb-md-0">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Delivery Information</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms &amp; Conditions</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Support Center</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2  col-md-3">
+                        <h5 class="widget-title wow fadeIn animated">My Account</h5>
+                        <ul class="footer-list wow fadeIn animated">
+                            <li><a href="#">Sign In</a></li>
+                            <li><a href="#">View Cart</a></li>
+                            <li><a href="#">My Wishlist</a></li>
+                            <li><a href="#">Track My Order</a></li>
+                            <li><a href="#">Help</a></li>
+                            <li><a href="#">Order</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <h5 class="widget-title wow fadeIn animated">Install App</h5>
+                        <div class="row">
+                            <div class="col-md-8 col-lg-12">
+                                <p class="wow fadeIn animated">From App Store or Google Play</p>
+                                <div class="download-app wow fadeIn animated">
+                                    <a href="#" class="hover-up mb-sm-4 mb-lg-0"><img class="active" src="/user-assets/imgs/theme/app-store.jpg" alt=""></a>
+                                    <a href="#" class="hover-up"><img src="/user-assets/imgs/theme/google-play.jpg" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-12 mt-md-3 mt-lg-0">
+                                <p class="mb-20 wow fadeIn animated">Secured Payment Gateways</p>
+                                <img class="wow fadeIn animated" src="/user-assets/imgs/theme/payment-method.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="container pb-20 wow fadeIn animated">
+            <div class="row">
+                <div class="col-12 mb-20">
+                    <div class="footer-bottom"></div>
+                </div>
+                <div class="col-lg-6">
+                    <p class="float-md-left font-sm text-muted mb-0">&copy; 2022, <strong class="text-brand">Evara</strong> - HTML Ecommerce Template </p>
+                </div>
+                <div class="col-lg-6">
+                    <p class="text-lg-end text-start font-sm text-muted mb-0">
+                        Designed by <a href="http://alithemes.com/" target="_blank">Alithemes.com</a>. All rights reserved
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="text-center">
+                    <h5 class="mb-5">Now Loading</h5>
+                    <div class="loader">
+                        <div class="bar bar1"></div>
+                        <div class="bar bar2"></div>
+                        <div class="bar bar3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="messageModal" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalTitle">Message</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p id="modalMessage">Your message goes here.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal()">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        async function addToWishlist(productId) {
+          try {
+            const response = await fetch('/wishlist/add', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ productId })
+            });
+      
+            const result = await response.json();
+            
+            // Check if the product was added successfully or not
+            if (result.success) {
+              showModal('Success', 'Product added to wishlist');
+            } else {
+              showModal('Error', result.message || 'Failed to add to wishlist');
+            }
+          } catch (error) {
+            console.error('Error adding to wishlist:', error);
+            showModal('Error', 'An error occurred while adding to wishlist');
+          }
+        }
+      
+        // Function to show modal with dynamic title and message
+        function showModal(title, message) {
+          // Set the modal title and message content
+          document.getElementById('modalTitle').innerText = title;
+          document.getElementById('modalMessage').innerText = message;
+      
+          // Show the modal
+          $('#messageModal').modal('show');
+        }
+      
+        // Function to close the modal
+        function closeModal() {
+          $('#messageModal').modal('hide');
+        }
+      </script>
+      
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="/user-assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="/user-assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/user-assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+    <script src="/user-assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="/user-assets/js/plugins/slick.js"></script>
+    <script src="/user-assets/js/plugins/jquery.syotimer.min.js"></script>
+    <script src="/user-assets/js/plugins/wow.js"></script>
+    <script src="/user-assets/js/plugins/jquery-ui.js"></script>
+    <script src="/user-assets/js/plugins/perfect-scrollbar.js"></script>
+    <script src="/user-assets/js/plugins/magnific-popup.js"></script>
+    <script src="/user-assets/js/plugins/select2.min.js"></script>
+    <script src="/user-assets/js/plugins/waypoints.js"></script>
+    <script src="/user-assets/js/plugins/counterup.js"></script>
+    <script src="/user-assets/js/plugins/jquery.countdown.min.js"></script>
+    <script src="/user-assets/js/plugins/images-loaded.js"></script>
+    <script src="/user-assets/js/plugins/isotope.js"></script>
+    <script src="/user-assets/js/plugins/scrollup.js"></script>
+    <script src="/user-assets/js/plugins/jquery.vticker-min.js"></script>
+    <script src="/user-assets/js/plugins/jquery.theia.sticky.js"></script>
+    <script src="/user-assets/js/plugins/jquery.elevatezoom.js"></script>
+    <!-- Template  JS -->
+    <script src="/user-assets/js/maind134.js?v=3.4"></script>
+    <script src="/user-assets/js/shopd134.js?v=3.4"></script>
+</body>
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-frontend/shop-fullwidth.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 15 Jul 2023 10:10:46 GMT -->
+</html>

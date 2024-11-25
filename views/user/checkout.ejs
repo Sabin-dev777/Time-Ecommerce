@@ -1,0 +1,977 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-frontend/shop-checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 15 Jul 2023 10:10:07 GMT -->
+<head>
+    <meta charset="utf-8">
+    <title>Evara - eCommerce HTML Template</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="user-assets/imgs/theme/favicon.svg">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="user-assets/css/maind134.css?v=3.4">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .modal-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .modal-logo-img {
+            height: 40px; /* Adjust size as needed */
+            margin-right: 10px; /* Space between logo and title */
+        }
+    </style>
+      <style>
+        .modal {
+            display: none;
+            position: fixed;
+           
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+  background-color: black; /* Bootstrap default primary color */
+  border-color: black;
+}
+
+.btn-primary:focus,
+.btn-primary:hover {
+  background-color:black; /* Adjust as needed */
+  border-color: black;
+}
+
+    </style>
+    <style>
+        .remove-coupon {
+  color: #dc3545; /* Red color for the remove link */
+  text-decoration: none; /* Remove underline */
+  margin-left: 15px; /* Margin between the coupon code and the remove link */
+  font-size: 14px; /* Adjust the size if needed */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.remove-coupon:hover {
+  color: #c82333; /* Darker red color on hover */
+}
+    </style>
+</head>
+
+<body>
+    <header class="header-area header-style-1 header-height-2">
+        <div class="header-top header-top-ptb-1 d-none d-lg-block">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-3 col-lg-4">
+                        <div class="header-info">
+                            <ul>
+                                <li><i class="fi-rs-smartphone"></i> <a href="#">(+01) - 2345 - 6789</a></li>
+                                <li><i class="fi-rs-marker"></i><a  href="page-contact.html">Our location</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-4">
+                        <div class="text-center">
+                            <div id="news-flash" class="d-inline-block">
+                                <ul>
+                                    <li>Get great devices up to 50% off <a href="shop-grid-right.html">View details</a></li>
+                                    <li>Supper Value Deals - Save more with coupons</li>
+                                    <li>Trendy 25silver jewelry, save up 35% off today <a href="shop-grid-right.html">Shop now</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4">
+                        <div class="header-info header-info-right">
+                            <ul>
+                                <li>
+                                    <a class="language-dropdown-active" href="#"> <i class="fi-rs-world"></i> English <i class="fi-rs-angle-small-down"></i></a>
+                                    <ul class="language-dropdown">
+                                        <li><a href="#"><img src="user-assets/imgs/theme/flag-fr.png" alt="">Français</a></li>
+                                        <li><a href="#"><img src="user-assets/imgs/theme/flag-dt.png" alt="">Deutsch</a></li>
+                                        <li><a href="#"><img src="user-assets/imgs/theme/flag-ru.png" alt="">Pусский</a></li>
+                                    </ul>
+                                </li>
+                                <% if(user) {%>
+                                    <li>
+                                        <i class="fi-rs-user"><a href="#"><%=user.firstname%></a></i>
+                                    </li>
+                                    <li><i class="fi-rs-user"></i><a href="/logout">Logout</a></li>
+
+                                <%}else{%>
+                                    <span>User not found</span>
+
+                                <%}%>
+                               
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
+            <div class="container">
+                <div class="header-wrap">
+                    <div class="logo logo-width-1">
+                        <a href="index.html"><img src="user-assets/imgs/theme/logo.svg" alt="logo"></a>
+                    </div>
+                    <div class="header-right">
+                        <div class="search-style-2">
+                            <form action="#">
+                                <select class="select-active">
+                                    <option>All Categories</option>
+                                    <option>Women's</option>
+                                    <option>Men's</option>
+                                    <option>Cellphones</option>
+                                    <option>Computer</option>
+                                    <option>Electronics</option>
+                                    <option> Accessories</option>
+                                    <option>Home & Garden</option>
+                                    <option>Luggage</option>
+                                    <option>Shoes</option>
+                                    <option>Mother & Kids</option>
+                                </select>
+                                <input type="text" placeholder="Search for items...">
+                            </form>
+                        </div>
+                        <div class="header-action-right">
+                            <div class="header-action-2">
+                                <div class="header-action-icon-2">
+                                    <a href="/wishlist">
+                                        <img class="svgInject" alt="Evara" src="/user-assets/imgs/theme/icons/icon-heart.svg">
+                                        <% if (user) { %>
+                                            <span class="pro-count blue"><%= wishlistQuantity %></span>
+                                        <% } else { %>
+                                            <span class="pro-count blue">0</span>
+                                        <% } %>
+                                    </a>
+                                </div>
+                                <div class="header-action-icon-2">
+                                    <a class="mini-cart-icon" href="/cart">
+                                        <img alt="Evara" src="/user-assets/imgs/theme/icons/icon-cart.svg">
+                                        <% if (user) { %>
+                                            <span class="pro-count blue"><%= cartQuantity %></span>
+                                        <% } else { %>
+                                            <span class="pro-count blue">0</span>
+                                        <% } %>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-bottom header-bottom-bg-color sticky-bar">
+            <div class="container">
+                <div class="header-wrap header-space-between position-relative">
+                    <div class="logo logo-width-1 d-block d-lg-none">
+                        <a href="/product/landing"><img src="/user-assets/imgs/theme/logo.svg" alt="logo"></a>
+                    </div>
+                    <div class="header-nav d-none d-lg-flex">
+                        <div class="main-categori-wrap d-none d-lg-block">
+                            
+                           
+                        </div>
+                        <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
+                            <nav>
+                                <ul>
+                                    <li><a class="active" href="">Home <i class="fi-rs-angle-down"></i></a>
+                                   
+                                    </li>
+                                    <li>
+                                        <a class="active" href="/product">Shop <i class="fi-rs-angle-down"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="active" href="page-about.html">Men <i class="fi-rs-angle-down"></i></a>
+                                    </li>
+                                    <li><a  class="active" href="shop-grid-right.html">Women<i class="fi-rs-angle-down"></i></a>
+                                        <li><a class="active" href="/home">My account <i class="fi-rs-angle-down"></i></a>
+                                        
+                                    
+                                    
+                                    
+                                        
+                                   
+                                 
+                                  
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="hotline d-none d-lg-block">
+                        <p><i class="fi-rs-headset"></i><span>Hotline</span> 1900 - 888 </p>
+                    </div>
+                    <p class="mobile-promotion">Happy <span class="text-brand">Mother's Day</span>. Big Sale Up to 40%</p>
+                    <div class="header-action-right d-block d-lg-none">
+                        <div class="header-action-2">
+                            <!-- Wishlist Icon -->
+                            <div class="header-action-icon-2">
+                                <a href="/wishlist">
+                                    <img class="svgInject" alt="Evara" src="/user-assets/imgs/theme/icons/icon-heart.svg">
+                                    <% if (user) { %>
+                                        <span class="pro-count blue"><%= wishlistQuantity %></span>
+                                    <% } else { %>
+                                        <span class="pro-count blue">0</span>
+                                    <% } %>
+                                </a>
+                            </div>
+                            <!-- Cart Icon -->
+                            <div class="header-action-icon-2">
+                                <a class="mini-cart-icon" href="/cart">
+                                    <img alt="Evara" src="/user-assets/imgs/theme/icons/icon-cart.svg">
+                                    <% if (user) { %>
+                                        <span class="pro-count blue"><%= cartQuantity %></span>
+                                    <% } else { %>
+                                        <span class="pro-count blue">0</span>
+                                    <% } %>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="mobile-header-active mobile-header-wrapper-style">
+        <div class="mobile-header-wrapper-inner">
+            <div class="mobile-header-top">
+                <div class="mobile-header-logo">
+                    <a href="index.html"><img src="user-assets/imgs/theme/logo.svg" alt="logo"></a>
+                </div>
+                <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
+                    <button class="close-style search-close">
+                        <i class="icon-top"></i>
+                        <i class="icon-bottom"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="mobile-header-content-area">
+                <div class="mobile-search search-style-3 mobile-header-border">
+                    <form action="#">
+                        <input type="text" placeholder="Search for items…">
+                        <button type="submit"><i class="fi-rs-search"></i></button>
+                    </form>
+                </div>
+                <div class="mobile-menu-wrap mobile-header-border">
+                    <div class="main-categori-wrap mobile-header-border">
+                        <a class="categori-button-active-2" href="#">
+                            <span class="fi-rs-apps"></span> Browse Categories
+                        </a>
+                      
+                    </div>
+                    <!-- mobile menu start -->
+                    <nav>
+                        <ul class="mobile-menu">
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="index.html">Home</a>
+                                <ul class="dropdown">
+                                    <li><a href="index.html">Home 1</a></li>
+                                    <li><a href="index-2.html">Home 2</a></li>
+                                    <li><a href="index-3.html">Home 3</a></li>
+                                    <li><a href="index-4.html">Home 4</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="shop-grid-right.html">shop</a>
+                                <ul class="dropdown">
+                                    <li><a href="shop-grid-right.html">Shop Grid – Right Sidebar</a></li>
+                                    <li><a href="shop-grid-left.html">Shop Grid – Left Sidebar</a></li>
+                                    <li><a href="shop-list-right.html">Shop List – Right Sidebar</a></li>
+                                    <li><a href="shop-list-left.html">Shop List – Left Sidebar</a></li>
+                                    <li><a href="shop-fullwidth.html">Shop - Wide</a></li>
+                                    <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Single Product</a>
+                                        <ul class="dropdown">
+                                            <li><a href="shop-product-right.html">Product – Right Sidebar</a></li>
+                                            <li><a href="shop-product-left.html">Product – Left Sidebar</a></li>
+                                            <li><a href="shop-product-full.html">Product – No sidebar</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="shop-filter.html">Shop – Filter</a></li>
+                                    <li><a href="shop-wishlist.html">Shop – Wishlist</a></li>
+                                    <li><a href="shop-cart.html">Shop – Cart</a></li>
+                                    <li><a href="shop-checkout.html">Shop – Checkout</a></li>
+                                    <li><a href="shop-compare.html">Shop – Compare</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Mega menu</a>
+                                <ul class="dropdown">
+                                    <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Women's Fashion</a>
+                                        <ul class="dropdown">
+                                            <li><a href="shop-product-right.html">Dresses</a></li>
+                                            <li><a href="shop-product-right.html">Blouses & Shirts</a></li>
+                                            <li><a href="shop-product-right.html">Hoodies & Sweatshirts</a></li>
+                                            <li><a href="shop-product-right.html">Women's Sets</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Men's Fashion</a>
+                                        <ul class="dropdown">
+                                            <li><a href="shop-product-right.html">Jackets</a></li>
+                                            <li><a href="shop-product-right.html">Casual Faux Leather</a></li>
+                                            <li><a href="shop-product-right.html">Genuine Leather</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Technology</a>
+                                        <ul class="dropdown">
+                                            <li><a href="shop-product-right.html">Gaming Laptops</a></li>
+                                            <li><a href="shop-product-right.html">Ultraslim Laptops</a></li>
+                                            <li><a href="shop-product-right.html">Tablets</a></li>
+                                            <li><a href="shop-product-right.html">Laptop Accessories</a></li>
+                                            <li><a href="shop-product-right.html">Tablet Accessories</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="blog-category-fullwidth.html">Blog</a>
+                                <ul class="dropdown">
+                                    <li><a href="blog-category-grid.html">Blog Category Grid</a></li>
+                                    <li><a href="blog-category-list.html">Blog Category List</a></li>
+                                    <li><a href="blog-category-big.html">Blog Category Big</a></li>
+                                    <li><a href="blog-category-fullwidth.html">Blog Category Wide</a></li>
+                                    <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Single Product Layout</a>
+                                        <ul class="dropdown">
+                                            <li><a href="blog-post-left.html">Left Sidebar</a></li>
+                                            <li><a href="blog-post-right.html">Right Sidebar</a></li>
+                                            <li><a href="blog-post-fullwidth.html">No Sidebar</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Pages</a>
+                                <ul class="dropdown">
+                                    <li><a href="page-about.html">About Us</a></li>
+                                    <li><a href="page-contact.html">Contact</a></li>
+                                    <li><a href="page-account.html">My Account</a></li>
+                                    <li><a href="page-login-register.html">login/register</a></li>
+                                    <li><a href="page-purchase-guide.html">Purchase Guide</a></li>
+                                    <li><a href="page-privacy-policy.html">Privacy Policy</a></li>
+                                    <li><a href="page-terms.html">Terms of Service</a></li>
+                                    <li><a href="page-404.html">404 Page</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Language</a>
+                                <ul class="dropdown">
+                                    <li><a href="#">English</a></li>
+                                    <li><a href="#">French</a></li>
+                                    <li><a href="#">German</a></li>
+                                    <li><a href="#">Spanish</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- mobile menu end -->
+                </div>
+                <div class="mobile-header-info-wrap mobile-header-border">
+                    <div class="single-mobile-header-info mt-30">
+                        <a  href="page-contact.html"> Our location </a>
+                    </div>
+                    <div class="single-mobile-header-info">
+                        <a href="page-login-register.html">Log In / Sign Up </a>
+                    </div>
+                    <div class="single-mobile-header-info">
+                        <a href="#">(+01) - 2345 - 6789 </a>
+                    </div>
+                </div>
+                <div class="mobile-social-icon">
+                    <h5 class="mb-15 text-grey-4">Follow Us</h5>
+                    <a href="#"><img src="user-assets/imgs/theme/icons/icon-facebook.svg" alt=""></a>
+                    <a href="#"><img src="user-assets/imgs/theme/icons/icon-twitter.svg" alt=""></a>
+                    <a href="#"><img src="user-assets/imgs/theme/icons/icon-instagram.svg" alt=""></a>
+                    <a href="#"><img src="user-assets/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
+                    <a href="#"><img src="user-assets/imgs/theme/icons/icon-youtube.svg" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main class="main">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.html" rel="nofollow">Home</a>
+                    <span></span> Shop
+                    <span></span> Checkout
+                </div>
+            </div>
+        </div>
+        <section class="mt-50 mb-50">
+            <div class="container">
+                <div class="row">
+                    <!--  -->
+                   
+                </div>
+              
+                <style>
+                    /* Add custom styles for radio buttons */
+                    .form-check-label {
+                        display: flex;
+                        align-items: center;
+                    }
+                
+                    .form-check-input {
+                        margin-right: 5px; /* Adjust the margin as needed */
+                    }
+                </style>
+                <form id="placeOrderForm" action="/place-order/<%= cartId %>" method="post">
+                    <div class="row">
+                        <!-- Order Details -->
+                        <div class="col-md-6">
+                            <div class="order_review">
+                                <div class="mb-20">
+                                    <h4>Your Orders</h4>
+                                </div>
+                                <div class="table-responsive order_table text-center">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Product</th>
+                                                <th>Size</th> <!-- New column for Size -->
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% let subtotal = 0; %>
+                                            <% if (products.length > 0) { %>
+                                                <% for (let i = 0; i < products.length; i++) { %>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex align-items-center" style="justify-content: center;">
+                                                                <img src="<%= '/uploads/' + products[i].product.images[products[i].product.images.length - 1] %>" alt="" style="width: 100px; height: 100px" />
+                                                                <div style="margin-left: 15px;">
+                                                                    <h5><%= products[i].product.name %></h5>
+                                                                    <span class="product-qty">x<%= products[i].quantity %></span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td><%= products[i].size %></td> <!-- Display the size -->
+                                                        <%if(products[i].product.discountedPrice){%>
+                                                            <td>&#8377;<%= products[i].product.discountedPrice * products[i].quantity %></td>
+                                                            <% subtotal += products[i].product.discountedPrice * products[i].quantity %>
+
+
+                                                        <%}else{%>
+                                                            <td>&#8377;<%= products[i].product.price * products[i].quantity %></td>
+                                                            <% subtotal += products[i].product.price * products[i].quantity %>
+
+                                                        <%}%>
+                                                       
+                                                    </tr>
+                                                <% } %>
+                                            <% } else { %>
+                                                <tr>
+                                                    <td colspan="3">No products in the cart.</td>
+                                                </tr>
+                                            <% } %>
+                                            <tr>
+                                                <th>SubTotal</th>
+                                                <td class="product-subtotal" colspan="2">&#8377;<%= subtotal %></td>
+                                            </tr>
+                                            <% if (appliedCoupon) { %>
+                                                <tr>
+                                                    <th>Coupon Applied: <%= appliedCoupon.couponCode %> <a href="#" class="remove-coupon" onclick="removeCoupon(event)">Remove Coupon</a></th>
+                                                    <td colspan="2">-&#8377;<%= subtotal - newSubtotal %></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>New Subtotal</th>
+                                                    <td class="product-subtotal" colspan="2">&#8377;<%= newSubtotal %></td>
+                                                </tr>
+                                            <% } %>
+                                            <tr>
+                                                <th>Shipping</th>
+                                                <td colspan="2"><em>Free Shipping</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Total</th>
+                                                <td class="product-subtotal" colspan="2">
+                                                    <span id="totalAmount" class="font-xl text-brand fw-900">&#8377;<%= newSubtotal || cart.total %></span>
+                                                    <input type="hidden" name="totalprice" value="<%= newSubtotal || cart.total %>">
+                                                    <input type="hidden" name="cartId" value="<%= cartId %>">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    
+                                </div>
+                                <button id="openCouponModal" class="btn btn-md" type="button">Apply Coupon</button>
+                                
+                                <!-- The Modal -->
+                                <div id="couponModal" class="modal">
+                                    <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                        <h2 style="text-align: center;">Apply Coupon</h2>
+                                        <form id="applyCouponForm">
+                                            <div class="form-group">
+                                                <label for="couponCode">Select Coupon:</label>
+                                                <select name="couponCode" id="couponCode">
+                                                    <% coupons.forEach(coupon => { %>
+                                                        <option value="<%= coupon.couponCode %>"><%= coupon.couponCode %></option>
+                                                    <% }); %>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <button class="btn btn-md" type="button" onclick="applyCoupon()">Apply Coupon</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                
+                                <div class="payment_method">
+                                    <div class="mb-25">
+                                        <h5 style="padding-top: 32px;">Payment</h5>
+                                    </div>
+                                    <% if (user.walletBalance > 0) { %>
+                                        <div class="wallet-option" style="margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;">
+                                            <label style="font-size: 16px; font-weight: 600; display: flex; align-items: center;">
+                                                <!-- Checkbox for Wallet Balance -->
+                                                <input type="checkbox" id="useWallet" onchange="updateTotalWithWallet()" style="margin-right: 10px;"/>
+                                                <span>Use Wallet Balance (Available: <span style="color: #28a745;">&#8377;<%= user.walletBalance %></span>)</span>
+                                            </label>
+                                            <!-- Wallet Applied Amount Section -->
+                                            <p id="walletAppliedAmount" style="display: none; font-size: 14px; color: #555; margin-top: 10px;">
+                                                Wallet Applied: <span id="walletAmount" style="font-weight: bold;">0</span>
+                                            </p>
+                                            <input type="hidden" name="walletUsedAmount" id="walletUsedAmount" value="0" />
+                                        </div>
+                                    <% } %>
+                                    
+                                     
+                                    <div class="payment_option" id="paymentOptions">
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5 class="mb-0">Payment Options</h5>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="form-check mb-3">
+                                                        <input class="form-check-input" type="radio" name="paymentOption" value="cashOnDelivery" id="cashOnDeliveryOption">
+                                                        <label class="form-check-label" for="cashOnDeliveryOption">Cash on Delivery</label>
+                                                    </div>
+                                                    <div class="form-check mb-3">
+                                                        <input class="form-check-input" type="radio" name="paymentOption" value="paypal" id="paypalOption">
+                                                        <label class="form-check-label" for="paypalOption">PayPal</label>
+                                                    </div>
+                                                    <input type="hidden" name="paymentOption" id="selectedPayment">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+                        <!-- Saved Addresses -->
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="mb-0" style="text-align: center;">Saved Addresses</h5>
+                                </div>
+                                <div class="card-body">
+                                    <% if (addresses && Array.isArray(addresses) && addresses.length > 0) { %>
+                                        <% addresses.forEach(address => { %>
+                                            <div class="form-check mb-3">
+                                                <input class="form-check-input" type="radio" name="selectedAddress" value="<%= address._id %>" id="address<%= address._id %>">
+                                                <label class="form-check-label" for="address<%= address._id %>">
+                                                    <%= address.house %> <br><%= address.street %>,<br> <%= address.city %> <br><%= address.state %> <br><%= address.zip %>,<br> <%= address.country %>
+                                                    <% if (address.isDefault) { %>
+                                                        <br><span>Default Address</span>
+                                                    <% } %>
+                                                </label>
+                                            </div>
+                                        <% }); %>
+                                        <input type="hidden" name="selectedAddressHidden" id="selectedAddressHidden">
+                                    <% } else { %>
+                                        <p style="text-align: center;">No addresses found.</p>
+                                        <p style="text-align: center;"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAddressModal">Add a new Address</button>
+                                    <% } %>
+                                    <% if (addresses.length >= 1) { %>
+                                        <p>Add a different address<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAddressModal">Add a new Address</button></p>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" onclick="submitForm()" class="btn btn-fill-out btn-block mt-30">Place Order</button>
+                    </div>
+                    <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="infoModalLabel">Information</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body" id="infoModalBody">
+                              <!-- Message will be inserted here -->
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <!-- Optional: Add a confirmation button if needed -->
+                              <!-- <button type="button" class="btn btn-primary" id="confirmButton">Confirm</button> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </form>
+              
+
+            
+                
+                
+               <!-- Include this script in your HTML or a separate JavaScript file -->
+               <div class="modal fade" id="addAddressModal" tabindex="-1" aria-labelledby="addAddressModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-logo">
+                            <a href="index.html"><img src="user-assets/imgs/theme/logo.svg" alt="logo" class="modal-logo-img"></a>
+                          </div>
+                      <h5 class="modal-title" id="addAddressModalLabel">Add New Address</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form id="addAddressForm" action="/address/add" method="post">
+                        <input type="hidden" name="source" value="checkout"> 
+                        <div class="mb-3">
+                          <label for="house" class="form-label">House Number</label>
+                          <input type="text" class="form-control" id="house" name="house" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="street" class="form-label">Street</label>
+                          <input type="text" class="form-control" id="street" name="street" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="city" class="form-label">City</label>
+                          <input type="text" class="form-control" id="city" name="city" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="landmark" class="form-label">Landmark</label>
+                          <input type="text" class="form-control" id="landmark" name="landmark">
+                        </div>
+                        <div class="mb-3">
+                          <label for="state" class="form-label">State</label>
+                          <input type="text" class="form-control" id="state" name="state" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="country" class="form-label">Country</label>
+                          <input type="text" class="form-control" id="country" name="country" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="zip" class="form-label">Zip Code</label>
+                          <input type="text" class="form-control" id="zip" name="zip" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                          <input type="checkbox" class="form-check-input" id="isDefault" name="isDefault">
+                          <label class="form-check-label" for="isDefault">Set as Default</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Address</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+  
+            
+            
+            
+            </div>
+            
+                </div>
+                
+            </div>
+        </section>
+    </main>
+    
+<script>
+    function updateTotalWithWallet() {
+        const useWalletCheckbox = document.getElementById('useWallet');
+        const totalAmountElem = document.getElementById('totalAmount');
+        const walletAmountElem = document.getElementById('walletAmount');
+        const walletAppliedAmount = document.getElementById('walletAppliedAmount');
+        const walletBalance = <%= user.walletBalance %>;
+        const subtotal = parseFloat(document.querySelector("input[name='totalprice']").value);
+
+        let updatedTotal = subtotal;
+
+        if (useWalletCheckbox.checked) {
+            const walletUsed = Math.min(walletBalance, subtotal);
+            updatedTotal -= walletUsed;
+            walletAmountElem.textContent = walletUsed;
+            document.getElementById('walletUsedAmount').value = walletUsed;
+            walletAppliedAmount.style.display = 'block';
+        } else {
+            document.getElementById('walletUsedAmount').value = 0;
+            walletAppliedAmount.style.display = 'none';
+        }
+
+        totalAmountElem.textContent = `${updatedTotal.toFixed(2)}`;
+        
+        // Hide other payment options if the total is zero
+        const paymentOptions = document.getElementById('paymentOptions');
+        if (updatedTotal === 0) {
+            paymentOptions.style.display = 'none';
+            document.getElementById('cashOnDeliveryOption').checked = true;
+        } else {
+            paymentOptions.style.display = 'block';
+        }
+    }
+
+    function submitForm() {
+        document.getElementById('placeOrderForm').submit();
+    }
+</script>
+
+             
+<script>
+    const modal = document.getElementById('couponModal');
+const btn = document.getElementById('openCouponModal');
+const span = document.getElementsByClassName('close')[0];
+
+// Open the modal
+btn.onclick = function() {
+  modal.style.display = 'block';
+}
+
+// Close the modal
+span.onclick = function() {
+  modal.style.display = 'none';
+}
+
+// Close the modal when user clicks outside the modal
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = 'none';
+  }
+}
+
+async function applyCoupon() {
+  const couponCode = document.getElementById('couponCode').value;
+  const cartId = "<%= cartId %>"; // Get cartId from your server-side rendering
+  const url = `/apply-coupon/${cartId}?couponCode=${couponCode}`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      // Refresh the page to see the changes
+      location.reload();
+    } else {
+      const errorData = await response.json();
+      alert(errorData.error);
+    }
+  } catch (error) {
+    console.error('Error applying coupon:', error);
+    alert('An error occurred while applying the coupon. Please try again.');
+  }
+}
+
+async function removeCoupon(event) {
+  event.preventDefault();
+  const cartId = "<%= cartId %>"; // Get cartId from your server-side rendering
+  const url = `/remove-coupon/${cartId}`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      // Refresh the page to see the changes
+      location.reload();
+    } else {
+      const errorData = await response.json();
+      alert(errorData.error);
+    }
+  } catch (error) {
+    console.error('Error removing coupon:', error);
+    alert('An error occurred while removing the coupon. Please try again.');
+  }
+}
+
+
+  </script>
+      
+      <script>
+        function submitForm() {
+            var selectedAddress = document.querySelector('input[name="selectedAddress"]:checked');
+            var selectedPayment = document.querySelector('input[name="paymentOption"]:checked');
+        
+            if (selectedAddress && selectedPayment) {
+                document.getElementById('selectedAddressHidden').value = selectedAddress.value;
+                document.getElementById('selectedPayment').value = selectedPayment.value;
+                document.getElementById('placeOrderForm').submit();
+            } else {
+                showModalError('Please select an address and payment option before placing the order.');
+            }
+        }
+        function showModalError(message) {
+// Set the message in the modal body
+document.getElementById('infoModalBody').textContent = message;
+
+// Show the modal
+const infoModal = new bootstrap.Modal(document.getElementById('infoModal'));
+infoModal.show();
+}
+      
+
+        </script>
+   <footer class="main">
+        
+    <section class="section-padding footer-mid">
+        <div class="container pt-15 pb-20">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="widget-about font-md mb-md-5 mb-lg-0">
+                        <div class="logo logo-width-1 wow fadeIn animated">
+                            <a href="index.html"><img src="/user-assets/imgs/theme/logo.svg" alt="logo"></a>
+                        </div>
+                        <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Contact</h5>
+                        <p class="wow fadeIn animated">
+                            <strong>Address: </strong>55 Albert Terrace Road, Sheffield, United kingdom
+                        </p>
+                        <p class="wow fadeIn animated">
+                            <strong>Phone: </strong>+447442008435
+                        </p>
+                      
+                        <h5 class="mb-10 mt-30 fw-600 text-grey-4 wow fadeIn animated">Follow Us</h5>
+                        <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0">
+                            <a href="#"><img src="/user-assets/imgs/theme/icons/icon-facebook.svg" alt=""></a>
+                            <a href="#"><img src="/user-assets/imgs/theme/icons/icon-twitter.svg" alt=""></a>
+                            <a href="#"><img src="/user-assets/imgs/theme/icons/icon-instagram.svg" alt=""></a>
+                            <a href="#"><img src="/user-assets/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
+                            <a href="#"><img src="/user-assets/imgs/theme/icons/icon-youtube.svg" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h5 class="widget-title wow fadeIn animated">About</h5>
+                    <ul class="footer-list wow fadeIn animated mb-sm-5 mb-md-0">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Delivery Information</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms &amp; Conditions</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Support Center</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2  col-md-3">
+                    <h5 class="widget-title wow fadeIn animated">My Account</h5>
+                    <ul class="footer-list wow fadeIn animated">
+                        <li><a href="#">Sign In</a></li>
+                        <li><a href="#">View Cart</a></li>
+                        <li><a href="#">My Wishlist</a></li>
+                        <li><a href="#">Track My Order</a></li>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Order</a></li>
+                    </ul>
+                </div>
+               
+            </div>
+        </div>
+    </section>
+    <div class="container pb-20 wow fadeIn animated">
+        <div class="row">
+            <div class="col-12 mb-20">
+                <div class="footer-bottom"></div>
+            </div>
+            <div class="col-lg-6">
+                <p class="float-md-left font-sm text-muted mb-0">&copy; 2024, <strong class="text-brand">TIME</strong>  Ecommerce  </p>
+            </div>
+            <div class="col-lg-6">
+                <p class="text-lg-end text-start font-sm text-muted mb-0">
+                    Designed by <a href="http://alithemes.com/" target="_blank">SABIN</a>. All rights reserved
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="text-center">
+                    <h5 class="mb-5">Now Loading</h5>
+                    <div class="loader">
+                        <div class="bar bar1"></div>
+                        <div class="bar bar2"></div>
+                        <div class="bar bar3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Vendor JS-->
+    <script src="user-assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="user-assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="user-assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+    <script src="user-assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="user-assets/js/plugins/slick.js"></script>
+    <script src="user-assets/js/plugins/jquery.syotimer.min.js"></script>
+    <script src="user-assets/js/plugins/wow.js"></script>
+    <script src="user-assets/js/plugins/jquery-ui.js"></script>
+    <script src="user-assets/js/plugins/perfect-scrollbar.js"></script>
+    <script src="user-assets/js/plugins/magnific-popup.js"></script>
+    <script src="user-assets/js/plugins/select2.min.js"></script>
+    <script src="user-assets/js/plugins/waypoints.js"></script>
+    <script src="user-assets/js/plugins/counterup.js"></script>
+    <script src="user-assets/js/plugins/jquery.countdown.min.js"></script>
+    <script src="user-assets/js/plugins/images-loaded.js"></script>
+    <script src="user-assets/js/plugins/isotope.js"></script>
+    <script src="user-assets/js/plugins/scrollup.js"></script>
+    <script src="user-assets/js/plugins/jquery.vticker-min.js"></script>
+    <!-- Template  JS -->
+    <script src="user-assets/js/maind134.js?v=3.4"></script>
+    <script src="user-assets/js/shopd134.js?v=3.4"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-frontend/shop-checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 15 Jul 2023 10:10:07 GMT -->
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        /* Form styling */
+        form {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        /* Heading styling */
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Label styling */
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        /* Input field styling */
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        /* Button styling */
+        button {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        /* Button hover effect */
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Countdown display styling */
+        #countdown {
+            font-size: 1.5em;
+            color: #4caf50; /* Green color for the countdown */
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Resend button styling */
+        #resendBtn {
+            display: none; /* Hidden initially */
+        }
+
+        /* Error message styling */
+        #errorMessage {
+            color: red;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 10px;
+            display: none; /* Hidden initially */
+        }
+
+        /* Responsive form width */
+        @media only screen and (max-width: 600px) {
+            form {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form method="POST" action="/verify-otp">
+        <input type="hidden" name="userId" value="<%= userId %>">
+        <h1>Enter OTP</h1>
+        <label for="otp">Enter OTP:</label>
+        <input type="text" id="otp" name="userEnteredOTP" required>
+        <div id="errorMessage"></div> <!-- Error message container -->
+        <button type="submit">Verify</button>
+        <div id="countdown"></div>
+        <button id="resendBtn" type="button" onclick="resendOtp()">Resend OTP</button>
+    </form>
+    
+    
+    <script>
+        const countdownElement = document.getElementById('countdown');
+        const resendBtn = document.getElementById('resendBtn');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Safely check if remainingTime exists and is a number
+        let countdownTime = <%= typeof remainingTime !== 'undefined' ? remainingTime : 60000 %>; 
+
+        function startCountdown() {
+            const countdownInterval = setInterval(() => {
+                const minutes = Math.floor(countdownTime / 60000);
+                const seconds = Math.floor((countdownTime % 60000) / 1000);
+
+                countdownElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+                countdownTime -= 1000;
+
+                if (countdownTime < 0) {
+                    clearInterval(countdownInterval);
+                    countdownElement.textContent = 'Time expired';
+                    resendBtn.style.display = 'block';
+                }
+            }, 1000);
+        }
+
+        startCountdown(); // Start the countdown initially
+
+        function resendOtp() {
+            const userId = document.querySelector('input[name="userId"]').value;
+            fetch('/resend-otp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    resendBtn.style.display = 'none';
+                    countdownTime = data.remainingTime;
+                    countdownElement.textContent = '1:00';
+                    startCountdown();  // Start the new countdown
+                } else {
+                    displayError('Error resending OTP');
+                }
+            })
+            .catch(error => {
+                displayError('Error occurred. Please try again.');
+                console.error('Error:', error);
+            });
+        }
+
+        function displayError(message) {
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block'; // Show the error message
+        }
+
+        // Handle any error passed from the backend
+         if (typeof errorMessage !== 'undefined' && errorMessage) { 
+            displayError('<%= errorMessage %>');
+         } 
+    </script>
+</body>
+</html>
+

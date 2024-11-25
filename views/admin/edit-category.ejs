@@ -1,0 +1,239 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-categories.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:21 GMT -->
+<head>
+    <meta charset="utf-8">
+    <title>Evara Dashboard</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/admin-assets/imgs/theme/favicon.svg">
+    <!-- Template CSS -->
+    <link href="/admin-assets/css/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="screen-overlay"></div>
+    <aside class="navbar-aside" id="offcanvas_aside">
+        <div class="aside-top">
+            <a href="index.html" class="brand-wrap">
+                <img src="/admin-assets/imgs/theme/logo.svg" class="logo" alt="Evara Dashboard">
+            </a>
+            <div>
+                <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i> </button>
+            </div>
+        </div>
+        <nav>
+            <ul class="menu-aside">
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/home"> <i class="icon material-icons md-home"></i>
+                        <span class="text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/product-list"> <i class="icon material-icons md-shopping_bag"></i>
+                        <span class="text">Products</span>
+                    </a>
+                   
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/orders"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Orders</span>
+                    </a>
+                  
+                </li>
+              
+            
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/product-form"> <i class="icon material-icons md-add_box"></i>
+                        <span class="text">Add product</span>
+                    </a>
+                 
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/create-coupon"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Coupons</span>
+                    </a>
+                  
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/offers"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Offers</span>
+                    </a>
+                  
+                </li>
+                <li class="menu-item active">
+                    <a class="menu-link" href="/admin/category"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Category</span>
+                    </a>
+                  
+                </li>
+              
+              
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/users"> <i class="icon material-icons md-comment"></i>
+                        <span class="text">Customers</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/brands"> <i class="icon material-icons md-stars"></i>
+                        <span class="text">Brands</span> </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/banners"> <i class="icon material-icons md-stars"></i>
+                        <span class="text">Banners</span> </a>
+                </li>
+             
+             
+            </ul>
+            <hr>
+            <ul class="menu-aside">
+                <li class="menu-item has-submenu">
+                    <a class="menu-link" href="#"> <i class="icon material-icons md-settings"></i>
+                        <span class="text">Settings</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="page-settings-1.html">Setting sample 1</a>
+                        <a href="page-settings-2.html">Setting sample 2</a>
+                    </div>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="page-blank.html"> <i class="icon material-icons md-local_offer"></i>
+                        <span class="text"> Starter page </span>
+                    </a>
+                </li>
+            </ul>
+            <br>
+            <br>
+        </nav>
+    </aside>
+    <main class="main-wrap">
+       
+        <section class="content-main">
+            <div class="content-header">
+                <div>
+                    <h2 class="content-title card-title">Categories </h2>
+                    <p>Add, edit or delete a category</p>
+                </div>
+                
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <form action="/admin/edit-category/?id=<%= categories._id %>" method="post">
+                                <div class="mb-4">
+                                    <label for="product_name"  class="form-label">Name</label>
+                                    <input type="text" name="name" value="<%=categories.name%>" class="form-control"  />
+                                </div>
+                           
+                                <div class="mb-4">
+                                    <label for="product_slug" class="form-label">Gender</label>
+                                    <input type="text" name="gender" value="<%=categories.gender%>" class="form-control"  />
+                                </div>
+                                <!-- <div class="mb-4">
+                                    <label class="form-label">Parent</label>
+                                    <select class="form-select">
+                                        <option>Clothes</option>
+                                        <option>T-Shirts</option>
+                                    </select>
+                                </div> -->
+                                <div class="mb-4">
+                                    <label class="form-label">Description</label>
+                                    <input type="text" name="description" value="<%=categories.description%>" class="form-control"></textarea>
+                                </div>
+                                <div class="d-grid">
+                                    <button class="btn btn-primary" type="submit">Update</button>
+                                </div>
+                                                 <%if(typeof message!=='undefined'){%>
+
+                                                <h3 style="color: rgb(255, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-weight: 400;"><%=message%></h3>
+                          
+                                                <%}%>
+                            </form>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="table-responsive">
+                                <!-- <table class="table table-hover">
+                                    <thead>
+                                        <tr> -->
+                                            <!-- <th class="text-center">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" />
+                                                </div>
+                                            </th> -->
+                                            <!-- <th>ID</th> -->
+                                            <!-- <th>Name</th>
+                                            <th>Description</th>
+                                            <th>Slug</th>
+                                            <th>Gender</th> -->
+                                            <!-- <th>Order</th> -->
+                                            <!-- <th class="text-end">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      <% if (categories.length > 0) { %>
+    <% for (let i = 0; i < categories.length; i++) { %>
+        <tr>
+            <td><%= categories[i].name %></td>
+            <td><%= categories[i].description %></td>
+            <td><%= categories[i].slug %></td>
+            <td><%= categories[i].gender %></td>
+            <td class="text-end">
+                <a href="/admin/block?id=<%= categories[i]._id %>">EDIT</a>
+                <a href="/admin/unblock?id=<%= categories[i]._id %>">DELETE</a>
+            </td>
+        </tr>
+    <% } %>
+<% } else { %>
+    <tr>
+        <td colspan="4">No categories found.</td>
+    </tr>
+<% } %>
+ -->
+
+
+
+                                
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div> <!-- .col// -->
+                    </div> <!-- .row // -->
+                </div> <!-- card body .// -->
+            </div> <!-- card .// -->
+        </section> <!-- content-main end// -->
+        <footer class="main-footer font-xs">
+            <div class="row pb-30 pt-15">
+                <div class="col-sm-6">
+                    <script>
+                    document.write(new Date().getFullYear())
+                    </script> ©, TIME - Ecommerce.
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-sm-end">
+                        All rights reserved
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <script src="/admin-assets/js/vendors/jquery-3.6.0.min.js"></script>
+    <script src="/admin-assets/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="/admin-assets/js/vendors/select2.min.js"></script>
+    <script src="/admin-assets/js/vendors/perfect-scrollbar.js"></script>
+    <script src="/admin-assets/js/vendors/jquery.fullscreen.min.js"></script>
+    <!-- Main Script -->
+    <script src="/admin-assets/js/main.js" type="text/javascript"></script>
+</body>
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-categories.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:21 GMT -->
+</html>
