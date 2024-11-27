@@ -25,7 +25,7 @@ user_route.get('/verify-otp',userCtrl.loadVerifyOtp)
 user_route.get('/otp-success',userCtrl.otpSuccess);
 
 
-user_route.get('/login',Auth.guestUser,userCtrl.loadLogin);
+user_route.get('/',Auth.guestUser,userCtrl.loadLogin);
 user_route.post('/login',userCtrl.userLogin);
 user_route.get('/home',Auth.verifyToken,userCtrl.loadHome)
 user_route.get('/logout',Auth.verifyToken,userCtrl.userLogout);
