@@ -60,7 +60,7 @@ user_route.post('/place-order/:cartId', Auth.verifyToken, isBlocked, orderCtrl.c
 
 // Address Management
 user_route.get('/add-address', Auth.verifyToken, isBlocked, userCtrl.loadAddAddress);
-user_route.post('/add-address', Auth.verifyToken, isBlocked, userCtrl.addAddress);
+user_route.post('/address/add', Auth.verifyToken, isBlocked, userCtrl.addAddress);
 user_route.post('/add-address-profile', Auth.verifyToken, isBlocked, userCtrl.addAddressProfile);
 user_route.post('/set-default-address/:addressId', Auth.verifyToken, isBlocked, userCtrl.setDeafultAddress);
 
