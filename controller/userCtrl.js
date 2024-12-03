@@ -246,6 +246,7 @@ const otpSuccess = async (req, res) => {
 
 //load login
 const loadLogin = async (req, res) => {
+
   try {
     if (req.user) {
       if (req.user.isBlocked) {
@@ -259,12 +260,6 @@ const loadLogin = async (req, res) => {
     }
 
     // Set cache-control headers to prevent caching of the login page
-    res.set(
-      "Cache-Control",
-      "no-store, no-cache, must-revalidate, proxy-revalidate"
-    );
-    res.set("Pragma", "no-cache");
-    res.set("Expires", "0");
 
     return res.render("login");
   } catch (error) {
@@ -275,6 +270,7 @@ const loadLogin = async (req, res) => {
 
 //login user
 const userLogin = async (req, res) => {
+console.log('hi')
   const { email, password } = req.body;
 
   try {
