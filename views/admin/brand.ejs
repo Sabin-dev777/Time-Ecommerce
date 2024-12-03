@@ -39,7 +39,10 @@
                     <div class="content-header">
                       <h2 class="content-title">Create Brand</h2>
                       <div>
-                        <button type="button" class="btn btn-md rounded font-sm hover-up" onclick="validateAndSubmit()">Create</button>
+                        <% if(typeof message !== 'undefined') { %>
+                          <h3 style="color: rgb(255, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-weight: 400;"><%= message %></h3>
+                          <% } %>
+                        <button type="button" class="btn btn-md rounded font-sm hover-up" onclick="validateAndSubmit('createBrandForm')">Create</button>
                       </div>
                     </div>
                   </div>

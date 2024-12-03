@@ -1782,40 +1782,64 @@ const loadBrands = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
-
 const createBrand = async (req, res) => {
   const { brandname, description, logo, isActive } = req.body;
 
-  const cleanedLogo = (logo || "").trim();
-  if (!cleanedLogo) {
-    console.error("Brand name or logo URL is missing");
-    return res.status(400).json({ error: "Brand name and logo are required" });
-  }
+  const page = parseInt(req.query.page) || 1; // Current page, default to 1
+  const limit = 10; // Brands per page
+  const skip = (page - 1) * limit;
 
   try {
-    // Check if the brand already exists
-    const existingBrand = await Brands.findOne({ brandname: brandname });
+    // Fetch the paginated list of brands
+    const brands = await Brands.find().skip(skip).limit(limit);
+    const totalBrands = await Brands.countDocuments();
+    const totalPages = Math.ceil(totalBrands / limit);
 
+    // Validate inputs
+    if (!brandname || !logo) {
+      return res.render("brand", {
+        message: "Brand name and logo are required",
+        brands,
+        currentPage: page,
+        totalPages,
+      });
+    }
+
+    // Check if brand already exists
+    const existingBrand = await Brands.findOne({ brandname: brandname.trim() });
     if (existingBrand) {
-      console.error("Brand with this name already exists");
-      return res
-        .status(400)
-        .json({ error: "Brand with this name already exists" });
+      return res.render("brand", {
+        message: "Brand with this name already exists",
+        brands,
+        currentPage: page,
+        totalPages,
+      });
     }
 
     // Create and save the brand
     const brand = new Brands({
-      brandname,
-      description: description || "",
-      logo: cleanedLogo,
-      isActive: isActive === "on", // Convert 'on' to true
+      brandname: brandname.trim(),
+      description: description ? description.trim() : "",
+      logo: logo.trim(),
+      isActive: isActive === "on", // Convert checkbox value to boolean
     });
 
     await brand.save();
     res.redirect("/admin/brands");
   } catch (error) {
     console.error("Error creating brand:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+
+    // Fetch brands again in case of an error
+    const brands = await Brands.find().skip(skip).limit(limit);
+    const totalBrands = await Brands.countDocuments();
+    const totalPages = Math.ceil(totalBrands / limit);
+
+    res.render("brand", {
+      message: "Internal Server Error",
+      brands,
+      currentPage: page,
+      totalPages,
+    });
   }
 };
 
