@@ -95,11 +95,9 @@ const createOrder = async (req, res) => {
 
             // Ensure quantity does not go below zero
             if (newQuantity < 0) {
-              return res
-                .status(400)
-                .json({
-                  error: `Not enough stock for ${product.name} in size ${item.size}.`,
-                });
+              return res.status(400).json({
+                error: `Not enough stock for ${product.name} in size ${item.size}.`,
+              });
             }
 
             sizeDetail.quantity = newQuantity;
@@ -209,11 +207,9 @@ const paymentSuccess = async (req, res) => {
               );
               if (sizeDetail) {
                 if (sizeDetail.quantity < item.quantity) {
-                  return res
-                    .status(400)
-                    .json({
-                      error: `Not enough stock for ${product.name} in size ${item.size}.`,
-                    });
+                  return res.status(400).json({
+                    error: `Not enough stock for ${product.name} in size ${item.size}.`,
+                  });
                 }
               }
             }

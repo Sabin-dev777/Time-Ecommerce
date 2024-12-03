@@ -116,21 +116,33 @@ const adminLogin = async (req, res) => {
 
   try {
     const findUser = await User.findOne({ email });
-    if (findUser && (await findUser.isPasswordMatched(password))) {
+
+    // Check if user exists and their role is 'admin'
+    if (
+      findUser &&
+      findUser.role === "admin" && // Check if the user's role is 'admin'
+      (await findUser.isPasswordMatched(password))
+    ) {
+      // Generate token and set cookie
       const token = generateToken(findUser);
 
       res.cookie("jwt", token, { httpOnly: true, maxAge: 3600000 });
 
-      res.redirect("/admin/home");
+      return res.redirect("/admin/home");
     } else {
+      // Return error message for incorrect credentials or non-admin users
       return res.render("adminlogin", {
-        message: "Email or Password is incorrect",
+        message: "Invalid email, password, or you are not authorized.",
       });
     }
   } catch (error) {
     console.log(error);
+    return res.render("adminlogin", {
+      message: "Something went wrong. Please try again.",
+    });
   }
 };
+
 //admin logout
 const adminLogout = async (req, res) => {
   res.cookie("jwt", " ", { maxAge: 1 });
@@ -308,7 +320,6 @@ const unblockUser = async (req, res) => {
     res.redirect("/admin/users");
   } catch (error) {}
 };
-
 const createCategory = async (req, res) => {
   try {
     const { name, description, gender } = req.body;
@@ -326,9 +337,12 @@ const createCategory = async (req, res) => {
       });
     }
 
+    // Normalize the name to lowercase for case-insensitive comparison
+    const normalizedName = name.trim().toLowerCase();
+
     // Check if a category with the same name already exists
     const existingCategory = await Category.findOne({
-      $or: [{ name }],
+      name: normalizedName,
     });
 
     if (existingCategory) {
@@ -345,7 +359,7 @@ const createCategory = async (req, res) => {
 
     // Create the new category
     const category = new Category({
-      name,
+      name: normalizedName,
       description,
       gender,
     });
@@ -378,6 +392,7 @@ const createCategory = async (req, res) => {
     });
   }
 };
+
 
 // list category
 const listCategory = async (req, res) => {
@@ -934,29 +949,32 @@ const loadOrder = async (req, res) => {
   }
 };
 
-// view order
 const orderDetails = async (req, res) => {
   const orderId = req.query.id;
 
   try {
     const order = await Orders.findById(orderId)
-      .populate({ path: "user", select: "firstname lastname mobile" })
+      .populate({ path: "user", select: "firstname lastname mobile" }) // Populate user details
       .populate({
-        path: "cartItems",
-        populate: { path: "items.product", model: "Products" },
+        path: "cartItems", // Populate cart items
+        populate: { path: "items.product", model: "Products" }, // Populate product details within cart items
+      })
+      .populate({
+        path: "shippingAddress", // Populate address details
+        model: "Address", // Reference the Address model
       });
 
-    const cartId = order.cartItems;
-    const cart = await Cart.findById(cartId);
-
     if (!order) {
-      return res.render("orders-detail");
+      return res.render("orders-detail", { order: null });
     }
+
     res.render("orders-detail", { order });
   } catch (error) {
-    console.log(error);
+    console.log("Error fetching order details:", error);
+    res.status(500).send("Internal Server Error");
   }
 };
+
 
 const changeOrderStatus = async (req, res) => {
   try {
@@ -1923,7 +1941,6 @@ const loadSales = async (req, res) => {
 const loadSalesReport = async (req, res) => {
   res.render("salesReport");
 };
-
 const salesReport = async (req, res) => {
   try {
     const {
@@ -1940,9 +1957,20 @@ const salesReport = async (req, res) => {
       period,
     } = req.query;
 
+    // Validate date range
+    if (startDate && endDate && new Date(startDate) > new Date(endDate)) {
+      return res.render("salesReport", {
+        message: "Start date cannot be greater than end date.",
+        orders: [],
+        bestProducts: [],
+        bestCategories: [],
+      });
+    }
+
+    // Handle date filtering
     let dateFilter = {};
+    const currentDate = new Date();
     if (period) {
-      const currentDate = new Date();
       if (period === "weekly") {
         dateFilter = {
           $gte: new Date(currentDate.setDate(currentDate.getDate() - 7)),
@@ -1977,38 +2005,16 @@ const salesReport = async (req, res) => {
           select: "name price",
         },
       })
-      .populate({ path: "user", select: "_id" }) // Exclude name and email
-
       .sort({ [sortBy]: order === "asc" ? 1 : -1 })
       .skip((page - 1) * limit)
       .limit(Number(limit));
-    console.log(orders);
 
-    let bestProducts = [];
-    if (includeTopProducts === "true") {
-      bestProducts = await Products.aggregate([
-        { $group: { _id: "$name", totalSold: { $sum: "$sold" } } },
-        { $sort: { totalSold: -1 } },
-        { $limit: 5 },
-      ]);
-    }
-
-    // Fetch top-selling categories if the checkbox was checked
-    let bestCategories = [];
-    if (includeTopCategories === "true") {
-      bestCategories = await Products.aggregate([
-        { $group: { _id: "$category", totalSold: { $sum: "$sold" } } },
-        { $sort: { totalSold: -1 } },
-        { $limit: 5 },
-      ]);
-    }
     res.render("salesReport", {
-      orders: orders || [], // Ensuring 'orders' is at least an empty array
-      bestProducts,
-      bestCategories,
+      orders,
+      period,
+      startDate,
       endDate,
       orderStatus,
-      customerEmail,
       page: Number(page),
       limit: Number(limit),
       totalPages: Math.ceil((await Orders.countDocuments(filter)) / limit),
@@ -2018,6 +2024,7 @@ const salesReport = async (req, res) => {
     res.status(500).json({ error: "Server Error" });
   }
 };
+
 const approveReturnRequest = async (req, res) => {
   try {
     const { orderId } = req.params;

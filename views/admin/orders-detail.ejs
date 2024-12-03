@@ -21,192 +21,35 @@
 
 <body>
     <div class="screen-overlay"></div>
-    <aside class="navbar-aside" id="offcanvas_aside">
-        <div class="aside-top">
-            <a href="index.html" class="brand-wrap">
-                <img src="/admin-assets/imgs/theme/logo.svg" class="logo" alt="Evara Dashboard">
-            </a>
-            <div>
-                <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i> </button>
-            </div>
-        </div>
-        <nav>
-            <ul class="menu-aside">
-                <li class="menu-item ">
-                    <a class="menu-link" href="/admin/home"> <i class="icon material-icons md-home"></i>
-                        <span class="text">Dashboard</span>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a class="menu-link" href="/admin/product-list"> <i class="icon material-icons md-shopping_bag"></i>
-                        <span class="text">Products</span>
-                    </a>
-                   
-                </li>
-                <li class="menu-item active">
-                    <a class="menu-link" href="/admin/orders"> <i class="icon material-icons md-shopping_cart"></i>
-                        <span class="text">Orders</span>
-                    </a>
-                  
-                </li>
-              
-            
-                <li class="menu-item">
-                    <a class="menu-link" href="/admin/product-form"> <i class="icon material-icons md-add_box"></i>
-                        <span class="text">Add product</span>
-                    </a>
-                 
-                </li>
-                <li class="menu-item ">
-                    <a class="menu-link" href="/admin/create-coupon"> <i class="icon material-icons md-shopping_cart"></i>
-                        <span class="text">Coupons</span>
-                    </a>
-                  
-                </li>
-                <li class="menu-item ">
-                    <a class="menu-link" href="/admin/offers"> <i class="icon material-icons md-shopping_cart"></i>
-                        <span class="text">Offers</span>
-                    </a>
-                  
-                </li>
-                <li class="menu-item ">
-                    <a class="menu-link" href="/admin/category"> <i class="icon material-icons md-shopping_cart"></i>
-                        <span class="text">Category</span>
-                    </a>
-                  
-                </li>
-              
-              
-                <li class="menu-item">
-                    <a class="menu-link" href="/admin/users"> <i class="icon material-icons md-comment"></i>
-                        <span class="text">Customers</span>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a class="menu-link" href="/admin/brands"> <i class="icon material-icons md-stars"></i>
-                        <span class="text">Brands</span> </a>
-                </li>
-                <li class="menu-item">
-                    <a class="menu-link" href="/admin/banners"> <i class="icon material-icons md-stars"></i>
-                        <span class="text">Banners</span> </a>
-                </li>
-             
-             
-            </ul>
-            <hr>
-            <ul class="menu-aside">
-                <li class="menu-item has-submenu">
-                    <a class="menu-link" href="#"> <i class="icon material-icons md-settings"></i>
-                        <span class="text">Settings</span>
-                    </a>
-                    <div class="submenu">
-                        <a href="page-settings-1.html">Setting sample 1</a>
-                        <a href="page-settings-2.html">Setting sample 2</a>
-                    </div>
-                </li>
-                <li class="menu-item">
-                    <a class="menu-link" href="page-blank.html"> <i class="icon material-icons md-local_offer"></i>
-                        <span class="text"> Starter page </span>
-                    </a>
-                </li>
-            </ul>
-            <br>
-            <br>
-        </nav>
-    </aside>
+    <%- include('../partials/admin/navbar') %>
     <main class="main-wrap">
-        <header class="main-header navbar">
-            <div class="col-search">
-                <form class="searchform">
-                    <div class="input-group">
-                        <input list="search_terms" type="text" class="form-control" placeholder="Search term">
-                        <button class="btn btn-light bg" type="button"> <i class="material-icons md-search"></i></button>
-                    </div>
-                    <datalist id="search_terms">
-                        <option value="Products">
-                        <option value="New orders">
-                        <option value="Apple iphone">
-                        <option value="Ahmed Hassan">
-                    </datalist>
-                </form>
-            </div>
-            <div class="col-nav">
-                <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="material-icons md-apps"></i> </button>
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link btn-icon" href="#">
-                            <i class="material-icons md-notifications animation-shake"></i>
-                            <span class="badge rounded-pill">3</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn-icon darkmode" href="#"> <i class="material-icons md-nights_stay"></i> </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="requestfullscreen nav-link btn-icon"><i class="material-icons md-cast"></i></a>
-                    </li>
-                    <li class="dropdown nav-item">
-                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownLanguage" aria-expanded="false"><i class="material-icons md-public"></i></a>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">
-                            <a class="dropdown-item text-brand" href="#"><img src="/admin-assets/imgs/theme/flag-us.png" alt="English">English</a>
-                            <a class="dropdown-item" href="#"><img src="/admin-assets/imgs/theme/flag-fr.png" alt="Français">Français</a>
-                            <a class="dropdown-item" href="#"><img src="/admin-assets/imgs/theme/flag-jp.png" alt="Français">日本語</a>
-                            <a class="dropdown-item" href="#"><img src="/admin-assets/imgs/theme/flag-cn.png" alt="Français">中国人</a>
-                        </div>
-                    </li>
-                    <li class="dropdown nav-item">
-                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount" aria-expanded="false"> <img class="img-xs rounded-circle" src="/admin-assets/imgs/people/avatar2.jpg" alt="User"></a>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
-                            <a class="dropdown-item" href="#"><i class="material-icons md-perm_identity"></i>Edit Profile</a>
-                            <a class="dropdown-item" href="#"><i class="material-icons md-settings"></i>Account Settings</a>
-                            <a class="dropdown-item" href="#"><i class="material-icons md-account_balance_wallet"></i>Wallet</a>
-                            <a class="dropdown-item" href="#"><i class="material-icons md-receipt"></i>Billing</a>
-                            <a class="dropdown-item" href="#"><i class="material-icons md-help_outline"></i>Help center</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-danger" href="#"><i class="material-icons md-exit_to_app"></i>Logout</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </header>
+     
         <section class="content-main">
-            <div class="content-header">
+            <div class="content-header mb-4">
                 <div>
-                    <h2 class="content-title card-title">Order detail</h2>
-                    <p>Details for Order ID: 3453012</p>
+                    <h2 class="content-title card-title">Order Details</h2>
+                    <p class="text-muted">Details for Order ID: <b><%= order.orderId %></b></p>
+                </div>
+                <div class="header-actions">
+                    <% if (order.orderStatus !== 'cancelled' && order.orderStatus !== 'returned') { %>
+                        <button class="btn btn-primary me-2" onclick="handleChangeStatus()">Save Status</button>
+                    <% } %>
+                    <a class="btn btn-secondary print" href="#"><i class="material-icons md-print"></i> Print</a>
                 </div>
             </div>
+        
             <div class="card">
-                <header class="card-header">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 col-md-6 mb-lg-0 mb-15">
+                <header class="card-header bg-light p-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
                             <span>
-                                <i class="material-icons md-calendar_today"></i> <b><%= order.dateOrdered.toISOString().split('T')[0] %></b>
-                            </span> <br>
-                            <small class="text-muted">Order ID: <%=order.orderId%></small>
+                                <i class="material-icons md-calendar_today"></i> 
+                                <b><%= order.dateOrdered.toISOString().split('T')[0] %></b>
+                            </span><br>
+                            <small class="text-muted">Order ID: <%= order.orderId %></small>
                         </div>
-                        <div class="mt-4">
-                            <h5>Return Request Status</h5>
-                            <% if (order.returnRequest.isRequested) { %>
-                              <p>Status: <span class="badge 
-                                  <%= order.returnRequest.status === 'approved' ? 'alert-success text-success' : 
-                                      order.returnRequest.status === 'declined' ? 'alert-danger text-danger' : 
-                                      'alert-warning text-warning' %>">
-                                  <%= order.returnRequest.status %>
-                                </span>
-                              </p>
-                            <% } else { %>
-                              <p>No return request made for this order.</p>
-                            <% } %>
-                          
-                            <% if (order.returnRequest.isRequested && order.returnRequest.status === 'requested') { %>
-                              <button class="btn btn-success" onclick="updateReturnRequest('<%= order._id %>', 'approve')">Approve</button>
-                              <button class="btn btn-danger" onclick="updateReturnRequest('<%= order._id %>', 'decline')">Decline</button>
-                            <% } %>
-                          </div>
-                          
-                          <div class="col-lg-6 col-md-6 ms-auto text-md-end">
-                            <select id="orderStatusSelect" class="form-select d-inline-block mb-lg-0 mb-15 mw-200">
+                        <div>
+                            <select id="orderStatusSelect" class="form-select mw-200">
                                 <% if (order.orderStatus === 'Order placed') { %>
                                     <option value="Order placed" selected>Order placed</option>
                                     <option value="shipped">Shipped</option>
@@ -225,136 +68,119 @@
                                     <option value="cancelled" selected>Cancelled</option>
                                 <% } %>
                             </select>
-                        
-                            <!-- Button to trigger the status change -->
-                            <% if (order.orderStatus !== 'cancelled' && order.orderStatus !== 'returned') { %>
-                                <button class="btn btn-primary" onclick="handleChangeStatus()">Save</button>
-                            <% } %>
-                            <a class="btn btn-secondary print ms-2" href="#"><i class="icon material-icons md-print"></i></a>
                         </div>
-                        
                     </div>
-                </header> <!-- card-header end// -->
+                </header>
+        
                 <div class="card-body">
-                    <div class="row mb-50 mt-20 order-info-wrap">
-                        <div class="col-md-4">
-                            <article class="icontext align-items-start">
-                                <span class="icon icon-sm rounded-circle bg-primary-light">
-                                    <i class="text-primary material-icons md-person"></i>
+                    <!-- Section: Customer & Shipping Info -->
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <article class="icontext">
+                                <span class="icon bg-primary-light rounded-circle">
+                                    <i class="material-icons text-primary md-person"></i>
                                 </span>
                                 <div class="text">
-                                    <h6 class="mb-1">Customer</h6>
-                                    <p class="mb-1">
-                                        <%=order.user.firstname%> <%=order.user.lastname%> <br> <template class="__cf_email__" data-cfemail="e2838e879aa2879a838f928e87cc818d8f">[email&#160;protected]</template> <br> <%=order.user.mobile%>
+                                    <h6>Customer</h6>
+                                    <p>
+                                        <b><%= order.user.firstname %> <%= order.user.lastname %></b><br>
+                                        Mobile: <%= order.user.mobile %><br>
+                                        <a href="#">View profile</a>
                                     </p>
-                                    <a href="#">View profile</a>
                                 </div>
                             </article>
-                        </div> <!-- col// -->
-                        <div class="col-md-4">
-                            <article class="icontext align-items-start">
-                                <span class="icon icon-sm rounded-circle bg-primary-light">
-                                    <i class="text-primary material-icons md-local_shipping"></i>
+                        </div>
+                        <div class="col-md-6">
+                            <article class="icontext">
+                                <span class="icon bg-primary-light rounded-circle">
+                                    <i class="material-icons text-primary md-place"></i>
                                 </span>
                                 <div class="text">
-                                    <h6 class="mb-1">Order info</h6>
-                                    <p class="mb-1">
-                                        Shipping: Fargo express <br> Pay method: card <br> Status: new
-                                    </p>
-                                    <a href="#">Download info</a>
+                                    <h6>Shipping Address</h6>
+                                    <% if (order.shippingAddress) { %>
+                                        <p>
+                                            <b>House:</b> <%= order.shippingAddress.house %><br>
+                                            <b>Street:</b> <%= order.shippingAddress.street %><br>
+                                            <b>City:</b> <%= order.shippingAddress.city %><br>
+                                            <b>Landmark:</b> <%= order.shippingAddress.landmark %><br>
+                                            <b>State:</b> <%= order.shippingAddress.state %>, 
+                                            <b>Country:</b> <%= order.shippingAddress.country %><br>
+                                            <b>ZIP:</b> <%= order.shippingAddress.zip %>
+                                        </p>
+                                    <% } else { %>
+                                        <p class="text-muted">Shipping address not available.</p>
+                                    <% } %>
                                 </div>
                             </article>
-                        </div> <!-- col// -->
-                        <div class="col-md-4">
-                            <article class="icontext align-items-start">
-                                <span class="icon icon-sm rounded-circle bg-primary-light">
-                                    <i class="text-primary material-icons md-place"></i>
-                                </span>
-                                <div class="text">
-                                    <h6 class="mb-1">Deliver to</h6>
-                                    <p class="mb-1">
-                                        City: Tashkent, Uzbekistan <br>Block A, House 123, Floor 2 <br> Po Box 10000
-                                    </p>
-                                    <a href="#">View profile</a>
-                                </div>
-                            </article>
-                        </div> <!-- col// -->
-                    </div> <!-- row // -->
-                    <div class="row">
-                        <div class="col-lg-7">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th width="40%">Product</th>
-                                            <th width="20%">Unit Price</th>
-                                            <th width="20%">Quantity</th>
-                                            <th width="20%" class="text-end">Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <% order.cartItems.forEach(cartItem => { %>
-                                            <% cartItem.items.forEach(item => { %>
-                                                <tr>
-                                                    <td>
-                                                        <a class="itemside" href="#">
-                                                            <div class="left">
-                                                                <img src="<%='/uploads/' + item.product.images[0] %>" width="40" height="40" class="img-xs" alt="Item">
-                                                            </div>
-                                                            <div class="info"><%= item.product.name %></div>
-                                                        </a>
-                                                    </td>
-                                                    <td>$<%= item.product.price.toFixed(2) %></td>
-                                                    <td><%= item.quantity %></td>
-                                                    <td class="text-end">$<%= (item.product.price * item.quantity).toFixed(2) %></td>
-                                                </tr>
-                                            <% }); %>
-                                        <% }); %>
-                                        <tr>
-                                            <td colspan="3" class="text-end"><strong>Subtotal:</strong></td>
-                                            <td class="text-end">$<%= order.totalprice.toFixed(2) %></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3" class="text-end"><strong>Shipping cost:</strong></td>
-                                            <td class="text-end">$10.00</td> <!-- Assuming a fixed shipping cost -->
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3" class="text-end"><strong>Grand total:</strong></td>
-                                            <td class="text-end"><b class="h5">$<%= (order.totalprice + 10).toFixed(2) %></b></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3" class="text-end text-muted"><strong>Status:</strong></td>
-                                            <td class="text-end">
-                                                <span class="badge rounded-pill alert-success text-success"><%= order.orderStatus %></span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                
-                            </div> <!-- table-responsive// -->
-                        </div> <!-- col// -->
-                        <div class="col-lg-1"></div>
-                        <div class="col-lg-4">
-                            <div class="box shadow-sm bg-light">
-                                <h6 class="mb-15">Payment info</h6>
-                                <p>
-                                    <img src="/admin-assets/imgs/card-brands/2.png" class="border" height="20"> Master Card **** **** 4768 <br>
-                                    Business name: Grand Market LLC <br>
-                                    Phone: +1 (800) 555-154-52
-                                </p>
-                            </div>
-                            <div class="h-25 pt-4">
-                                <div class="mb-3">
-                                    <label>Notes</label>
-                                    <textarea class="form-control" name="notes" id="notes" placeholder="Type some note"></textarea>
-                                </div>
-                                <button class="btn btn-primary">Save note</button>
-                            </div>
-                        </div> <!-- col// -->
+                        </div>
                     </div>
-                </div> <!-- card-body end// -->
-            </div> <!-- card end// -->
+        
+                    <!-- Section: Product Details -->
+                    <div class="table-responsive mb-4">
+                        <table class="table table-bordered">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Unit Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% order.cartItems.forEach(cartItem => { %>
+                                    <% cartItem.items.forEach(item => { %>
+                                        <tr>
+                                            <td>
+                                                <a class="itemside" href="#">
+                                                    <div class="left">
+                                                        <img src="<%='/uploads/' + item.product.images[0] %>" width="50" height="50" class="img-fluid" alt="Item">
+                                                    </div>
+                                                    <div class="info"><%= item.product.name %></div>
+                                                </a>
+                                            </td>
+                                            <td>$<%= item.product.price.toFixed(2) %></td>
+                                            <td><%= item.quantity %></td>
+                                            <td>$<%= (item.product.price * item.quantity).toFixed(2) %></td>
+                                        </tr>
+                                    <% }); %>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+        
+                    <!-- Section: Order Summary -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Return Request Status</h6>
+                            <% if (order.returnRequest.isRequested) { %>
+                                <p>
+                                    <b>Status:</b>
+                                    <span class="badge 
+                                        <%= order.returnRequest.status === 'approved' ? 'bg-success text-white' : 
+                                            order.returnRequest.status === 'declined' ? 'bg-danger text-white' : 
+                                            'bg-warning text-dark' %>">
+                                        <%= order.returnRequest.status %>
+                                    </span>
+                                </p>
+                                <% if (order.returnRequest.status === 'requested') { %>
+                                    <button class="btn btn-success me-2" onclick="updateReturnRequest('<%= order._id %>', 'approve')">Approve</button>
+                                    <button class="btn btn-danger" onclick="updateReturnRequest('<%= order._id %>', 'decline')">Decline</button>
+                                <% } %>
+                            <% } else { %>
+                                <p>No return request made for this order.</p>
+                            <% } %>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Order Summary</h6>
+                            <p><b>Subtotal:</b> $<%= order.totalprice.toFixed(2) %></p>
+                            <p><b>Shipping:</b> $10.00</p>
+                            <h5><b>Grand Total:</b> $<%= (order.totalprice + 10).toFixed(2) %></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
+        
         <script>
             function updateReturnRequest(orderId, action) {
   fetch(`/admin/orders/${orderId}/return-request`, {

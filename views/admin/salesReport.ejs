@@ -5,100 +5,241 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sales Report</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/admin-assets/imgs/theme/favicon.svg">
+    <link href="/admin-assets/css/main.css" rel="stylesheet" type="text/css" />
     <style>
-        /* Your existing CSS */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .navbar-aside {
+            width: 250px; /* Fixed width for the sidebar */
+            background-color: #f8f9fa;
+            border-right: 1px solid #ddd;
+            min-height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        .content {
+            margin-left: 250px; /* Adjust to match the width of the sidebar */
+            padding: 20px;
+            width: calc(100% - 250px);
+        }
+        .header-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .filters {
+            margin-bottom: 20px;
+        }
+        .filters h5 {
+            font-weight: bold;
+        }
+        .filters ul {
+            list-style: none;
+            padding: 0;
+        }
+        .filters ul li {
+            padding: 5px 0;
+        }
+        .table-responsive {
+            margin-top: 20px;
+        }
+        .export-buttons {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        .btn-export {
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
+    <!-- Sidebar -->
+    <aside class="navbar-aside" id="offcanvas_aside">
+        <div class="aside-top">
+            <a href="/admin/home" class="brand-wrap">
+                <img src="/admin-assets/imgs/theme/logo.svg" class="logo" alt="Evara Dashboard">
+            </a>
+            <div>
+                <button class="btn btn-icon btn-aside-minimize"> 
+                    <i class="text-muted material-icons md-menu_open"></i>
+                </button>
+            </div>
+        </div>
+        <nav>
+            <ul class="menu-aside">
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/home"> 
+                        <i class="icon material-icons md-home"></i>
+                        <span class="text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/product-list"> 
+                        <i class="icon material-icons md-shopping_bag"></i>
+                        <span class="text">Products</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/orders"> 
+                        <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Orders</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/product-form"> 
+                        <i class="icon material-icons md-add_box"></i>
+                        <span class="text">Add Product</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/create-coupon"> 
+                        <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Coupons</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/offers"> 
+                        <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Offers</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/category"> 
+                        <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Category</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/users"> 
+                        <i class="icon material-icons md-comment"></i>
+                        <span class="text">Customers</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/brands"> 
+                        <i class="icon material-icons md-stars"></i>
+                        <span class="text">Brands</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/banners"> 
+                        <i class="icon material-icons md-stars"></i>
+                        <span class="text">Banners</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
 
-<div class="report-container">
-    <h1 class="text-center">Sales Report</h1>
-    
-    <!-- Export Buttons -->
-    <div class="mb-4 text-right">
-        <button class="btn btn-success" onclick="exportToExcel()">Export to Excel</button>
-        <button class="btn btn-danger" onclick="exportToPDF()">Export to PDF</button>
+    <!-- Main Content -->
+    <div class="content">
+        <div class="report-container">
+            <h1 class="text-center header-title">Sales Report</h1>
+
+            <!-- Selected Filters -->
+            <div class="filters">
+                <h5>Selected Filters:</h5>
+                <ul>
+                    <% if (period) { %>
+                        <li><strong>Period:</strong> <%= period === "weekly" ? "Last 7 Days" : "Last 30 Days" %></li>
+                    <% } %>
+                    <% if (startDate && endDate) { %>
+                        <li><strong>Custom Date Range:</strong> <%= new Date(startDate).toLocaleDateString() %> to <%= new Date(endDate).toLocaleDateString() %></li>
+                    <% } %>
+                    <% if (orderStatus) { %>
+                        <li><strong>Order Status:</strong> <%= orderStatus %></li>
+                    <% } %>
+                </ul>
+            </div>
+
+            <!-- Export Buttons -->
+            <div class="export-buttons">
+                <button class="btn btn-success btn-export" onclick="exportToExcel()">Export to Excel</button>
+                <button class="btn btn-danger btn-export" onclick="exportToPDF()">Export to PDF</button>
+            </div>
+
+            <!-- Sales Report Table -->
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped" id="salesReportTable">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Date Ordered</th>
+                            <th>Status</th>
+                            <th>Product</th>
+                            <th>Unit Price</th>
+                            <th>Quantity</th>
+                            <th>Product Total</th>
+                            <th>Order Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (orders && orders.length > 0) { %>
+                            <% orders.forEach(order => { %>
+                                <% order.cartItems.forEach(cartItem => { %>
+                                    <% cartItem.items.forEach(item => { %>
+                                        <% const lineTotal = (item.product.discountedPrice || item.product.price) * item.quantity; %>
+                                        <tr>
+                                            <td><%= order.orderId %></td>
+                                            <td><%= order.dateOrdered.toLocaleDateString() %></td>
+                                            <td><%= order.orderStatus %></td>
+                                            <td><%= item.product.name %></td>
+                                            <td>₹<%= item.product.discountedPrice || item.product.price %></td>
+                                            <td><%= item.quantity %></td>
+                                            <td>₹<%= lineTotal.toFixed(2) %></td>
+                                            <td>₹<%= order.totalprice.toFixed(2) %></td>
+                                        </tr>
+                                    <% }) %>
+                                <% }) %>
+                            <% }) %>
+                        <% } else { %>
+                            <tr>
+                                <td colspan="8" class="text-center">No orders found for the specified criteria.</td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
-    <!-- Sales Report Table -->
-    <table class="table table-bordered table-striped" id="salesReportTable">
-        <thead>
-            <tr>
-                <th>Order ID</th>
-                <th>Date Ordered</th>
-                <th>Status</th>
-                <th>Product</th>
-                <th>Unit Price</th>
-                <th>Quantity</th>
-                <th>Product Total</th>
-                <th>Order Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% if (orders && orders.length > 0) { %>
-                <% orders.forEach(order => { %>
-                    <% order.cartItems.forEach(cartItem => { %>
-                        <% cartItem.items.forEach(item => { %>
-                            <% const lineTotal = (item.product.discountedPrice || item.product.price) * item.quantity; %>
-                            <tr>
-                                <td><%= order.orderId %></td>
-                                <td><%= order.dateOrdered.toLocaleDateString() %></td>
-                                <td><%= order.orderStatus %></td>
-                                <td><%= item.product.name %></td>
-                                <td>₹<%= item.product.discountedPrice || item.product.price %></td>
-                                <td><%= item.quantity %></td>
-                                <td>₹<%= lineTotal.toFixed(2) %></td>
-                                <td>₹<%= order.totalprice.toFixed(2) %></td>
-                            </tr>
-                        <% }) %>
-                    <% }) %>
-                <% }) %>
-            <% } else { %>
-                <tr>
-                    <td colspan="8" class="text-center">No orders found for the specified criteria.</td>
-                </tr>
-            <% } %>
-        </tbody>
-    </table>
-</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+    <script>
+        function exportToExcel() {
+            let table = document.getElementById("salesReportTable");
+            let workbook = XLSX.utils.table_to_book(table, { sheet: "Sales Report" });
+            XLSX.writeFile(workbook, "Sales_Report.xlsx");
+        }
 
-<!-- Scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+        function exportToPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
 
-<script>
-    // Export to Excel function
-    function exportToExcel() {
-        let table = document.getElementById("salesReportTable");
-        let workbook = XLSX.utils.table_to_book(table, {sheet: "Sales Report"});
-        XLSX.writeFile(workbook, "Sales_Report.xlsx");
-    }
+            doc.text("Sales Report", 14, 10);
+            const startY = 20;
 
-    // Export to PDF function
-    function exportToPDF() {
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF();
+            const columns = Array.from(document.querySelectorAll("#salesReportTable thead th")).map(th => th.innerText);
+            const rows = Array.from(document.querySelectorAll("#salesReportTable tbody tr")).map(tr => {
+                return Array.from(tr.querySelectorAll("td")).map(td => td.innerText);
+            });
 
-        doc.text("Sales Report", 14, 10);
-        const startY = 20;
+            doc.autoTable({
+                head: [columns],
+                body: rows,
+                startY: startY,
+                theme: 'grid',
+            });
 
-        // Get table headers and rows from the DOM
-        const columns = Array.from(document.querySelectorAll("#salesReportTable thead th")).map(th => th.innerText);
-        const rows = Array.from(document.querySelectorAll("#salesReportTable tbody tr")).map(tr => {
-            return Array.from(tr.querySelectorAll("td")).map(td => td.innerText);
-        });
-
-        doc.autoTable({
-            head: [columns],
-            body: rows,
-            startY: startY,
-            theme: 'grid',
-        });
-
-        doc.save("Sales_Report.pdf");
-    }
-</script>
-
+            doc.save("Sales_Report.pdf");
+        }
+    </script>
 </body>
 </html>

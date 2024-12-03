@@ -96,7 +96,7 @@ const guestUser = async(req,res,next)=>{
 }
 
 const redirectIfAuthenticated = (req, res, next) => {
-    console.log(req.user)
+   
     console.log('authe')
     if (req.user) {
         

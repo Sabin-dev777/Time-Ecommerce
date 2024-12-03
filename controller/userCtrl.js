@@ -130,13 +130,11 @@ const sendOtpVerificationEmail = async ({ _id, email }, res) => {
     await transporter.sendMail(mailOptions);
 
     // Send the remaining time back to the frontend
-    res
-      .status(200)
-      .json({
-        success: true,
-        userId: _id,
-        remainingTime: expiryTime - Date.now(),
-      });
+    res.status(200).json({
+      success: true,
+      userId: _id,
+      remainingTime: expiryTime - Date.now(),
+    });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Internal server error" });
@@ -248,12 +246,19 @@ const otpSuccess = async (req, res) => {
 
 //load login
 const loadLogin = async (req, res) => {
-  console.log(req.user);
   try {
     if (req.user) {
+      if (req.user.isBlocked) {
+        // If the user is blocked, allow them to stay on the login page
+        return res.render("login", {
+          message: "Your account is blocked. Please contact support.",
+        });
+      }
+      // Redirect unblocked users to the home page
       return res.redirect("/home");
     }
 
+    // Set cache-control headers to prevent caching of the login page
     res.set(
       "Cache-Control",
       "no-store, no-cache, must-revalidate, proxy-revalidate"
@@ -263,9 +268,11 @@ const loadLogin = async (req, res) => {
 
     return res.render("login");
   } catch (error) {
-    console.log(error);
+    console.error("Error loading login page:", error);
+    return res.status(500).send("Internal Server Error");
   }
 };
+
 //login user
 const userLogin = async (req, res) => {
   const { email, password } = req.body;
@@ -709,12 +716,10 @@ const addToCart = async (req, res) => {
 
     const sizeDetail = product.sizes.find((item) => item.size === size);
     if (!sizeDetail || sizeDetail.quantity < quantity) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: "Insufficient stock for the selected size",
-        });
+      return res.status(400).json({
+        success: false,
+        message: "Insufficient stock for the selected size",
+      });
     }
 
     const maxAllowedQuantity = Math.min(5, sizeDetail.quantity);
@@ -870,11 +875,9 @@ const updateQuantity = async (req, res) => {
     // Update the quantity based on the action
     if (action === "increase") {
       if (item.quantity + 1 > maxAllowedQuantity) {
-        return res
-          .status(400)
-          .json({
-            error: `You can only have up to ${maxAllowedQuantity} units for this size in your cart`,
-          });
+        return res.status(400).json({
+          error: `You can only have up to ${maxAllowedQuantity} units for this size in your cart`,
+        });
       }
       item.quantity += 1;
     } else if (action === "decrease") {
@@ -1046,12 +1049,10 @@ const addToCartFromWishlist = async (req, res) => {
 
     const sizeOption = product.sizes.find((s) => s.size === size);
     if (!sizeOption || sizeOption.quantity < quantity) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: "Insufficient stock for the selected size",
-        });
+      return res.status(400).json({
+        success: false,
+        message: "Insufficient stock for the selected size",
+      });
     }
 
     let cart = await Cart.findOne({ userId });
