@@ -270,7 +270,7 @@ const loadLogin = async (req, res) => {
 
 //login user
 const userLogin = async (req, res) => {
-console.log('hi')
+
   const { email, password } = req.body;
 
   try {
@@ -305,22 +305,29 @@ console.log('hi')
 //load home
 const loadHome = async (req, res) => {
   const userId = req.user.id;
-  console.log(userId);
+ 
 
-  const { page = 1, limit = 10 } = req.query; // Fetch page and limit from query params
-  const pageNum = Math.max(1, parseInt(page)); // Ensure the page is at least 1
+  const { page = 1, limit = 10, orderPage = 1, walletPage = 1 } = req.query;
   const itemsPerPage = Math.max(1, parseInt(limit)); // Ensure the limit is at least 1
 
   try {
     const userData = await User.findOne({ _id: userId });
 
-    // Pagination for wallet transactions
-    const totalTransactions = userData.walletTransactions.length;
-    const totalPages = Math.ceil(totalTransactions / itemsPerPage);
-    const paginatedTransactions = userData.walletTransactions.slice(
-      (pageNum - 1) * itemsPerPage,
-      pageNum * itemsPerPage
+    // Wallet Transactions Pagination
+    const walletTotalTransactions = userData.walletTransactions.length;
+    const walletTotalPages = Math.ceil(walletTotalTransactions / itemsPerPage);
+    const paginatedWalletTransactions = userData.walletTransactions.slice(
+      (walletPage - 1) * itemsPerPage,
+      walletPage * itemsPerPage
     );
+
+    // Orders Pagination
+    const orders = await Orders.find({ user: userId })
+      .sort({ dateOrdered: -1 })
+      .skip((orderPage - 1) * itemsPerPage)
+      .limit(itemsPerPage);
+    const orderTotalOrders = await Orders.countDocuments({ user: userId });
+    const orderTotalPages = Math.ceil(orderTotalOrders / itemsPerPage);
 
     // Fetch cart and wishlist quantities
     const cart = await Cart.findOne({ userId, orderPlaced: false });
@@ -329,32 +336,35 @@ const loadHome = async (req, res) => {
     const cartQuantity = cart ? cart.items.length : 0;
     const wishlistQuantity = wishlist ? wishlist.products.length : 0;
 
-    // Fetch addresses and orders
+    // Fetch addresses
     const addresses = await Address.find({ user: userId });
     const defaultAddress = await Address.findOne({
       user: userId,
       isDefault: true,
     });
-    const orders = await Orders.find({ user: userId });
 
     // Render the home page
     res.render("home", {
       user: {
         ...req.user,
-        walletTransactions: paginatedTransactions,
+        walletTransactions: paginatedWalletTransactions,
         walletBalance: userData.walletBalance,
-        totalTransactions,
+        walletTotalTransactions,
+        walletTotalPages,
       },
       addresses,
       defaultAddress,
       orders,
+      orderTotalOrders,
+      orderTotalPages,
       cartQuantity,
       wishlistQuantity,
-      page: pageNum,
-      totalPages,
+      walletPage,
+      orderPage,
     });
   } catch (error) {
     console.log(error);
+    res.status(500).send("Internal Server Error");
   }
 };
 
@@ -1017,7 +1027,7 @@ const productDetail = async (req, res) => {
   try {
     const productId = req.params.productId;
     const product = await Products.findById(productId);
-    console.log(product);
+   
 
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
@@ -1444,7 +1454,7 @@ const requestReturn = async (req, res) => {
   try {
     const orderId = req.params.orderId;
     const userId = req.user._id; // Assuming req.user contains the authenticated user's details
-    console.log(orderId, userId);
+  
 
     // Find the order by ID and check if it's delivered
     const order = await Orders.findById(orderId);

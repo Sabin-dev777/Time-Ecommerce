@@ -15,20 +15,20 @@ const verifyToken = async (req, res, next) => {
                 return next();
             } else {
                 req.session.returnTo = req.originalUrl
-                console.log('1'+ req.session.returnTo)
+               
                 return res.redirect('/login');
             }
         } else {
             req.session.returnTo = req.originalUrl
             // console.log(req)
-            console.log('2'+ req.session.returnTo)
+           
           
             return res.redirect('/login');
         }
     } catch (error) {
         console.error('Error verifying token:', error);
         req.session.returnTo = req.originalUrl
-        console.log('3'+ req.session.returnTo)
+       
         return res.redirect('/login');
     }
 };
@@ -46,21 +46,21 @@ const verifyTokenAndRedirect = async (req, res, next) => {
                 return next();
             } else {
                 req.session.returnTo = req.originalUrl
-                console.log('1'+ req.session.returnTo)
+               
                 return res.redirect('/login');
             }
         } else {
             req.session.returnTo = "/product/select-product?id="+req.body.productId
             // req.session.returnTo = req.body.productId?`/product/select-product?id={req.body.productId}`: req.originalUrl;
             // console.log(req)
-            console.log('2'+ req.session.returnTo)
+          
            
             return res.redirect('/login');
         }
     } catch (error) {
         console.error('Error verifying token:', error);
         req.session.returnTo = req.originalUrl
-        console.log('3'+ req.session.returnTo)
+     
         return res.redirect('/login');
     }
 };
@@ -97,7 +97,7 @@ const guestUser = async(req,res,next)=>{
 
 const redirectIfAuthenticated = (req, res, next) => {
    
-    console.log('authe')
+   
     if (req.user) {
         
       return res.redirect('/home'); // Redirect authenticated users

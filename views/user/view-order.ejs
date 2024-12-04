@@ -597,16 +597,16 @@
                                   </div>
                               </td>
                               <td>
-                                  ₹<% if (item.product.discountedPrice) { %>
+                                  $<% if (item.product.discountedPrice) { %>
                                       <span class="text-muted"><del><%= price %></del></span>
-                                      <span>₹<%= discountedPrice %></span>
+                                      <span>$<%= discountedPrice %></span>
                                   <% } else { %>
-                                      ₹<%= price %>
+                                      $<%= price %>
                                   <% } %>
                               </td>
                               <td><%= quantity %></td>
                               <td class="text-end">
-                                  ₹<%= (discountedPrice * quantity).toFixed(2) %>
+                                  $<%= (discountedPrice * quantity).toFixed(2) %>
                               </td>
                           </tr>
                           <% 
@@ -623,21 +623,21 @@
                                       <div class="card-body">
                                           <dl class="row">
                                               <dt class="col-sm-6">Original Total:</dt>
-                                              <dd class="col-sm-6">₹<%= originalTotal.toFixed(2) %></dd>
+                                              <dd class="col-sm-6">$<%= originalTotal.toFixed(2) %></dd>
                       
                                               <dt class="col-sm-6">Product Discounts:</dt>
-                                              <dd class="col-sm-6">- ₹<%= productDiscount.toFixed(2) %></dd>
+                                              <dd class="col-sm-6">- $<%= productDiscount.toFixed(2) %></dd>
                                               <dt class="col-sm-6">Coupon Discounts:</dt>
-                                              <dd class="col-sm-6">- ₹<%= couponDiscount.toFixed(2) %></dd>
+                                              <dd class="col-sm-6">- $<%= couponDiscount.toFixed(2) %></dd>
                       
                                               <dt class="col-sm-6">Total Discount:</dt>
-                                              <dd class="col-sm-6">- ₹<%= totalDiscount.toFixed(2) %></dd>
+                                              <dd class="col-sm-6">- $<%= totalDiscount.toFixed(2) %></dd>
                       
                                               <dt class="col-sm-6">Subtotal (with discounts):</dt>
-                                              <dd class="col-sm-6">₹<%= orders.totalprice.toFixed(2) %></dd>
+                                              <dd class="col-sm-6">$<%= orders.totalprice.toFixed(2) %></dd>
                       
                                               <dt class="col-sm-6">Grand total:</dt>
-                                              <dd class="col-sm-6"><b class="h5">₹<%= orders.totalprice.toFixed(2) %></b></dd>
+                                              <dd class="col-sm-6"><b class="h5">$<%= orders.totalprice.toFixed(2) %></b></dd>
                       
                                               <dt class="col-sm-6 text-muted">Status:</dt>
                                               <dd class="col-sm-6">

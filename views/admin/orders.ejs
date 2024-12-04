@@ -52,23 +52,22 @@
                             <tbody>
                               <% orders.forEach(order => { %>
                                 <tr>
-                                    <td><%= order.user.firstname %> <%= order.user.lastname %></td>
-                                    <td><%= order.user.email %></td>
-                                  -->
-                                  <td>₹<%= order.orderTotal.toFixed(2) %></td>
-                                  <td><%= order.payment%></td>
+                                  <td><%= order.user.firstname %> <%= order.user.lastname %></td>
+                                  <td><%= order.user.email %></td>
+                                  <td>$<%= order.totalprice.toFixed(2) %></td> <!-- Display total price directly -->
+                                  <td><%= order.paymentOption %></td>
                                   <td><%= order.orderStatus %></td>
                                   <td><span class="badge rounded-pill alert-warning"><%= order.status %></span></td>
                                   <td><%= new Date(order.dateOrdered).toLocaleString() %></td> <!-- Display date and time -->
                                   <td class="text-end">
-                                    <a href="/admin/order-detail?id=<%= order.id %>" class="btn btn-md rounded font-sm">Details</a>
-                                 
+                                    <a href="/admin/order-detail?id=<%= order._id %>" class="btn btn-md rounded font-sm">Details</a>
                                   </td>
                                 </tr>
                               <% }) %>
                             </tbody>
                           </table>
-                 
+                          
+                          
                      
                           
 

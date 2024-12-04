@@ -479,12 +479,12 @@
                                                         </td>
                                                         <td><%= products[i].size %></td> <!-- Display the size -->
                                                         <%if(products[i].product.discountedPrice){%>
-                                                            <td>&#8377;<%= products[i].product.discountedPrice * products[i].quantity %></td>
+                                                            <td>$<%= products[i].product.discountedPrice * products[i].quantity %></td>
                                                             <% subtotal += products[i].product.discountedPrice * products[i].quantity %>
 
 
                                                         <%}else{%>
-                                                            <td>&#8377;<%= products[i].product.price * products[i].quantity %></td>
+                                                            <td>$<%= products[i].product.price * products[i].quantity %></td>
                                                             <% subtotal += products[i].product.price * products[i].quantity %>
 
                                                         <%}%>
@@ -498,16 +498,16 @@
                                             <% } %>
                                             <tr>
                                                 <th>SubTotal</th>
-                                                <td class="product-subtotal" colspan="2">&#8377;<%= subtotal %></td>
+                                                <td class="product-subtotal" colspan="2">$<%= subtotal %></td>
                                             </tr>
                                             <% if (appliedCoupon) { %>
                                                 <tr>
                                                     <th>Coupon Applied: <%= appliedCoupon.couponCode %> <a href="#" class="remove-coupon" onclick="removeCoupon(event)">Remove Coupon</a></th>
-                                                    <td colspan="2">-&#8377;<%= subtotal - newSubtotal %></td>
+                                                    <td colspan="2">-$<%= subtotal - newSubtotal %></td>
                                                 </tr>
                                                 <tr>
                                                     <th>New Subtotal</th>
-                                                    <td class="product-subtotal" colspan="2">&#8377;<%= newSubtotal %></td>
+                                                    <td class="product-subtotal" colspan="2">$<%= newSubtotal %></td>
                                                 </tr>
                                             <% } %>
                                             <tr>
@@ -517,7 +517,7 @@
                                             <tr>
                                                 <th>Total</th>
                                                 <td class="product-subtotal" colspan="2">
-                                                    <span id="totalAmount" class="font-xl text-brand fw-900">&#8377;<%= newSubtotal || cart.total %></span>
+                                                    <span id="totalAmount" class="font-xl text-brand fw-900">$<%= newSubtotal || cart.total %></span>
                                                     <input type="hidden" name="totalprice" value="<%= newSubtotal || cart.total %>">
                                                     <input type="hidden" name="cartId" value="<%= cartId %>">
                                                 </td>
@@ -558,7 +558,7 @@
                                             <label style="font-size: 16px; font-weight: 600; display: flex; align-items: center;">
                                                 <!-- Checkbox for Wallet Balance -->
                                                 <input type="checkbox" id="useWallet" onchange="updateTotalWithWallet()" style="margin-right: 10px;"/>
-                                                <span>Use Wallet Balance (Available: <span style="color: #28a745;">&#8377;<%= user.walletBalance %></span>)</span>
+                                                <span>Use Wallet Balance (Available: <span style="color: #28a745;">$<%= user.walletBalance %></span>)</span>
                                             </label>
                                             <!-- Wallet Applied Amount Section -->
                                             <p id="walletAppliedAmount" style="display: none; font-size: 14px; color: #555; margin-top: 10px;">

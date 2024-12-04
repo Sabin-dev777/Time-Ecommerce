@@ -891,7 +891,6 @@ const undoDeleteProduct = async (req, res) => {
   } catch (error) {}
 };
 //load orders
-
 const loadOrder = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1; // Current page number from query parameter
@@ -902,10 +901,6 @@ const loadOrder = async (req, res) => {
     const orders = await Orders.find()
       .sort({ dateOrdered: -1 })
       .populate({ path: "user", select: "firstname lastname email" })
-      .populate({
-        path: "cartItems",
-        populate: { path: "items.product", model: "Products" },
-      })
       .skip(skip)
       .limit(limit);
 
@@ -913,41 +908,19 @@ const loadOrder = async (req, res) => {
     const totalOrders = await Orders.countDocuments();
     const totalPages = Math.ceil(totalOrders / limit);
 
-    // Process order data
-    const orderData = orders.map((order) => {
-      const itemsTotal = order.cartItems.reduce((acc, cartItem) => {
-        const itemTotal = cartItem.items.reduce((itemAcc, item) => {
-          return itemAcc + item.product.price * item.quantity;
-        }, 0);
-        return acc + itemTotal;
-      }, 0);
-      return {
-        id: order._id,
-        orderId: order.orderId,
-        user: order.user,
-        cartItems: order.cartItems.map((cartItem) => ({
-          items: cartItem.items.map((item) => ({
-            product: item.product,
-            quantity: item.quantity,
-          })),
-        })),
-        orderStatus: order.orderStatus,
-        status: order.status,
-        payment: order.paymentOption,
-        dateOrdered: order.dateOrdered,
-        orderTotal: itemsTotal,
-      };
-    });
-
+    // Render the orders view with the data
     res.render("orders", {
-      orders: orderData,
+      orders, // Pass the orders directly
       currentPage: page,
       totalPages,
     });
   } catch (error) {
-    console.log(error);
+    console.error("Error loading orders:", error);
+    res.status(500).send("Internal Server Error");
   }
 };
+
+
 
 const orderDetails = async (req, res) => {
   const orderId = req.query.id;

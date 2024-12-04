@@ -358,9 +358,9 @@
                                               </button>
                                           </td>
                                           <% if (products[i].product.discountedPrice) { %>
-                                              <td>&#8377;<%= products[i].product.discountedPrice %></td>
+                                              <td>$<%= products[i].product.discountedPrice %></td>
                                               <td id="total_<%= products[i].product._id %>">
-                                                  &#8377;<%= products[i].product.discountedPrice * products[i].quantity %>
+                                                  $<%= products[i].product.discountedPrice * products[i].quantity %>
                                               </td>
                                               <td class="text-end">
                                                   <div onclick="showDeleteConfirmation('<%= products[i].product._id %>', '<%= products.length %>')">
@@ -369,9 +369,9 @@
                                               </td>
                                               <% subtotal += products[i].product.discountedPrice * products[i].quantity; %>
                                           <% } else { %>
-                                              <td>&#8377;<%= products[i].product.price %></td>
+                                              <td>$<%= products[i].product.price %></td>
                                               <td id="total_<%= products[i].product._id %>">
-                                                  &#8377;<%= products[i].product.price * products[i].quantity %>
+                                                  $<%= products[i].product.price * products[i].quantity %>
                                               </td>
                                               <td class="text-end">
                                                   <div onclick="showDeleteConfirmation('<%= products[i].product._id %>', '<%= products.length %>')">
@@ -439,7 +439,7 @@
                                             <tr>
                                                 <td class="cart_total_label">Cart Subtotal</td>
                                                 <td class="cart_total_amount">
-                                                    <span id="subtotal" class="font-lg fw-900 text-brand">&#8377;<%=subtotal%></span>
+                                                    <span id="subtotal" class="font-lg fw-900 text-brand">$<%=subtotal%></span>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -452,7 +452,7 @@
                                                 <td class="cart_total_label">Total</td>
                                                 <td class="cart_total_amount">
                                                     <strong>
-                                                        <span id="cart-total" class="font-xl fw-900 text-brand">&#8377;<%=subtotal%></span>
+                                                        <span id="cart-total" class="font-xl fw-900 text-brand">$<%=subtotal%></span>
                                                     </strong>
                                                 </td>
                                             </tr>
