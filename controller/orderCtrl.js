@@ -129,8 +129,8 @@ const createOrder = async (req, res) => {
         intent: "sale",
         payer: { payment_method: "paypal" },
         redirect_urls: {
-          return_url: "http://localhost:5000/payment/success",
-          cancel_url: `http://localhost:5000/payment/cancel/${cartId}`,
+          return_url: "http://timewatches.online/payment/success",
+          cancel_url: `http://timewatches.online/payment/cancel/${cartId}`,
         },
         transactions,
       };
